@@ -19,11 +19,11 @@
                 </div>
                 <div class="container col-12 col-lg d-flex flex-wrap align-content-center justify-content-lg-start justify-content-center mx-0 mx-lg-5">
                     <div class="blog-title">
-                        <h1 class="fw-bold blog-title text-center text-lg-start mt-3 mt-lg-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                        <h1 class="fw-bold blog-title text-center text-lg-start mt-3 mt-lg-0">{{$latestBlog->title}}</h1>
                     </div>
                     <div class="content-container">
                         <p class="lead mt-lg-3 mt-2 hero-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci distinctio quasi non magnam placeat dolor, debitis rerum tempora accusantium unde nesciunt beatae a assumenda molestiae dolorem culpa quis in quos?
+                            {{$latestBlog->description}}
                         </p>
                     </div>
                     <div class="read-container">

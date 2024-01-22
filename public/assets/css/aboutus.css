@@ -1,0 +1,52 @@
+body {
+    color: #112d4e;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.welcome--container {
+    margin-top: 100px;
+}
+
+.whatSetUsApart-container {
+    margin-top: 100px;
+}
+
+.welcome--img {
+    object-fit: cover;
+}
+
+.card-title {
+    color: #112d4e;
+}
+
+.card {
+    border: none;
+    object-fit: cover;
+}
+
+hr {
+    color: #112d4e;
+    border: 2px solid #112d4e;
+    margin: 0, 150px, 0, 150px;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+
+    .welcome, .SetsUsApart, .team, .founder {
+        margin-top: 50px;
+    }
+
+    .SetsUsApart, .team {
+        margin-bottom: 50px;
+    }
+
+    .SetsUsApart, .welcome--container {
+        padding: 50px;
+    }
+}
+
