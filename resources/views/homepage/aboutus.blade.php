@@ -1,4 +1,5 @@
 @extends('master')
+@section('title', 'About Us')
 @section('css')
     <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/aboutus.css')}}">
