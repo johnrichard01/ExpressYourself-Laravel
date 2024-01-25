@@ -1,0 +1,22 @@
+.users-count{
+    font-size: 5rem;
+}
+.dash-box{
+    height: 250px;
+    width: 250px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #5357A6;
+    box-shadow:5px 10px 10px -1px rgba(17,17,17,0.75);
+    color: white;
+}
+.dash-box:hover{
+    scale: 1.03;
+}
+.section-title{
+    background-color: #112d4e;
+}
+.section-header{
+    color: white;
+    font-size: 3rem;
+}
