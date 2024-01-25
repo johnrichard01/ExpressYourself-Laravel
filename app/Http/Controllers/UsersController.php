@@ -43,7 +43,8 @@ class UsersController extends Controller
 
             return redirect('/');
         }
-        return back()->withErrors(['credentials'=>'Invalid Credentials']);
+        return back()->withErrors(['credentials'=>'Invalid Credentials'])->onlyInput('email');
+
     }
     //for logout
     public function logout(Request $request)

@@ -1,14 +1,4 @@
-function openModal(message) {
-    const modal = document.getElementById('successModal');
-    const successMessage = document.getElementById('successMessage');
 
-    successMessage.innerHTML = message;
-    modal.style.display = 'block';
-}
-function closeModal() {
-    const modal = document.getElementById('successModal');
-    modal.style.display = 'none';
-}
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -51,9 +41,7 @@ function validateForm(event) {
             passwordError.innerHTML = '*Password must be at least 8 characters, contain at least one capital letter, and have at least one special character*';
             event.preventDefault();
         }if(isValid){
-             // If both fields are filled and password is valid
-            // success message in the modal
-            openModal('Login Successful!');
+    
         }
      
     }

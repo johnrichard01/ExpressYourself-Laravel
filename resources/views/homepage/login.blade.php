@@ -23,7 +23,7 @@
             @error('credentials')
                 <div class="form__error--message text-center">{{$message}}</div>
             @enderror
-
+            <div class="form__error--message text-center" id="errorMessageLogin"></div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">
                     <span class="material-symbols-outlined">
