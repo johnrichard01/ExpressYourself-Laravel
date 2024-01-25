@@ -27,4 +27,18 @@ class BlogsController extends Controller
             return view('homepage.index', compact('blogs','latestBlog'));
         }
     }
+    public function artwork(){
+        return view('categories.artwork', ['blogs'=>Blogs::where('category', 'artwork')->latest()->simplePaginate(6)]);
+    }
+    public function craft(){
+        return view('categories.craft', ['blogs'=>Blogs::where('category', 'craft')->latest()->simplePaginate(6)]);
+    }
+
+    public function literature(){
+        return view('categories.literature', ['blogs'=>Blogs::where('category', 'literature')->latest()->simplePaginate(6)]);
+    }
+    public function photography(){
+        return view('categories.photography', ['blogs'=>Blogs::where('category', 'photography')->latest()->simplePaginate(6)]);
+    }
+
 }

@@ -1,80 +1,22 @@
 @extends('master')
-@section('title', 'Home')
+@section('title', 'Craft')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/index.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/category.css')}}">
 @endsection
 @section('content')
 @include('inc.navbar')
-<div class="container-fluid">
-    <div class="title-container">
-        <div class="container mt-5">
-            <h1 class="fw-bold title-hero text-center">Discover new stories and creative ideas</h1>
-        </div>
+<div class="container-fluid p-0">
+    <div class="container-fluid categ-container px-0 py-5">
+        <h1 class="categ-title fw-bold text-center">Craft</h1>
     </div>
-    <div class="first-section mt-5">
-        <div class="container">
-                <div class="d-flex flex-wrap">
-                    @if(!$latestBlog)
-                    <p>No blogs found</p>
-                    @else
-                    <div class="image-container col-12 col-lg d-flex justify-content-center">
-                        <img src="https://images.unsplash.com/photo-1682686578707-140b042e8f19?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid hero-image" alt="">
-                    </div>
-                    <div class="container col-12 col-lg d-flex flex-wrap align-content-center justify-content-lg-start justify-content-center mx-0 mx-lg-5">
-                        <div class="blog-title col-12">
-                            <h1 class="fw-bold blog-title text-center text-lg-start mt-3 mt-lg-0">{{$latestBlog->title}}</h1>
-                        </div>
-                        <div class="content-container col-12">
-                            <p class="lead mt-lg-3 mt-2 hero-desc">
-                                {{$latestBlog->description}}
-                            </p>
-                        </div>
-                        <div class="read-container col-12">
-                            <a href="#" class="btn btn-read text-decoration-none fw-bold" type="button">Read more</a>
-                        </div>  
-                    </div>
-                    @endif
-                </div>            
-        </div>
-    </div>
-    <div class="second-section my-5 container-fluid bg-body-tertiary py-5">
-        <div class="container">
-            <div class="mb-5">
-                <h2 class="section-title fw-bold text-lg-start text-center">Categories</h2>
-            </div>
-            <div class="d-flex flex-wrap">
-                <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="category/artwork" class="w-50 categ-btn btn btn-lg btn-artwork fw-bold">
-                        Artwork
-                    </a>
-                </div>
-                <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="category/craft" class="w-50 categ-btn btn btn-lg btn-craft fw-bold">
-                        Craft
-                    </a>
-                </div>
-                <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="category/literature" class="w-50 categ-btn btn btn-lg btn-literature fw-bold">
-                        literature
-                    </a>
-                </div>
-                <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="category/photography" class="w-50 categ-btn btn btn-lg btn-photography fw-bold">
-                        Photography
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="third-section mt-5 pb-5">
+    <div class="third-section mt-3 pb-5">
         <div class="container d-flex flex-lg-row flex-column">
             <div class="col-12 col-lg-9">
                 <div class="mb-5">
                     <h2 class="section-title fw-bold text-lg-start text-center">Recent Posts</h2>
                 </div>
-                <div class="container-fluid">
-                    @if (count($blogs)== 0)
+                @if (count($blogs)== 0)
                         <p>No blogs found</p>
                     @else
                         @foreach ($blogs as $blog)
@@ -84,15 +26,45 @@
                    <div class="d-flex justify-content-start">
                     {!!$blogs->links()!!}
                     </div>
-                </div>
             </div>
             <div class="col-12 col-lg-3">
+                <div class="container-fluid pb-5 pt-3 mb-3">
+                    <div class="mb-4">
+                        <h2 class="section-title fw-bold text-lg-start text-center">Categories</h2>
+                    </div>
+                    <div class="second-section">
+                        <div class="container">
+                            <div class="d-flex flex-wrap">
+                                <div class="d-flex justify-content-center col-12 mb-3">
+                                    <a href="/category/artwork" class="w-100 categ-btn btn btn-lg btn-artwork fw-bold">
+                                        Artwork
+                                    </a>
+                                </div>
+                                <div class="d-flex justify-content-center col-12 mb-3">
+                                    <a href="/category/craft" class="w-100 categ-btn btn btn-lg btn-craft fw-bold">
+                                        Craft
+                                    </a>
+                                </div>
+                                <div class="d-flex justify-content-center col-12 mb-3">
+                                    <a href="/category/literature" class="w-100 categ-btn btn btn-lg btn-literature fw-bold">
+                                        literature
+                                    </a>
+                                </div>
+                                <div class="d-flex justify-content-center col-12 mb-3 ">
+                                    <a href="/category/photography" class="w-100 categ-btn btn btn-lg btn-photography fw-bold">
+                                        Photography
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
                 <div class="popular-container">
                     <div class=" mb-5">
                         <h2 class="section-title fw-bold  text-lg-start text-center">Most Popular</h2>
                     </div>
                 <div class="d-flex flex-wrap justify-content-center gap-lg-2 gap-4">
-                    <div class="popular-conten mb-4">
+                    <div class="popular-content mb-4">
                         <div class="popular-categ mb-2">
                             <div class="popular-box col-3 d-flex align-items-center justify-content-center">
                                 Artwork
@@ -219,8 +191,7 @@
         </div>
     </div>
 </div>
-@include('inc.footer')
+@include("inc.footer")
 @endsection
 @section('javascript')
-    <script src="{{asset('assets/js/universal.js')}}"></script>
 @endsection
