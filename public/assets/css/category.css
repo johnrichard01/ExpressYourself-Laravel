@@ -105,6 +105,9 @@
 .btn-recent{
     font-size: 1rem;
 }
+.search-title{
+    color: white;
+}
 @media only screen and (max-width: 768px) {
     .recent-image-container {
         display: none;

@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Craft')
+@section('title', 'Search')
 @section('css')
 <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
 <link rel="stylesheet" href="{{asset('/assets/css/category.css')}}">
@@ -8,7 +8,9 @@
 @include('inc.navbar')
 <div class="container-fluid p-0">
     <div class="container-fluid categ-container px-0 py-5">
-        <h1 class="categ-title fw-bold text-center">Craft</h1>
+        <div class="container">
+            <h1 class="search-title fw-bold text-start">Search result for: '{{$search}}'</h1>
+        </div>
     </div>
     <div class="third-section mt-3 pb-5">
         <div class="container d-flex flex-lg-row flex-column">
@@ -36,22 +38,22 @@
                         <div class="container">
                             <div class="d-flex flex-wrap">
                                 <div class="d-flex justify-content-center col-12 mb-3">
-                                    <a href="/category/artwork" class="w-100 categ-btn btn btn-lg btn-artwork fw-bold">
+                                    <a href="/category/?category=artwork" class="w-100 categ-btn btn btn-lg btn-artwork fw-bold">
                                         Artwork
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3">
-                                    <a href="/category/craft" class="w-100 categ-btn btn btn-lg btn-craft fw-bold">
+                                    <a href="/category/?category=craft" class="w-100 categ-btn btn btn-lg btn-craft fw-bold">
                                         Craft
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3">
-                                    <a href="/category/literature" class="w-100 categ-btn btn btn-lg btn-literature fw-bold">
+                                    <a href="/category/?category=literature" class="w-100 categ-btn btn btn-lg btn-literature fw-bold">
                                         literature
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3 ">
-                                    <a href="/category/photography" class="w-100 categ-btn btn btn-lg btn-photography fw-bold">
+                                    <a href="/category/?category=photography" class="w-100 categ-btn btn btn-lg btn-photography fw-bold">
                                         Photography
                                     </a>
                                 </div>

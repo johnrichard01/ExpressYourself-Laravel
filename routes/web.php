@@ -21,11 +21,7 @@ Route::post('/login/authenticate', [UsersController::class, 'authenticate']);
 Route::post('/logout', [UsersController::class, 'logout'])->middleware('auth');
 //show dashboard
 Route::get('/dashboard', [UsersController::class, 'dashboard'])->middleware(['auth', 'isAdmin']);
-//show category artwork
-Route::get('/category/artwork', [BlogsController::class, 'artwork']);
-//show category craft
-Route::get('/category/craft', [BlogsController::class, 'craft']);
-//show category literature
-Route::get('/category/literature', [BlogsController::class, 'literature']);
-//show category photography
-Route::get('/category/photography', [BlogsController::class, 'photography']);
+//show categories
+Route::get('/category', [BlogsController::class, 'category']);
+//search function
+Route::get('/search',[BlogsController::class, 'search']);

@@ -18,8 +18,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <form class="col-12 col-lg-4 mb-5 mb-lg-0  d-flex align-items-center" role="search">
-                        <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search">
+                    <form action="/search" class="col-12 col-lg-4 mb-5 mb-lg-0  d-flex align-items-center" role="search">
+                        <input class="form-control search-bar" name="search" type="search" placeholder="Search" aria-label="Search">
                       </form>
                     <div class="col-4 d-flex align-items-center">
                         <ul class="navbar-nav justify-content-center flex-grow-1 gap-4"> 
