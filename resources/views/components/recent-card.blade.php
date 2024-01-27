@@ -18,7 +18,7 @@
                 </p>
             </div>
             <div class="read-container">
-                <a href="#" class="btn btn-read  btn-recent text-decoration-none fw-bold" type="button">Read more</a>
+                <a href="/blogs/{{$blog->id}}" class="btn btn-read  btn-recent text-decoration-none fw-bold" type="button">Read more</a>
             </div>
         </div> 
     </div>

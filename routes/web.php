@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
 
@@ -25,3 +26,7 @@ Route::get('/dashboard', [UsersController::class, 'dashboard'])->middleware(['au
 Route::get('/category', [BlogsController::class, 'category']);
 //search function
 Route::get('/search',[BlogsController::class, 'search']);
+//show single blogs
+Route::get('/blogs/{blog}',[BlogsController::class, 'show']);
+//show contact us
+Route::get('/contact', [ContactController::class, 'show']);
