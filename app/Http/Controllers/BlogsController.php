@@ -11,7 +11,11 @@ class BlogsController extends Controller
     //showing homepage
     public function index(){
         $latestBlog = Blogs::latest()->first();
-        $blogs=Blogs::where('id', '!=', $latestBlog->id)->latest()->simplePaginate(4);
+        if ($latestBlog) {
+            $blogs = Blogs::where('id', '!=', $latestBlog->id)->latest()->simplePaginate(4);
+        } else if (!$latestBlog) {
+            $blogs = Blogs::latest()->simplePaginate(4);
+        }
         if(Auth::check())
         {
             if(Auth::user()->role_as == '1')
