@@ -64,18 +64,11 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="accountsettings.html" class="dropdown-item">
-                                                Account Settings
-                                            </a>
+                                            <a class="nav-link" href="{{ url('/activities') }}">Activity</a>
                                         </li>
                                         <li>
                                             <a href="manageposts.html" class="dropdown-item">
                                                 Manage Posts
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="activity.html" class="dropdown-item">
-                                                Activity
                                             </a>
                                         </li>
                                         <li>

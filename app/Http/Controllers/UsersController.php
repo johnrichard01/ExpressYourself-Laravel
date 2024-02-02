@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+
 class UsersController extends Controller
 {
     //show the signup page
@@ -61,4 +62,8 @@ class UsersController extends Controller
     {
         return view('admin.dashboard');
     }
+    
+
 }
+
+
