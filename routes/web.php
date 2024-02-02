@@ -6,10 +6,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
 
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\MessageController;
-
-
 //show homepage
 Route::get('/', [BlogsController::class, 'index']);
 //about us
@@ -34,9 +30,3 @@ Route::get('/search',[BlogsController::class, 'search']);
 Route::get('/blogs/{blog}',[BlogsController::class, 'show']);
 //show contact us
 Route::get('/contact', [ContactController::class, 'show']);
-
-
-
-//user
-Route::get('/activities', [ActivityController::class, 'activity']);
-Route::get('/messages', [MessageController::class, 'messages']);
