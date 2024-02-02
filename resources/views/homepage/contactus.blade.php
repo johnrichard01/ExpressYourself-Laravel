@@ -83,7 +83,8 @@
 
                                         <!-- Contact Form -->
 
-                            <form action="/contact/sent" method="POST" novalidate>
+                            <form action="/contact/send" method="POST" novalidate>
+                                @csrf
                                 <div class="form-group">
                                     <label for="firstName">First Name:</label>
                                     <input type="text" class="form-control" id="firstName" name="firstName" required autocomplete="name">
@@ -91,6 +92,9 @@
                                 <div class="error-message" id="fname-error">
 
                                 </div>
+                                @error('firstName')
+                                    <div class="error-message" id="message-error">{{$message}}</div>
+                                 @enderror
                                 <div class="form-group">
                                     <label for="lastName">Last Name:</label>
                                     <input type="text" class="form-control" id="lastName" name="lastName" required autocomplete="lastname">
@@ -98,6 +102,9 @@
                                 <div class="error-message" id="lname-error">
                                     
                                 </div>
+                                @error('lastName')
+                                    <div class="error-message" id="message-error">{{$message}}</div>
+                                @enderror
                                 <div class="form-group">
                                     <label for="email">Your Email:</label>
                                     <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
@@ -105,13 +112,18 @@
                                 <div class="error-message" id="email-error">
                                     
                                 </div>
+                                @error('email')
+                                <div class="error-message" id="message-error">{{$message}}</div>
+                                @enderror
                                 <div class="form-group">
                                     <label for="message">Your Message:</label>
                                     <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                                 </div>
-                                <div class="error-message" id="message-error">
-                                    
-                                </div>
+                                <div class="error-message" id="message-error"></div>
+                                @error('message')
+                                    <div class="error-message" id="message-error">{{$message}}</div>
+                                @enderror
+                                
                                 <button type="submit" id="contactSubmit" class="btn--message btn">Send Message</button>
                             </form>
 
