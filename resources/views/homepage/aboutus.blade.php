@@ -13,7 +13,7 @@
         
         <div class="row">
 
-            <h1 class="welcome">Welcome to ExpressYourself - Creative Minds !</h1>
+            <h1 class="welcome">Welcome to InkTheUnsaid - Creative Minds !</h1>
 
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column justify-content-center align-items-center my-5 text-center">
 
@@ -30,7 +30,7 @@
                 <div class="welcome--txt px-4 my-md-5">
                     
                     <p>
-                        At ExpressYourself, we believe in the power of expression. In a world inundated with noise, we provide a haven for authentic voices to be heard, stories to be shared, and creativity to flourish. Our mission is to empower individuals to express themselves freely, fostering a diverse and vibrant community where every voice matters.
+                        At <b>InkTheUnsaid</b>, we believe in the power of expression. In a world inundated with noise, we provide a haven for authentic voices to be heard, stories to be shared, and creativity to flourish. Our mission is to empower individuals to express themselves freely, fostering a diverse and vibrant community where every voice matters.
                     </p>
 
                 </div>
@@ -55,7 +55,7 @@
                         <img src="{{asset('assets/images/AboutUs/abstract-7.jpg')}}" alt="abstract-7" class="img-fluid">
 
                         <h4 class="card-title mt-3">Freedom of Expression</h4>
-                        <p class="card-text">We value diversity and individuality. ExpressYourself is a space where you can be unapologetically yourself, sharing your thoughts, experiences, and creativity without constraints.</p>
+                        <p class="card-text">We value diversity and individuality. <b>InkTheUnsaid</b> is a space where you can be unapologetically yourself, sharing your thoughts, experiences, and creativity without constraints.</p>
 
                 </div>
             </div>
@@ -90,7 +90,7 @@
                 <div class="px-4 my-md-5 xs-my-5 my-sm-5">
 
                     <p>
-                        Behind ExpressYourself is a passionate team dedicated to fostering a culture of expression. We are writers, designers, developers, and dreamers who believe in the transformative power of words and creativity.
+                        Behind <b>InkTheUnsaid</b> is a passionate team dedicated to fostering a culture of expression. We are writers, designers, developers, and dreamers who believe in the transformative power of words and creativity.
                     </p>
                     
                 </div>
@@ -130,7 +130,7 @@
                 <div class="px-4 my-md-5">
                     
                     <p>
-                        "Nathan Smith, the visionary behind ExpressYourself, embarked on this journey with a simple belief – that everyone has a story worth sharing. This inspired the creation of ExpressYourself: a digital haven for authentic expression, fostering empathy globally."
+                        "Nathan Smith, the visionary behind <b>InkTheUnsaid</b>, embarked on this journey with a simple belief – that everyone has a story worth sharing. This inspired the creation of <i><b>InkTheUnsaid</b></i>: a digital haven for authentic expression, fostering empathy globally."
                     </p>
                     
                 </div>
@@ -152,7 +152,7 @@
                 <div class="px-4 my-md-5">
                     
                     <p>
-                        Calling all writers and storytellers! <b>ExpressYourself</b> is your creative hub.
+                        Calling all writers and storytellers! <b>InkTheUnsaid</b> is your creative hub.
                         <br>
                         Connect, explore, and grow with a community that values your voice.
                         <br>
