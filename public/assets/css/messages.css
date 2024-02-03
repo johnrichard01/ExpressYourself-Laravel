@@ -1,0 +1,23 @@
+.search--message {
+    margin-left: 20px;
+}
+
+.messenger-card {
+    border: 1px solid #112d4e;
+    margin-top: 50px;
+}
+
+.messenger--header {
+    background-color: #112d4e;
+}
+
+.create-btn, .group-btn {
+    color: white;
+    border: none;
+    background-color: #112d4e;
+    margin-top: 15px;
+}
+
+.active--now {
+    margin-top: 50px;
+}

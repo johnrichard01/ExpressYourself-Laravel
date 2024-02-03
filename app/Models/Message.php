@@ -1,4 +1,5 @@
 <?php
+// app/Models/Message.php
 
 namespace App\Models;
 
@@ -9,9 +10,23 @@ class Message extends Model
 {
     use HasFactory;
 
-    // Define the relationship with the User model
+    protected $fillable = [
+        'content',
+        'recipient_id', // Update 'recipient' to 'recipient_id'
+        // Add other fields as needed
+    ];
+
+    // Define the relationship with the User model for the sender (assuming sender is the authenticated user)
     public function sender()
     {
-        return $this->belongsTo(User::class, 'sender_id'); //'sender_id' is the foreign key in the messages table
+        return $this->belongsTo(User::class, 'user_id'); //'user_id' is the foreign key for the authenticated user (sender)
     }
+
+    // Define the relationship with the User model for the recipient
+    public function recipientUser()
+    {
+        return $this->belongsTo(User::class, 'recipient_id'); //'recipient_id' is the foreign key for the recipient user
+    }
+
+    // Define relationships or other methods here
 }
