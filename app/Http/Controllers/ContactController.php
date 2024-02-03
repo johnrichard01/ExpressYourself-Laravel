@@ -2,17 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactThanks;
 use App\Mail\ContactUs;
 use App\Models\Contact;
+use App\Mail\ContactThanks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
     public function show()
     {
-        return view('homepage.contactus');
+        $user = Auth::user();
+        if(Auth::check())
+        {
+            if(Auth::user()->role_as == '1')
+            {
+                return redirect('/dashboard');
+            }
+            else if(Auth::user()->role_as == '0')
+            {
+                return view('homepage.contactus', compact('user'));
+            }
+        }
+        else
+        {
+            return view('homepage.contactus');
+        }
     }
     public function send()
     {

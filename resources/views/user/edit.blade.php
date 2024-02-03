@@ -16,7 +16,7 @@
                 <label for="new_avatar" class="avatar-label">Update Avatar:</label>
                 <div class="current-avatar">
                     @if($user->avatar)
-                        <img src="{{ Storage::url($user->avatar) }}" alt="Current Avatar">
+                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="Current Avatar">
                     @else
                         <p class="no-avatar">No avatar uploaded.</p>
                     @endif

@@ -16,6 +16,7 @@ class BlogsController extends Controller
         } else if (!$latestBlog) {
             $blogs = Blogs::latest()->simplePaginate(4);
         }
+        $user = Auth::user();
         if(Auth::check())
         {
             if(Auth::user()->role_as == '1')
@@ -24,12 +25,12 @@ class BlogsController extends Controller
             }
             else if(Auth::user()->role_as == '0')
             {
-                return view('homepage.index', compact('blogs','latestBlog'));
+                return view('homepage.index', compact('blogs','latestBlog', 'user'));
             }
         }
         else
         {
-            return view('homepage.index', compact('blogs','latestBlog'));
+            return view('homepage.index', compact('blogs','latestBlog', 'user'));
         }
     }
     //showing category

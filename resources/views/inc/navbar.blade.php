@@ -44,24 +44,34 @@
                     @auth
                             <div class="col col-lg-4">
                             <div class="d-flex justify-content-center align-items-center pe-0 pe-lg-1">
-                                <div class="col d-flex justify-content-end">
-                                    <a href="bookmark.html" class="bookmark-btn" id="bookmarkBTN">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
-                                            <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
-                                            <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="col-2 d-flex justify-content-start ms-lg-3 ms-0">
-                                    <a href="#" type="button" class="notif-btn" id="notifBTN">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-                                        </svg>
-                                    </a>
+                                <div class="col-9 d-flex justify-content-end align-items-center">
+                                    <div class="col-3 d-flex justify-content-center">
+                                        <a href="{{ route('posts.create') }}" class="bookmark-btn" id="bookmarkBTN">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                              </svg>
+                                        </a>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-center ">
+                                        <a href="bookmark.html" class="bookmark-btn" id="bookmarkBTN">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
+                                                <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
+                                                <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-center ">
+                                        <a href="#" type="button" class="notif-btn" id="notifBTN">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="col-3 dropdown-center d-flex flex-wrap justify-content-end align-items-center">
                                     <a type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="{{asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                                        <img src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -96,21 +106,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        
-                    <div class="create">
-                        <div class="row">
-                            <div class="col">
-                            
-                                <ul>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('posts.create') }}">Create Post</a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
 
                     @else
                         <div class="col col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1">
