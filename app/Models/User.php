@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Model;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -21,6 +23,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'avatar',
+        'bio',
     ];
 
     /**
@@ -32,6 +36,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    
 
     /**
      * The attributes that should be cast.
@@ -42,4 +47,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    use HasFactory;
+
+    // Define the relationship with the Message model
+    public function receivedMessages()
+    {
+        return $this->hasMany(Message::class, 'recipient_id'); // 'recipient_id' is the foreign key in the messages table
+    }
 }

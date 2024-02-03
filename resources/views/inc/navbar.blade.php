@@ -38,6 +38,7 @@
                                         Contact   
                                     </a>
                                 </li>
+
                         </ul>
                     </div>
                     @auth
@@ -64,11 +65,23 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="nav-link" href="{{ url('/activities') }}">Activity</a>
+                                            <a class="nav-link" href="{{ route('profile.edit') }}">
+                                                Edit Profile
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="manageposts.html" class="dropdown-item">
-                                                Manage Posts
+                                            <a href="#" class="dropdown-item">
+                                                My Blogs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="{{ url('/activities') }}">
+                                                Activity
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="{{ url('/messages') }}">
+                                                Messages
                                             </a>
                                         </li>
                                         <li>
@@ -83,6 +96,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        
+                    <div class="create">
+                        <div class="row">
+                            <div class="col">
+                            
+                                <ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('posts.create') }}">Create Post</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
                     @else
                         <div class="col col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1">
                             <a href="/signup"  class="btn btn-signup fw-bold w-100 rounded-5">Sign up</a>
