@@ -16,7 +16,7 @@
         </a> -->
         <div class="container">
             <h1 class="categ-title fw-bold text-start">{{$blog->title}}</h1>
-            <p class="author-view">by: John Doe</p>
+            <p class="author-view">by: {{$author->username}}</p>
         </div>
     </div>
     <div class="third-section mt-3 pb-5">

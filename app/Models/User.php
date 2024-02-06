@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'avatar',
         'bio',
+        'first_name',
+        'last_name'
     ];
 
     /**
@@ -47,17 +49,17 @@ class User extends Authenticatable
 
     use HasFactory;
 
-    // Define the relationship with the Message model for received messages
-    public function receivedMessages()
-    {
-        return $this->hasMany(Message::class, 'recipient_id');
-    }
+    // // Define the relationship with the Message model for received messages
+    // public function receivedMessages()
+    // {
+    //     return $this->hasMany(Message::class, 'recipient_id');
+    // }
 
-    // Define the relationship with the Message model for sent messages
-    public function sentMessages()
-    {
-        return $this->hasMany(Message::class, 'user_id'); // Assuming 'user_id' is the foreign key for sent messages
-    }
+    // // Define the relationship with the Message model for sent messages
+    // public function sentMessages()
+    // {
+    //     return $this->hasMany(Message::class, 'user_id'); // Assuming 'user_id' is the foreign key for sent messages
+    // }
 
     // relationship to blogs
     public function blogs()

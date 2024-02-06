@@ -18,7 +18,7 @@
         <div class="d-flex flex-wrap justify-content-center">
             <form id="createBlogs" action="/blogs/{{$blogs->id}}" method="post" enctype="multipart/form-data" class="col-12 col-lg-9 d-flex flex-wrap justify-content-center">
                 @csrf
-    
+                @method('PUT')
                     <div class="form-group col-12">
                         <input type="text" name="title" id="title" placeholder="Title" value="{{$blogs->title}}" maxlength="50" class="form-control in-box text-center" required>
                         <div class="char-counter counter-hide" id="charCount"></div>

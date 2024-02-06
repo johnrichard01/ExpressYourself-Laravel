@@ -59,10 +59,12 @@ class BlogsController extends Controller
     //show single blogs
     public function show(Blogs $blog)
     {
+        $author= $blog->user;
         $user = Auth::user();
         return view('homepage.show',[
             'blog'=>$blog,
-            'user'=>$user
+            'user'=>$user,
+            'author'=>$author
         ]);
     }
     //show create blogs form
