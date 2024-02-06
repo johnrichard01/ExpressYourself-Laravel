@@ -6,8 +6,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\GroupMessageController;
 use App\Http\Controllers\ProfileController;
 
 
@@ -50,9 +48,6 @@ Route::get('/contact', [ContactController::class, 'show']);
 
 // user
 Route::get('/activities', [ActivityController::class, 'activity']);
-Route::get('/messages', [MessageController::class, 'message']);
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

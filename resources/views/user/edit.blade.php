@@ -34,7 +34,7 @@
                                     @if($user->avatar)
                                         <img id="cropperImage" src="{{ asset('storage/' . $user->avatar) }}" alt="Current Avatar" class="avatar-img img-thumbnail">
                                     @else
-                                        <img id="cropperImage" src="{{ asset('path-to-placeholder-image.jpg') }}" alt="No Avatar" class="avatar-img img-thumbnail">
+                                        <img id="cropperImage" src="{{ asset('assets/images/noprofile.png') }}" alt="No Avatar" class="avatar-img img-thumbnail">
                                     @endif
                                 </div>
                                 <input type="file" name="new_avatar" id="new_avatar" class="avatar-input form-control-file">

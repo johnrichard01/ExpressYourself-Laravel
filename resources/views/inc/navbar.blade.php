@@ -80,7 +80,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/myblogs" class="dropdown-item">
+                                            <a class="nav-link" href="/myblogs" class="dropdown-item">
                                                 My Blogs
                                             </a>
                                         </li>
