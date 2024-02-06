@@ -24,15 +24,12 @@
             <div class="col-12 col-lg-9 px-5">
                 <div class="content">
                     <div class="show-image d-flex justify-content-center">
-                        <img src="https://images.unsplash.com/photo-1682686578707-140b042e8f19?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  class="blog-image-show img-fluid" alt="">
+                        <img src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/noprofile.png')}}" alt="">
                     </div> 
                 </div>
                 <div class="desc-container mt-5">
                     <div class="description">
-                        <p class="desc-paragraph mt-3">
-                            {{$blog->description}}
-                        </p>
-                        
+                            {!!$blog->description!!}
                     </div>
                 </div>
             </div>

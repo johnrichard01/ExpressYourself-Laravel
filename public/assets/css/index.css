@@ -4,7 +4,7 @@
 }
 .hero-image{
     width: auto;
-    height: 25rem;
+    height: 20rem;
 }
 .hero-desc{
     font-size: 1.25rem;
@@ -61,7 +61,7 @@
 }
 /* for last section */
 .image-recent{
-    height: 15rem;
+    height: 10rem;
 }
 .recent-categ{
     color: red;

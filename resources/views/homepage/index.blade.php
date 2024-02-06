@@ -19,16 +19,14 @@
                     <p>No blogs found</p>
                     @else
                     <div class="image-container col-12 col-lg d-flex justify-content-center">
-                        <img src="https://images.unsplash.com/photo-1682686578707-140b042e8f19?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid hero-image" alt="">
+                        <img class="img-fluid hero-image" src="{{$latestBlog->thumbnail ? asset('storage/' . $latestBlog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
                     </div>
                     <div class="container col-12 col-lg d-flex flex-wrap align-content-center justify-content-lg-start justify-content-center mx-0 mx-lg-5">
                         <div class="blog-title col-12">
                             <h1 class="fw-bold blog-title text-center text-lg-start mt-3 mt-lg-0">{{$latestBlog->title}}</h1>
                         </div>
                         <div class="content-container col-12">
-                            <p class="lead mt-lg-3 mt-2 hero-desc">
-                                {{$latestBlog->description}}
-                            </p>
+                          {{$latestBlog->about}}
                         </div>
                         <div class="read-container col-12">
                             <a href="/blogs/{{$latestBlog->id}}" class="btn btn-read text-decoration-none fw-bold" type="button">Read more</a>
