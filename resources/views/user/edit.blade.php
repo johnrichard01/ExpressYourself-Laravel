@@ -8,6 +8,19 @@
 @include('inc.navbar')
 
         <main>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col d-flex justify-content-center mt-5">
+
+                        <h1 class="prof--head">Profile Settings
+                            <span class="material-symbols-outlined">
+                            settings
+                            </span></h1>
+
+                    </div>
+                </div>
+            </div>
             
 
             <div class="container mt-5">
@@ -30,29 +43,29 @@
                                     <hr>
 
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col mt-3">
 
                                         <div class="form-group">
                                             <label for="bio" class="bio-label">Bio:</label>
-                                            <textarea name="bio" id="bio" class="bio-textarea form-control">{{ old('bio', $user->bio) }}</textarea>
+                                            <textarea name="bio" id="bio" class="bio-textarea form-control mt-2">{{ old('bio', $user->bio) }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                         
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col mt-3">
                                         <!-- Username -->
                                         <div class="form-group">
                                             <label for="username" class="username-label">Username:</label>
-                                            <input type="text" name="username" id="username" class="username-input form-control" value="{{ old('username', $user->username) }}">
+                                            <input type="text" name="username" id="username" class="username-input form-control mt-2" value="{{ old('username', $user->username) }}">
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mt-3">
                                         <!-- Gender -->
                                         <div class="form-group">
                                             <label for="gender" class="gender-label">Gender:</label>
-                                            <select name="gender" id="gender" class="gender-select form-control">
+                                            <select name="gender" id="gender" class="gender-select form-control mt-2">
                                                 <option value="male" {{ old('gender', $user->gender) === 'male' ? 'selected' : '' }}>Male</option>
                                                 <option value="female" {{ old('gender', $user->gender) === 'female' ? 'selected' : '' }}>Female</option>
                                                 <option value="other" {{ old('gender', $user->gender) === 'other' ? 'selected' : '' }}>Other</option>
@@ -60,12 +73,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mt-3">
                                         
                                     <!-- City -->
                                         <div class="form-group">
                                             <label for="city" class="city-label">Location:</label>
-                                            <input type="text" name="city" id="city" class="city-input form-control" value="{{ old('city', $user->city) }}">
+                                            <input type="text" name="city" id="city" class="city-input form-control mt-2" value="{{ old('city', $user->city) }}">
                                         </div>
                                     </div>
 
@@ -73,22 +86,22 @@
 
                                 
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col mt-3">
 
                                         <!-- First Name -->
                                         <div class="form-group">
                                             <label for="first_name" class="first-name-label">First Name:</label>
-                                            <input type="text" name="first_name" id="first_name" class="first-name-input form-control" value="{{ old('first_name', $user->first_name) }}">
+                                            <input type="text" name="first_name" id="first_name" class="first-name-input form-control mt-2" value="{{ old('first_name', $user->first_name) }}">
                                         </div>
 
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mt-3">
 
                                         <!-- Last Name -->
                                         <div class="form-group">
                                             <label for="last_name" class="last-name-label">Last Name:</label>
-                                            <input type="text" name="last_name" id="last_name" class="last-name-input form-control" value="{{ old('last_name', $user->last_name) }}">
+                                            <input type="text" name="last_name" id="last_name" class="last-name-input form-control mt-2" value="{{ old('last_name', $user->last_name) }}">
                                         </div>
 
                                     </div>
