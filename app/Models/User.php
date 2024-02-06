@@ -59,5 +59,9 @@ class User extends Authenticatable
         return $this->hasMany(Message::class, 'user_id'); // Assuming 'user_id' is the foreign key for sent messages
     }
 
-    // Define other relationships or methods here
+    // relationship to blogs
+    public function blogs()
+    {
+        return $this->hasMany(Blogs::class, 'user_id');
+    }
 }

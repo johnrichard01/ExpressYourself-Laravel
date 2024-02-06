@@ -8,7 +8,6 @@ use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GroupMessageController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConversationController;
 
@@ -33,16 +32,28 @@ Route::get('/dashboard', [UsersController::class, 'dashboard'])->middleware(['au
 Route::get('/category', [BlogsController::class, 'category']);
 // search function
 Route::get('/search', [BlogsController::class, 'search']);
-// show single blogs
-Route::get('/blogs/{blog}', [BlogsController::class, 'show']);
+//show create blogs form
+Route::get('/blogs/create', [BlogsController::class, 'create'])->middleware('auth');
+//store created blogs
+Route::post('/blogs/create/store', [BlogsController::class, 'store'])->middleware('auth');
 // show contact us
 Route::get('/contact', [ContactController::class, 'show']);
+//show edit form for blogs
+Route::get('/blogs/{blogs}/edit', [BlogsController::class, 'show_update']);
+//update blogs
+Route::post('/blogs/{blogs}', [BlogsController::class, 'update']);
+//delete blogs
+Route::delete('/blogs/{blogs}', [BlogsController::class, 'destroy']);
+// show single blogs
+Route::get('/blogs/{blog}', [BlogsController::class, 'show']);
+//show myblogs
+Route::get('/myblogs',[BlogsController::class, 'show_myblogs'])->middleware('auth');
+
 
 // user
 Route::get('/activities', [ActivityController::class, 'activity']);
 Route::get('/messages', [MessageController::class, 'message']);
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

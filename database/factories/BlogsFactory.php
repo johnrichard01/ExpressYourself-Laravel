@@ -19,6 +19,7 @@ class BlogsFactory extends Factory
         return [
             'title'=> $this->faker->sentence(),
             'category'=> 'artwork',
+            'about'=> $this->faker->paragraph(2),
             'description'=> $this->faker->paragraph(5),
         ];
     }
