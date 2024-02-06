@@ -38,24 +38,11 @@ Route::get('/blogs/{blog}', [BlogsController::class, 'show']);
 // show contact us
 Route::get('/contact', [ContactController::class, 'show']);
 
-// user
-Route::get('/activities', [ActivityController::class, 'activity']);
-Route::get('/messages', [MessageController::class, 'message']);
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
-    // Messages
-    Route::get('/create-message', [MessageController::class, 'createMessage'])->name('create-message');
-    Route::get('/create-new-group', [MessageController::class, 'createNewGroup'])->name('create-new-group');
-    Route::post('/search', [MessageController::class, 'search'])->name('search');
-    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store')->middleware('auth');
-    Route::get('/messages', [MessageController::class, 'message'])->name('user.message');
-    Route::get('/conversation/{userId}', [ConversationController::class, 'show'])->name('conversation.show');
 
 
 });
