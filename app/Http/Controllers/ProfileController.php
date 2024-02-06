@@ -47,7 +47,7 @@ class ProfileController extends Controller
         $user->last_name = $request->input('last_name');
         $user->city = $request->input('city');
 
-        `$user->update()`;
+        $user->update();
 
         return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
     }
