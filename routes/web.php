@@ -43,6 +43,8 @@ Route::post('/blogs/{blogs}', [BlogsController::class, 'update'])->middleware(['
 Route::delete('/blogs/{blogs}', [BlogsController::class, 'destroy'])->middleware(['auth', 'verified']);
 // show single blogs
 Route::get('/blogs/{blog}', [BlogsController::class, 'show']);
+//show my blogs
+Route::get('/myblogs', [BlogsController::class, 'show_myblogs'])->middleware(['auth', 'verified']);
 
 
 // user
