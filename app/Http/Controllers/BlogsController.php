@@ -22,14 +22,21 @@ class BlogsController extends Controller
         $user = Auth::user();
         if(Auth::check())
         {
-            if(Auth::user()->role_as == '1')
+            if($user->email_verified_at == null)
             {
-                return redirect('/dashboard');
+                return redirect('/email/verify');
             }
-            else if(Auth::user()->role_as == '0')
+            else if($user->email_verified_at != null)
             {
-                return view('homepage.index', compact('blogs','latestBlog', 'user',));
-            }
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('homepage.index', compact('blogs','latestBlog', 'user',));
+                }
+            } 
         }
         else
         {
@@ -40,32 +47,108 @@ class BlogsController extends Controller
     public function category(){
         $category = request('category');
         $user = Auth::user();
-        return view('categories.category',[
-            'category'=>ucfirst($category),
-            'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
-            'user'=>$user
-        ]);
+        if(Auth::check())
+        {
+            if($user->email_verified_at == null)
+            {
+                return redirect('/email/verify');
+            }
+            else if($user->email_verified_at != null)
+            {
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('categories.category',[
+                        'category'=>ucfirst($category),
+                        'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
+                        'user'=>$user
+                    ]);
+                }
+            } 
+        }
+        else
+        {
+            return view('categories.category',[
+                'category'=>ucfirst($category),
+                'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
+                'user'=>$user
+            ]);
+        }
     }
     //serach function
     public function search(){
         $search = request('search');
         $user = Auth::user();
-        return view('categories.search',[
-            'search'=>ucfirst($search),
-            'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
-            'user'=>$user
-        ]);
+        if(Auth::check())
+        {
+            if($user->email_verified_at == null)
+            {
+                return redirect('/email/verify');
+            }
+            else if($user->email_verified_at != null)
+            {
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('categories.search',[
+                        'search'=>ucfirst($search),
+                        'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
+                        'user'=>$user
+                    ]);
+                }
+            } 
+        }
+        else
+        {
+            return view('categories.search',[
+                'search'=>ucfirst($search),
+                'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
+                'user'=>$user
+            ]);
+        }
     }
     //show single blogs
     public function show(Blogs $blog)
     {
         $author= $blog->user;
         $user = Auth::user();
-        return view('homepage.show',[
-            'blog'=>$blog,
-            'user'=>$user,
-            'author'=>$author
-        ]);
+        if(Auth::check())
+        {
+            if($user->email_verified_at == null)
+            {
+                return redirect('/email/verify');
+            }
+            else if($user->email_verified_at != null)
+            {
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('homepage.show',[
+                        'blog'=>$blog,
+                        'user'=>$user,
+                        'author'=>$author
+                    ]);
+                }
+            } 
+        }
+        else
+        {
+            return view('homepage.show',[
+                'blog'=>$blog,
+                'user'=>$user,
+                'author'=>$author
+            ]);
+        }
+
     }
     //show create blogs form
     public function create()

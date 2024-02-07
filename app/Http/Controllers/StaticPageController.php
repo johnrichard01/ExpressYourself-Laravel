@@ -9,16 +9,24 @@ class StaticPageController extends Controller
 {
     public function aboutus(){
         $user = Auth::user();
+         $user = Auth::user();
         if(Auth::check())
         {
-            if(Auth::user()->role_as == '1')
+            if($user->email_verified_at == null)
             {
-                return redirect('/dashboard');
-            }
-            else if(Auth::user()->role_as == '0')
+                return redirect('/email/verify');
+            }   
+            else if($user->email_verified_at != null)
             {
-                return view('homepage.aboutus', compact('user'));
-            }
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('homepage.aboutus', compact('user'));
+                }
+            } 
         }
         else
         {
