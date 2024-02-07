@@ -23,17 +23,17 @@
                       </form>
                     <div class="col-4 d-flex align-items-center">
                         <ul class="navbar-nav justify-content-center flex-grow-1 gap-4"> 
-                                <li class="nav-item nav-hover home-active">
-                                    <a href="/" class="nav-link fw-bold active" aria-current="page">
+                                <li class="nav-item nav-hover {{ request()->is('/') ? 'home-active' : '' }}">
+                                    <a href="/" class="nav-link fw-bold " aria-current="page">
                                         Home
                                     </a>
                                 </li>
-                                <li class="nav-item nav-hover">
+                                <li class="nav-item nav-hover {{ request()->is('aboutus') ? 'home-active' : '' }}">
                                     <a href="/aboutus" class="nav-link fw-bold"> 
                                         About
                                     </a>
                                 </li>
-                                <li class="nav-item nav-hover">
+                                <li class="nav-item nav-hover {{ request()->is('contact') ? 'home-active' : '' }}">
                                     <a href="/contact" class="nav-link  fw-bold">
                                         Contact   
                                     </a>

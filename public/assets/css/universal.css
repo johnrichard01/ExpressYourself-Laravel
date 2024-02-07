@@ -62,6 +62,21 @@
 .notif-btn{
     color: #112d4e;
 }
+.home-active{
+    scale: 1.03;
+    position: relative;
+}
+.home-active::after{
+    content: "";
+    width: 20px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: #112d4e;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 /* for footer */
 .ftr-ey{
     background-color: #112d4e;
