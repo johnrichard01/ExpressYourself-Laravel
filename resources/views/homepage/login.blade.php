@@ -49,7 +49,7 @@
             <button class="form__button" type="submit" id="loginButton">Login</button>
 
             <p class="form__text">
-                <a class="form__link" id="linkForgotPassword">Forgot your password?</a>
+                <a href="/forgot-password" class="form__link" id="linkForgotPassword">Forgot your password?</a>
             </p>
 
             <p class="form__text mt-0">

@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyController;
 
@@ -24,7 +26,7 @@ Route::post('/login/authenticate', [UsersController::class, 'authenticate']);
 // logout functionality
 Route::post('/logout', [UsersController::class, 'logout'])->middleware('auth');
 // show dashboard
-Route::get('/dashboard', [UsersController::class, 'dashboard'])->middleware(['auth', 'isAdmin']);
+Route::get('/dashboard', [AdminController::class, 'show_analytics'])->middleware(['auth', 'isAdmin']);
 // show categories
 Route::get('/category', [BlogsController::class, 'category']);
 // search function
@@ -61,3 +63,15 @@ Route::get('/email/verify', [VerifyController::class, 'send'])->middleware('auth
 Route::get('/email/verify/{id}/{hash}',[VerifyController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 //for resending email verification
 Route::post('/email/verification-notification',[VerifyController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+//for restting password
+Route::get('/forgot-password', [ForgotPasswordController::class, 'show'])->middleware('guest')->name('password.request');
+//for sending the email
+Route::post('/forgot-password',[ForgotPasswordController::class, 'send'])->middleware('guest')->name('password.email');
+//for the show reset form
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'show_reset'])->middleware('guest')->name('password.reset');
+//for reset password
+Route::post('/reset-password', [ForgotPasswordController::class, 'update'])->middleware('guest')->name('password.update');
+//show users in dashboard
+Route::get('/dashboard/manage-user', [AdminController::class, 'show_user'])->middleware(['auth', 'isAdmin', 'verified']);
+//show admin in dashboard
+Route::get('/dashboard/manage-admin', [AdminController::class, 'show_admin'])->middleware(['auth', 'isAdmin', 'verified']);

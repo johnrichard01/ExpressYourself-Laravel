@@ -59,13 +59,6 @@ class UsersController extends Controller
 
         return redirect('/');
     }
-    //show dashboard
-    public function dashboard()
-    {
-        return view('admin.dashboard');
-    }
-    
-
 }
 
 
