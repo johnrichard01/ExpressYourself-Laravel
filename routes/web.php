@@ -9,7 +9,9 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VerifyController;
+use App\Models\subscriber;
 
 // show homepage
 Route::get('/', [BlogsController::class, 'index']);
@@ -75,3 +77,7 @@ Route::post('/reset-password', [ForgotPasswordController::class, 'update'])->mid
 Route::get('/dashboard/manage-user', [AdminController::class, 'show_user'])->middleware(['auth', 'isAdmin', 'verified']);
 //show admin in dashboard
 Route::get('/dashboard/manage-admin', [AdminController::class, 'show_admin'])->middleware(['auth', 'isAdmin', 'verified']);
+//newsletter
+Route::post('/newsletter', [SubscriberController::class, 'send']);
+//contact send
+Route::post('/contact/send', [ContactController::class, 'send']);
