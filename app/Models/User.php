@@ -26,7 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         'avatar',
         'bio',
         'first_name',
-        'last_name'
+        'last_name',
+        'user_id'
     ];
 
     /**
@@ -67,5 +68,15 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     public function blogs()
     {
         return $this->hasMany(Blogs::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'user_id');
     }
 }

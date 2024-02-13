@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Blogs;
+use App\Models\Comment;
 use DOMDocument;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -113,43 +114,45 @@ class BlogsController extends Controller
             ]);
         }
     }
+
+
+    
     //show single blogs
     public function show(Blogs $blog)
     {
-        $author= $blog->user;
+        $author = $blog->user;
         $user = Auth::user();
-        if(Auth::check())
-        {
-            if($user->email_verified_at == null)
-            {
+
+        // Load comments associated with the blog post, including the user relationship
+        $comments = Comment::with('user')->where('blog_id', $blog->id)->latest()->get();
+
+        if (Auth::check()) {
+            if ($user->email_verified_at == null) {
                 return redirect('/email/verify');
-            }
-            else if($user->email_verified_at != null)
-            {
-                if(Auth::user()->role_as == '1')
-                {
+            } elseif ($user->email_verified_at != null) {
+                if (Auth::user()->role_as == '1') {
                     return redirect('/dashboard');
-                }
-                else if(Auth::user()->role_as == '0')
-                {
-                    return view('homepage.show',[
-                        'blog'=>$blog,
-                        'user'=>$user,
-                        'author'=>$author
+                } elseif (Auth::user()->role_as == '0') {
+                    return view('homepage.show', [
+                        'blog' => $blog,
+                        'user' => $user,
+                        'author' => $author,
+                        'comments' => $comments, // Pass comments to the view
                     ]);
                 }
-            } 
-        }
-        else
-        {
-            return view('homepage.show',[
-                'blog'=>$blog,
-                'user'=>$user,
-                'author'=>$author
+            }
+        } else {
+            return view('homepage.show', [
+                'blog' => $blog,
+                'user' => $user,
+                'author' => $author,
+                'comments' => $comments,
             ]);
         }
-
     }
+
+
+
     //show create blogs form
     public function create()
     {
@@ -202,6 +205,8 @@ class BlogsController extends Controller
         Blogs::create($post);
         return redirect()->back();
     }
+
+
     public function show_update(Blogs $blogs)
     {
         $user= Auth::user();
@@ -227,6 +232,8 @@ class BlogsController extends Controller
             ]);
         }
     }
+
+
     public function update(Request $request, Blogs $blogs)
     {
         if($blogs->user_id != auth()->id()){
@@ -275,6 +282,9 @@ class BlogsController extends Controller
         $blogs->update($post);
         return redirect()->back();
     }
+
+
+
     public function destroy(Blogs $blogs)
     {
         if($blogs->user_id != auth()->id()){
@@ -283,6 +293,9 @@ class BlogsController extends Controller
         $blogs->delete();
         return redirect('/');
     }
+
+
+
     public function show_myblogs()
     {
         $blogs = auth()->user()->blogs()->get();

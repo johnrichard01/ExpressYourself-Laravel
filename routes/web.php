@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
@@ -81,3 +82,9 @@ Route::get('/dashboard/manage-admin', [AdminController::class, 'show_admin'])->m
 Route::post('/newsletter', [SubscriberController::class, 'send']);
 //contact send
 Route::post('/contact/send', [ContactController::class, 'send']);
+
+
+Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
+// Route for storing replies
+Route::post('/comments/{comment}/replies', [CommentController::class, 'storeReply'])->name('comments.storeReply');
+

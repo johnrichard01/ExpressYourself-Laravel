@@ -31,6 +31,80 @@
                     <div class="description">
                             {!!$blog->description!!}
                     </div>
+
+                        <!-- Existing code for displaying blog post -->
+<h2>Comments</h2>
+<ul>
+    @foreach ($comments as $comment)
+        <li>
+            <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+            <span class="username"><b>{{ $comment->user->username }}</b></span>
+
+            <!-- Display the comment text -->
+            <div class="comment-body">
+                {{ $comment->comment_text }}
+            </div>
+
+            <!-- Display replies for this comment -->
+            @if ($comment->replies->count() > 0)
+                <ul class="replies-list">
+                    @foreach ($comment->replies as $reply)
+                        <li class="reply">
+                            <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                                {{-- Debugging --}}
+                                 {{--@dump($reply) Check the value of $reply --}}
+                                 {{--@dump($reply->user) {{-- Check the value of $reply->user --}}
+                                <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
+
+                            <div class="comment-body">
+                                {{ $reply->reply_text }}
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+
+            <!-- Reply Form for this comment -->
+            <div class="reply-form">
+                <h4>Reply to this comment</h4>
+                @auth
+                    <form action="{{ route('comments.storeReply', ['comment' => $comment->id]) }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="reply_text">Reply:</label>
+                            <textarea name="reply_text" id="reply_text" class="form-control" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Reply</button>
+                    </form>
+                @else
+                    <p>Please <a href="{{ route('login') }}">log in</a> to leave a reply.</p>
+                @endauth
+            </div>
+        </li>
+    @endforeach
+</ul>
+
+<!-- Comment Form -->
+<div class="comment-form">
+    <h3>Add a Comment</h3>
+    @auth
+        <form action="{{ route('comments.store') }}" method="post">
+            @csrf
+            <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+            <div class="form-group">
+                <label for="comment_text">Comment:</label>
+                <textarea name="comment_text" id="comment_text" class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Comment</button>
+        </form>
+    @else
+        <p>Please <a href="{{ route('login') }}">log in</a> to leave a comment.</p>
+    @endauth
+</div>
+
+
+
+
                 </div>
             </div>
             <div class="col-12 col-lg-3">
