@@ -8,28 +8,19 @@ class CreateRepliesTable extends Migration
 {
     public function up()
     {
-        if (!Schema::hasTable('replies')) {
-            Schema::create('replies', function (Blueprint $table) {
-                $table->id();
-                $table->unsignedBigInteger('user_id')->nullable();
-                $table->unsignedBigInteger('comment_id')->nullable();
-                $table->text('reply_text');
-                $table->timestamps();
+        Schema::create('replies', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('comment_id')->nullable();
+            $table->text('reply_text');
+            $table->nestedSet();
+            $table->timestamps();
     
-
-                $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
-                    
-                $table->foreign('comment_id')
-                    ->references('id')
-                    ->on('comments')
-                    ->onDelete('cascade');
-
-            });
-        }
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
+        });
     }
+    
     
 
     public function down()

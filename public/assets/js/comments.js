@@ -1,44 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the comment form and add a submit event listener
-    var commentForm = document.getElementById('commentForm');
-    if (commentForm) {
-        commentForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submission
+    const replyLinks = document.querySelectorAll('.reply-link');
 
-            // Get the comment body from the text area
-            var commentBody = document.getElementById('commentBody').value;
+    replyLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
 
-            // Assuming you have the blogId available dynamically
-            var blogId = getBlogIdDynamically(); // Replace this with your logic to get the blogId
+            const commentId = this.getAttribute('data-comment-id');
+            const parentReplyId = this.getAttribute('data-parent-reply-id');
 
-            // Make an AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/blogs/' + blogId + '/comments', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-CSRF-TOKEN', "{{ csrf_token() }}"); // Include CSRF token
+            // Hide all reply forms
+            document.querySelectorAll('.nested-reply-form, .reply-form').forEach(form => {
+                form.style.display = 'none';
+            });
 
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    // Handle success (update the UI, show a message, etc.)
-                    console.log(xhr.responseText);
-                    // You can update the UI with the new comment without reloading the page
-                } else {
-                    // Handle error (show an error message, log the error, etc.)
-                    console.error(xhr.statusText);
-                }
-            };
+            let replyForm;
 
-            // Example data to send with the POST request (adjust as needed)
-            var postData = {
-                body: commentBody,
-            };
+            if (parentReplyId) {
+                // If there is a parent reply id, select the nested reply form
+                replyForm = document.querySelector(`.nested-reply-form[data-comment-id="${commentId}"][data-parent-reply-id="${parentReplyId}"]`);
+            } else {
+                // If there is no parent reply id, use data-parent-reply-id="0" for the main reply form
+                replyForm = document.querySelector(`.reply-form[data-comment-id="${commentId}"][data-parent-reply-id="0"]`);
+            }
 
-            // Convert the data to JSON format
-            var jsonData = JSON.stringify(postData);
-
-            // Send the request with the comment body
-            xhr.send(jsonData);
+            if (replyForm) {
+                // Toggle the display of the reply form
+                replyForm.style.display = (replyForm.style.display === 'none') ? 'block' : 'none';
+            }
         });
-    }
+    });
 });
+
+
+
 

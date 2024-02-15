@@ -17,8 +17,6 @@ class Comment extends Model
         'blog_id',
     ];
 
-
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -36,7 +34,6 @@ class Comment extends Model
         return $this->hasMany(Reply::class, 'comment_id');
     }
 
-
     public function show($id)
     {
         // Fetch the comments along with the user relation
@@ -46,3 +43,4 @@ class Comment extends Model
         return view('homepage.show', compact('comments'));
     }
 }
+

@@ -1,4 +1,5 @@
 <?php
+
 // app/Models/User.php
 
 namespace App\Models;
@@ -52,31 +53,28 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 
     use HasFactory;
 
-    // // Define the relationship with the Message model for received messages
-    // public function receivedMessages()
-    // {
-    //     return $this->hasMany(Message::class, 'recipient_id');
-    // }
-
-    // // Define the relationship with the Message model for sent messages
-    // public function sentMessages()
-    // {
-    //     return $this->hasMany(Message::class, 'user_id'); // Assuming 'user_id' is the foreign key for sent messages
-    // }
-
-    // relationship to blogs
+    // Define the relationship with the blogs
     public function blogs()
     {
         return $this->hasMany(Blogs::class, 'user_id');
     }
 
+    // Define the relationship with the bookmarks
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class, 'user_id');
+    }
+
+    // Define the relationship with the comments
     public function comments()
     {
         return $this->hasMany(Comment::class, 'user_id');
     }
 
+    // Define the relationship with the replies
     public function replies()
     {
         return $this->hasMany(Reply::class, 'user_id');
     }
 }
+

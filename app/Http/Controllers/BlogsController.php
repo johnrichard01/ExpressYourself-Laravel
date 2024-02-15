@@ -317,4 +317,21 @@ class BlogsController extends Controller
         }
     }
 
+//BOOKMARK SYSTEM
+    public function bookmark(Blogs $blog)
+    {
+        auth()->user()->bookmarks()->create([
+            'blog_id' => $blog->id,
+        ]);
+    
+        return redirect()->back()->with('success', 'Post bookmarked successfully!');
+    }
+    
+    public function unbookmark(Blogs $blog)
+    {
+        auth()->user()->bookmarks()->where('blog_id', $blog->id)->delete();
+    
+        return redirect()->back()->with('success', 'Bookmark removed successfully!');
+    }
+
 }
