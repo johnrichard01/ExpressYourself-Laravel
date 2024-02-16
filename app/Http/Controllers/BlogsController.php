@@ -126,13 +126,20 @@ class BlogsController extends Controller
         // Load comments associated with the blog post, including the user relationship
         $comments = Comment::with('user')->where('blog_id', $blog->id)->latest()->get();
 
-        if (Auth::check()) {
-            if ($user->email_verified_at == null) {
+        if (Auth::check()) 
+        {
+            if ($user->email_verified_at == null) 
+            {
                 return redirect('/email/verify');
-            } elseif ($user->email_verified_at != null) {
-                if (Auth::user()->role_as == '1') {
+            }
+             else if ($user->email_verified_at != null) 
+            {
+                if (Auth::user()->role_as == '1') 
+                {
                     return redirect('/dashboard');
-                } elseif (Auth::user()->role_as == '0') {
+                } 
+                 else if (Auth::user()->role_as == '0') 
+                {
                     return view('homepage.show', [
                         'blog' => $blog,
                         'user' => $user,
@@ -141,7 +148,9 @@ class BlogsController extends Controller
                     ]);
                 }
             }
-        } else {
+        } 
+        else if (!Auth::check()) 
+        {
             return view('homepage.show', [
                 'blog' => $blog,
                 'user' => $user,

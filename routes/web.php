@@ -101,8 +101,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/bookmarks/{blog}', [BookmarkController::class, 'bookmark'])->name('bookmarks.bookmark');
     Route::delete('/bookmarks/{blog}', [BookmarkController::class, 'unbookmark'])->name('bookmarks.unbookmark');
     Route::get('/bookmarks', [BookmarkController::class, 'showBookmarks'])->name('user.bookmark');
-    Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
 });
+
+Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
 
 //manage blogs
 Route::get('/dashboard/manage-blogs', [AdminController::class, 'show_blogs'])->middleware(['auth', 'isAdmin', 'verified']);

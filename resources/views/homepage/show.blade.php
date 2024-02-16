@@ -26,7 +26,7 @@
             <div class="col-12 col-lg-9 px-5">
                 <div class="content">
                     <div class="show-image d-flex justify-content-center">
-                        <img src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/noprofile.png')}}" alt="">
+                        <img src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
                     </div> 
                 </div>
                 <div class="desc-container mt-5">
