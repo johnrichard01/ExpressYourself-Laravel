@@ -42,29 +42,25 @@ class CommentController extends Controller
     }
 
 
-    public function storeReply(Request $request, Comment $comment, Reply $parentReply = null)
-    {
-        // Get the authenticated user's information
-        $user = Auth::user();
-    
-        // Create a new reply for the comment
-        $reply = new Reply([
-            'user_id' => $user->id,
-            'comment_id' => $comment->id,
-            'reply_text' => $request->input('reply_text'),
-        ]);
-    
-        // If replying to a reply, set the parent_id
-        if ($parentReply) {
-            $reply->parent_id = $parentReply->id;
-        }
-    
-        // Save the reply
-        $reply->save();
-    
-        // Redirect back or return a response as needed
-        return redirect()->back()->with('success', 'Reply added successfully');
-    }
+    public function storeReply(Request $request, Comment $comment)
+{
+    $request->validate([
+        'reply_text' => 'required',
+    ]);
+
+    // Create a new reply
+    $reply = new Reply([
+        'user_id' => auth()->id(),
+        'reply_text' => $request->input('reply_text'),
+    ]);
+
+    // Save the reply to the comment
+    $comment->replies()->save($reply);
+
+    // Respond with JSON
+    return response()->json(['message' => 'Reply added successfully']);
+}
+
     
     public function storeNestedReply(Request $request, Reply $parentReply)
     {

@@ -203,6 +203,16 @@
     max-width: 50%;
 }
 
+.reply-form, .nested-reply-form {
+    display: none;  /* Set the initial display to none */
+}
+
+.reply-form.show, .nested-reply-form.show {
+    display: block !important;  /* Use !important to ensure higher specificity */
+}
+
+
+
 /*blogs*/
 
 .show-image {

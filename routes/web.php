@@ -8,7 +8,6 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
@@ -55,7 +54,6 @@ Route::get('/myblogs', [BlogsController::class, 'show_myblogs'])->middleware(['a
 
 
 // user
-Route::get('/activities', [ActivityController::class, 'activity']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -94,100 +92,16 @@ Route::post('/comments/storeNestedReply/{parentReply}', [CommentController::clas
 Route::post('/api/like/comment/{commentId}', [LikeController::class, 'likeComment']);
 Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //BOOKMARKS
 Route::middleware(['auth'])->group(function () {
+    //add to bookmark
     Route::post('/bookmarks/{blog}', [BookmarkController::class, 'bookmark'])->name('bookmarks.bookmark');
+    // remove from bookmark
     Route::delete('/bookmarks/{blog}', [BookmarkController::class, 'unbookmark'])->name('bookmarks.unbookmark');
+    //show bookmarked items
     Route::get('/bookmarks', [BookmarkController::class, 'showBookmarks'])->name('user.bookmark');
 });
-
+//show single blog from bookmarked items
 Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
 
 //manage blogs
