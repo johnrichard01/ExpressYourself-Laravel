@@ -16,17 +16,20 @@
                     <a href="/dashboard/manage-admin" class="text-decoration-none admin-nav btn btn-lg" id="adminButton">Admins</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="#" class="text-decoration-none admin-nav btn btn-lg" id="booksButton">Blogs</a>
+                    <a href="/dashboard/manage-blogs" class="text-decoration-none admin-nav btn btn-lg" id="booksButton">Blogs</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
                     <a href="#" class="text-decoration-none admin-nav btn btn-lg" id="orderButton">Reports</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="#" class="text-decoration-none admin-nav btn btn-lg" id="newsButton">Newsletter</a>
+                    <a href="/dashboard/manage-subscriber" class="text-decoration-none admin-nav btn btn-lg" id="newsButton">Newsletter</a>
                 </div>
                 <div class="nav-div mess-main d-flex justify-content-center">
-                    <a href="#" class="text-decoration-none admin-nav btn btn-lg" id="messagesButton">Messages</a>
-                    <div class="mess-counter" id="messCounter"></div>
+                    <a href="/dashboard/manage-messages" class="text-decoration-none admin-nav btn btn-lg" id="messagesButton">Messages</a>
+                    @if ($unreadCount == 0)
+                    @else
+                        <div class="mess-counter" id="messCounter">{{$unreadCount}}</div>
+                    @endif
                 </div>
             </div>
         </div>

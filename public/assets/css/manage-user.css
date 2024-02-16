@@ -42,3 +42,10 @@ td{
     border-bottom: 1px solid #868686;
     background: white;
 }
+.btn-delete{
+    color: red;
+}
+
+.btn-view{
+    color: #112d4e;
+}

@@ -1,0 +1,18 @@
+.categ-title{
+    font-size: 4rem;
+    color: white;
+
+}
+.categ-container{
+    background-color: #112d4e;
+
+}
+.author-view{
+    color: white;
+    font-size: 1rem;
+    font-style: italic;
+}
+.blog-image-show{
+    height: 20rem;
+    width: auto;
+}

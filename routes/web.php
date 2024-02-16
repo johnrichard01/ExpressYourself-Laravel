@@ -81,3 +81,25 @@ Route::get('/dashboard/manage-admin', [AdminController::class, 'show_admin'])->m
 Route::post('/newsletter', [SubscriberController::class, 'send']);
 //contact send
 Route::post('/contact/send', [ContactController::class, 'send']);
+//manage blogs
+Route::get('/dashboard/manage-blogs', [AdminController::class, 'show_blogs'])->middleware(['auth', 'isAdmin', 'verified']);
+//manage subs
+Route::get('/dashboard/manage-subscriber', [AdminController::class, 'show_subscriber'])->middleware(['auth', 'isAdmin', 'verified']);
+//manage messages
+Route::get('/dashboard/manage-messages', [AdminController::class, 'show_messages'])->middleware(['auth', 'isAdmin', 'verified']);
+//for modals
+Route::get('/dashboard/blogs-detail/{blogs}', [AdminController::class, 'blog_details']);
+//for modals
+Route::get('/dashboard/user/{user}', [AdminController::class, 'blog_user']);
+//for modals
+Route::get('/dashboard/contact/{contact}', [AdminController::class, 'contact_details']);
+//delete users
+Route::post('/dashboard/delete-user/{user}', [AdminController::class, 'destroy_user'])->middleware(['auth', 'isAdmin', 'verified']);
+//delete users
+Route::post('/dashboard/delete-admin/{admin}', [AdminController::class, 'destroy_admin'])->middleware(['auth', 'isAdmin', 'verified']);
+//delete blogs
+Route::post('/dashboard/delete-blog/{blog}', [AdminController::class, 'destroy_blog'])->middleware(['auth', 'isAdmin', 'verified']);
+//delete subs
+Route::post('/dashboard/delete-subscriber/{blog}', [AdminController::class, 'destroy_subscriber'])->middleware(['auth', 'isAdmin', 'verified']);
+// delete contact
+Route::post('/dashboard/delete-contact/{blog}', [AdminController::class, 'destroy_contact'])->middleware(['auth', 'isAdmin', 'verified']);

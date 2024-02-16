@@ -35,6 +35,19 @@
 .offcanvas-title{
     color:#f5f7fa;
 }
+.mess-main{
+    position: relative;
+}
+.mess-counter{
+    position: absolute;
+    display: block;
+    top: -8px;
+    right: 8px;
+    background-color: red;
+    padding: 5px;
+    border-radius: 8px;
+    color: #f5f7fa;
+}
 /* for navbar */
 .nav-logo{
     height: 5rem;

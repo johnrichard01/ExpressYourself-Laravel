@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('email');
             $table->longText('message');
+            $table->string('status')->default('unread');
             $table->timestamps();
         });
     }
