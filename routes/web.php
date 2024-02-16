@@ -14,8 +14,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VerifyController;
-use App\Models\Blogs;
-use App\Models\subscriber;
+
 
 // show homepage
 Route::get('/', [BlogsController::class, 'index']);
@@ -94,6 +93,92 @@ Route::post('/comments/storeNestedReply/{parentReply}', [CommentController::clas
 //likes
 Route::post('/api/like/comment/{commentId}', [LikeController::class, 'likeComment']);
 Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //BOOKMARKS

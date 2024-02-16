@@ -21,18 +21,19 @@ class BookmarkController extends Controller
     public function unbookmark(Blogs $blog)
     {
         auth()->user()->bookmarks()->where('blog_id', $blog->id)->delete();
-
-        return redirect()->back()->with('success', 'Bookmark removed successfully.');
+   
+        // Assuming you want to show bookmarks after unbookmarking
+        return $this->showBookmarks();
     }
-
+    
     public function showBookmarks()
     {
         // Retrieve the authenticated user
         $user = Auth::user();
-
-        // Retrieve bookmarks for the user (adjust the logic based on your application)
+    
+        // Retrieve bookmarks for the user
         $bookmarks = $user->bookmarks()->with('blog')->get();
-
+    
         return view('user.bookmark', compact('user', 'bookmarks'));
     }
 }

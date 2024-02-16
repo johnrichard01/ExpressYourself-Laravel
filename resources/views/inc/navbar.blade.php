@@ -85,16 +85,6 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="{{ url('profile.activities') }}">
-                                                Activity
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" href="{{ url('/messages') }}">
-                                                Messages
-                                            </a>
-                                        </li>
-                                        <li>
                                             <form action="/logout" method="POST">
                                             @csrf
                                                 <button type="submit" class="dropdown-item" id="logout">
