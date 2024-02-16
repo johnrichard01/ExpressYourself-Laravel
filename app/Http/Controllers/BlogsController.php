@@ -137,7 +137,7 @@ class BlogsController extends Controller
                         'blog' => $blog,
                         'user' => $user,
                         'author' => $author,
-                        'comments' => $comments, // Pass comments to the view
+                        'comments' => $comments,
                     ]);
                 }
             }
@@ -331,7 +331,7 @@ class BlogsController extends Controller
     {
         auth()->user()->bookmarks()->where('blog_id', $blog->id)->delete();
     
-        return redirect()->back()->with('success', 'Bookmark removed successfully!');
+        return redirect()->back()->with('success', 'Post bookmarked successfully!');
     }
 
 }

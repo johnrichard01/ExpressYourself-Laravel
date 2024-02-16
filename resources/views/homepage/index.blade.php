@@ -14,27 +14,63 @@
     </div>
     <div class="first-section mt-5">
         <div class="container">
-                <div class="d-flex flex-wrap">
-                    @if(!$latestBlog)
+            <div class="d-flex flex-wrap">
+                @if(!$latestBlog)
                     <p>No blogs found</p>
-                    @else
+                @else
                     <div class="image-container col-12 col-lg d-flex justify-content-center">
-                        <img class="img-fluid hero-image" src="{{$latestBlog->thumbnail ? asset('storage/' . $latestBlog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
+                        <img class="img-fluid hero-image" src="{{ $latestBlog->thumbnail ? asset('storage/' . $latestBlog->thumbnail) : asset('assets/images/nothumbnail.png') }}" alt="">
                     </div>
                     <div class="container col-12 col-lg d-flex flex-wrap align-content-center justify-content-lg-start justify-content-center mx-0 mx-lg-5">
                         <div class="blog-title col-12">
-                            <h1 class="fw-bold blog-title text-center text-lg-start mt-3 mt-lg-0">{{$latestBlog->title}}</h1>
+                            <h1 class="fw-bold blog-title text-center text-lg-start mt-3 mt-lg-0">{{ $latestBlog->title }}</h1>
                         </div>
                         <div class="content-container col-12">
-                          {{$latestBlog->about}}
+                            {{ $latestBlog->about }}
                         </div>
                         <div class="read-container col-12">
-                            <a href="/blogs/{{$latestBlog->id}}" class="btn btn-read text-decoration-none fw-bold" type="button">Read more</a>
-                        </div>  
+                            <a href="/blogs/{{ $latestBlog->id }}" class="btn btn-read text-decoration-none fw-bold" type="button">Read more</a>
+
+                                <div>
+                                    @auth
+                                        @if(auth()->user()->bookmarks)
+                                            @if(auth()->user()->bookmarks->contains('blog_id', $latestBlog->id))
+                                                <form action="{{ route('bookmarks.unbookmark', $latestBlog) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="book--remove btn  py-0 px-4" type="submit">
+                                                        <span class="material-symbols-outlined remove--bm">
+                                                            bookmark
+                                                        </span>
+                        
+                                                        <p class="mt-3">Remove</p>
+                        
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('bookmarks.bookmark', $latestBlog) }}" method="POST">
+                                                    @csrf
+                                                    <button class="book--add btn p-0 px-3" type="submit">
+                                                        <span class="material-symbols-outlined add--bm">
+                                                            bookmark
+                                                        </span>
+                                                        <p class="mt-3">Bookmark</p>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @endif
+                                    @endauth
+                                </div>
+
+
+                            
+                        </div>
+            
+                        
                     </div>
-                    @endif
-                </div>            
-        </div>
+                @endif
+            </div>
+        </div>            
     </div>
     <div class="second-section my-5 container-fluid bg-body-tertiary py-5">
         <div class="container">
@@ -82,6 +118,7 @@
                    <div class="d-flex justify-content-start">
                     {!!$blogs->links()!!}
                     </div>
+                    
                 </div>
             </div>
             <div class="col-12 col-lg-3">

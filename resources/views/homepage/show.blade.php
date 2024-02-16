@@ -5,6 +5,7 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
 <link rel="stylesheet" href="{{asset('/assets/css/view.css')}}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 @endsection
 @section('content')
 @include('inc.navbar')
@@ -38,12 +39,24 @@
                                     <form action="{{ route('bookmarks.unbookmark', $blog) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Unbookmark</button>
+                                        <button class="book--remove btn" type="submit">
+                                            <span class="material-symbols-outlined remove--bm">
+                                                bookmark                                               
+                                            </span>
+
+                                            <p class="mt-3">Remove</p>
+                                            
+                                        </button>
                                     </form>
                                 @else
                                 <form action="{{ route('bookmarks.bookmark', $blog) }}" method="POST">
                                         @csrf
-                                        <button type="submit">Bookmark</button>
+                                        <button class="book--add btn py-0 px-3" type="submit">
+                                            <span class="material-symbols-outlined add--bm">
+                                                bookmark
+                                            </span>
+                                            <p class="mt-3">Bookmark</p>
+                                        </button>
                                     </form>
                                 @endif
                             @endif
@@ -51,7 +64,7 @@
 
                     <div class="comments-container">
 
-                        <!-- Assuming you have a container element with id "comments-container" -->
+                        <!-- COMMENTS -->
                         <ul id="comments-container">
                             @foreach ($comments as $comment)
                                 <li>
@@ -104,7 +117,7 @@
                                                             <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
                                                         @endauth
 
-                                                                    <!-- Nested Reply Form for this reply - Added a class for styling -->
+                                                                    <!-- Nested Reply Form -->
                                                             <div class="nested-reply-form reply-form" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}" style="display:none;">
                                                                 <h4>Reply to {{ optional($reply->user)->username }}'s comment</h4>
                                                                 @auth
@@ -151,15 +164,15 @@
 
                         <!-- New Comment Form -->
                         <div class="comment-form">
-                            <h3>Add a Comment</h3>
+                            <h4>Add a Comment</h4>
                             <form id="new-comment-form" action="{{ route('comments.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                                 <div class="form-group">
-                                    <label for="comment_text">Comment:</label>
-                                    <textarea name="comment_text" id="comment_text" class="form-control" rows="4" required></textarea>
+                                    <label for="comment_text"></label>
+                                    <textarea name="comment_text" id="comment_text" class="form-control comment--sec" rows="4" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                <button type="submit" class="btn submit--comment">Submit</button>
                             </form>
                         </div>
 

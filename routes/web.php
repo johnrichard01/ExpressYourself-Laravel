@@ -14,8 +14,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VerifyController;
-use App\Models\Blogs;
-use App\Models\subscriber;
+
 
 // show homepage
 Route::get('/', [BlogsController::class, 'index']);
@@ -96,10 +95,30 @@ Route::post('/api/like/comment/{commentId}', [LikeController::class, 'likeCommen
 Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply']);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//show single blog
+Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
+
 //BOOKMARKS
 Route::middleware(['auth'])->group(function () {
     Route::post('/bookmarks/{blog}', [BookmarkController::class, 'bookmark'])->name('bookmarks.bookmark');
     Route::delete('/bookmarks/{blog}', [BookmarkController::class, 'unbookmark'])->name('bookmarks.unbookmark');
     Route::get('/bookmarks', [BookmarkController::class, 'showBookmarks'])->name('user.bookmark');
-    Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
 });

@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3">
                                     <a href="/category/?category=literature" class="w-100 categ-btn btn btn-lg btn-literature fw-bold">
-                                        literature
+                                        Literature
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3 ">
