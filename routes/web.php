@@ -113,8 +113,73 @@ Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply']);
 
 
 
-//show single blog
-Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //BOOKMARKS
 Route::middleware(['auth'])->group(function () {
