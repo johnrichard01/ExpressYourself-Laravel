@@ -154,17 +154,9 @@
     }
 }
 
-/*.create-btn {
-    position: fixed;
-    bottom: 800px;
-    right: 320px;
-    z-index: 1000;
+.dropdown-profile {
+    text-decoration: none !important;
+    color: #112d4e;
+    font-size: 20px;
 }
-
-@media (max-width: 768px) {
-    .create-btn {
-        bottom: 10%;
-        right: 10%;
-    }
-}*/
 

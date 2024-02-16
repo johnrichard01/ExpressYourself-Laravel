@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StaticPageController;
@@ -11,6 +14,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VerifyController;
+use App\Models\Blogs;
 use App\Models\subscriber;
 
 // show homepage
@@ -81,6 +85,25 @@ Route::get('/dashboard/manage-admin', [AdminController::class, 'show_admin'])->m
 Route::post('/newsletter', [SubscriberController::class, 'send']);
 //contact send
 Route::post('/contact/send', [ContactController::class, 'send']);
+
+
+Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
+// Route for storing replies
+Route::post('/comments/{comment}/replies', [CommentController::class, 'storeReply'])->name('comments.storeReply');
+Route::post('/comments/storeNestedReply/{parentReply}', [CommentController::class, 'storeNestedReply'])->name('comments.storeNestedReply');
+//likes
+Route::post('/api/like/comment/{commentId}', [LikeController::class, 'likeComment']);
+Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply']);
+
+
+//BOOKMARKS
+Route::middleware(['auth'])->group(function () {
+    Route::post('/bookmarks/{blog}', [BookmarkController::class, 'bookmark'])->name('bookmarks.bookmark');
+    Route::delete('/bookmarks/{blog}', [BookmarkController::class, 'unbookmark'])->name('bookmarks.unbookmark');
+    Route::get('/bookmarks', [BookmarkController::class, 'showBookmarks'])->name('user.bookmark');
+    Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
+});
+
 //manage blogs
 Route::get('/dashboard/manage-blogs', [AdminController::class, 'show_blogs'])->middleware(['auth', 'isAdmin', 'verified']);
 //manage subs
