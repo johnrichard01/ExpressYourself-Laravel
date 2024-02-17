@@ -5,6 +5,7 @@
 @section('css')
 <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
 <link rel="stylesheet" href="{{asset('/assets/css/view.css')}}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 @endsection
 @section('content')
 @include('inc.navbar')
@@ -29,6 +30,7 @@
                         <img src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
                     </div> 
                 </div>
+
                 <div class="desc-container mt-5">
                     <div class="description">
                             {!!$blog->description!!}
@@ -38,12 +40,24 @@
                                     <form action="{{ route('bookmarks.unbookmark', $blog) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit">Unbookmark</button>
+                                        <button class="book--remove btn" type="submit">
+                                            <span class="material-symbols-outlined remove--bm">
+                                                bookmark                                               
+                                            </span>
+
+                                            <p class="mt-3">Remove</p>
+                                            
+                                        </button>
                                     </form>
                                 @else
                                 <form action="{{ route('bookmarks.bookmark', $blog) }}" method="POST">
                                         @csrf
-                                        <button type="submit">Bookmark</button>
+                                        <button class="book--add btn py-0 px-3" type="submit">
+                                            <span class="material-symbols-outlined add--bm">
+                                                bookmark
+                                            </span>
+                                            <p class="mt-3">Bookmark</p>
+                                        </button>
                                     </form>
                                 @endif
                             @endif
@@ -51,135 +65,81 @@
 
                     <div class="comments-container">
 
-                        <!-- Assuming you have a container element with id "comments-container" -->
-                        <ul id="comments-container">
-                            @foreach ($comments as $comment)
-                                <li>
-                                    <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
-                                    <span class="username"><b>{{ $comment->user->username }}</b></span>
+                        <!-- COMMENTS -->
+                        <div class="comments">
+                            <ul id="comments-container">
+                                @foreach ($comments as $comment)
+                                    <li>
+                                        <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
+                                            class="profile-icon img-fluid rounded-circle">
+                                        <span class="username"><b>{{ $comment->user->username }}</b></span>
 
-                                    <!-- Display the comment text -->
-                                    <div class="comment-body">
-                                        {{ $comment->comment_text }}
-                                    </div>
+                                        <!-- Display the comment text -->
+                                        <div class="comment-body">
+                                            {{ $comment->comment_text }}
+                                        </div>
 
-                                    <!-- Like Button for each comment -->
-                                    <button class="like-button" data-comment-id="{{ $comment->id }}">Like</button>
+                                        <!-- Like Button for each comment -->
+                                        <button class="like-button" data-comment-id="{{ $comment->id }}">Like</button>
 
-                                    <!-- Reply Link for each comment -->
-                                    <a href="#" class="reply" data-comment-id="{{ $comment->id }}">Reply</a>
+                                        <!-- Reply Link for each comment -->
+                                        <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="0">Reply</a>
 
-                                    <!-- Display replies for this comment -->
+                                        <!-- Display replies for this comment -->
                                         @if ($comment->replies->count() > 0)
-                                        <ul class="replies-list">
-                                            @foreach ($comment->replies as $reply)
-                                                <li class="reply">
-                                                    <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
-                                                    <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
+                                            <ul class="replies-list">
+                                                @foreach ($comment->replies as $reply)
+                                                    <li class="reply">
+                                                        <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
+                                                            alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                                                        <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
 
-                                                    <!-- Display the reply text -->
-                                                    <div class="comment-body">
-                                                        {{ $reply->reply_text }}
-                                                    </div>
+                                                        <!-- Display the reply text -->
+                                                        <div class="comment-body">
+                                                            {{ $reply->reply_text }}
+                                                        </div>
 
-                                                    <!-- Like Button for each reply -->
-                                                    <button class="like-button" data-reply-id="{{ $reply->id }}">Like</button>
+                                                        <!-- Like Button for each reply -->
+                                                        <button class="like-button" data-reply-id="{{ $reply->id }}">Like</button>
 
-                                                    <!-- Reply Link for each reply -->
-                                                    <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">Reply</a>
-
-                                                    <!-- Nested Reply Form for this reply -->
-                                                    <div class="nested-reply-form" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}" style="display:none;">
-                                                        <h4>Reply{{ optional($reply->user)->username }}</h4>
-                                                        @auth
-                                                            <form action="{{ route('comments.storeReply', ['comment' => $comment->id]) }}" method="post">
-                                                                @csrf
-                                                                <input type="hidden" name="parent_reply_id" value="{{ $reply->id }}">
-                                                                <div class="form-group">
-                                                                    <textarea name="reply_text" id="reply_text" class="form-control" rows="4" required></textarea>
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary">Submit Reply</button>
-                                                            </form>
-                                                        @else
-                                                            <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
-                                                        @endauth
-
-                                                                    <!-- Nested Reply Form for this reply - Added a class for styling -->
-                                                            <div class="nested-reply-form reply-form" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}" style="display:none;">
-                                                                <h4>Reply to {{ optional($reply->user)->username }}'s comment</h4>
-                                                                @auth
-                                                                    <form action="{{ route('comments.storeReply', ['comment' => $comment->id]) }}" method="post">
-                                                                        @csrf
-                                                                        <input type="hidden" name="parent_reply_id" value="{{ $reply->id }}">
-                                                                        <div class="form-group">
-                                                                            <textarea name="reply_text" id="reply_text" class="form-control" rows="4" required></textarea>
-                                                                        </div>
-                                                                        <button type="submit" class="btn btn-primary">Submit Reply</button>
-                                                                    </form>
-                                                                @else
-                                                                    <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
-                                                                @endauth
-                                                            </div>
-
-
-                                                    </div>
-
-                                                    
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                                        <!-- Reply Link for each reply -->
+                                                        <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">Reply</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         @endif
 
-                                    <div class="reply-form" data-comment-id="{{ $comment->id }}" style="display:none;">
-                                        <h4>Reply to {{ $comment->user->username }}'s comment</h4>
-                                        @auth
-                                            <form action="{{ route('comments.storeReply', ['comment' => $comment->id]) }}" method="post">
-                                                @csrf
+                                        <!-- Reply Form for all comments -->
+                                        <form class="reply-form" data-comment-id="{{ $comment->id }}" style="display:none;">
+                                            <h4>Reply to {{ $comment->user->username }}'s comment</h4>
+                                            @auth
                                                 <div class="form-group">
-                                                    <textarea name="reply_text" id="reply_text" class="form-control" rows="4" required></textarea>
+                                                    <textarea name="reply_text" class="form-control" rows="4" placeholder="Type your reply" required></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Submit Reply</button>
-                                            </form>
-                                        @else
-                                            <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
-                                        @endauth
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
+                                            @else
+                                                <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
+                                            @endauth
+                                        </form>
+                                    </li>
+                                @endforeach
+                            </ul>
 
-
+                        </div>
                         <!-- New Comment Form -->
                         <div class="comment-form">
-                            <h3>Add a Comment</h3>
+                            <h4>Add a Comment</h4>
                             <form id="new-comment-form" action="{{ route('comments.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                                 <div class="form-group">
-                                    <label for="comment_text">Comment:</label>
-                                    <textarea name="comment_text" id="comment_text" class="form-control" rows="4" required></textarea>
+                                    <textarea name="comment_text" class="form-control" rows="4" placeholder="Type your comment" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit Comment</button>
-                            </form>
-                        </div>
-
-                        <!-- Nested Reply Form for a reply -->
-                        <div class="nested-reply-form" data-comment-id="1" data-parent-reply-id="1" style="display:none;">
-                            <h4>Reply to User123's comment</h4>
-                            <form id="new-reply-form" action="{{ route('comments.storeReply', ['comment' => 1]) }}" method="post">
-                                @csrf
-                                <input type="hidden" name="parent_reply_id" value="1">
-                                <div class="form-group">
-                                    <label for="reply_text">Reply:</label>
-                                    <textarea name="reply_text" id="reply_text" class="form-control" rows="4" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit Reply</button>
+                                <button type="submit" class="btn submit--comment">Submit</button>
                             </form>
                         </div>
 
                     </div>
-
-
                 </div>
             </div>
             <div class="col-12 col-lg-3">

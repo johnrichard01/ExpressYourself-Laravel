@@ -160,3 +160,41 @@
         font-size: 0.75rem;
     }
 }
+
+
+/*BOOKMARK*/
+
+.book--remove {
+    color: rgb(194, 8, 8);
+    background-color: white;
+    border: 1px solid rgb(194, 8, 8);
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.book--remove:hover {
+    border: 1px solid rgb(194, 8, 8);
+    color: rgb(194, 8, 8);
+    box-shadow: 4px 4px 10px rgb(194, 8, 8);
+    background-color: white;
+}
+
+.book--add {
+    color: #112d4e;
+    border: 1px solid #112d4e;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.book--add:hover {
+    border: 1px solid #112d4e;
+    box-shadow: 4px 4px 10px #112d4e;
+    background-color: white;
+}
+
+.remove--bm,
+.add--bm {
+    font-size: 50px;
+}
