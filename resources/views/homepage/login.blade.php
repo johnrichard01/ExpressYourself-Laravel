@@ -10,6 +10,11 @@
     <i class="fas fa-home"></i> <!-- Font Awesome home icon -->
    </a>
 
+   @if (session('success'))
+    <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
+        {{ session('success') }}
+    </div>
+    @endif
 
    <!--LOGIN FORM-->
    <main class="container">

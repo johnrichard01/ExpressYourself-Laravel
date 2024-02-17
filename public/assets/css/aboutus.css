@@ -39,7 +39,12 @@ h1 {
     border: none;
     object-fit: cover;
 }
-
+.flash-messages{
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
 
@@ -67,3 +72,4 @@ h1 {
     opacity: 1;
     transform: translateX(0);
   }
+  

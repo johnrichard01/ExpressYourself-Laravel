@@ -16,3 +16,9 @@
     height: 20rem;
     width: auto;
 }
+.flash-messages{
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+}

@@ -26,7 +26,7 @@ class UsersController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
         $user=User::create($formFields);
         event(new Registered($user));
-        return redirect('/');
+        return redirect('/login')->with('success', 'Successfully created an account');
     }
     //show login
     public function login()
@@ -44,7 +44,7 @@ class UsersController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect('/');
+            return redirect('/')->with('success', 'Successfully logged in');
         }
         return back()->withErrors(['credentials'=>'Invalid Credentials'])->onlyInput('email');
 

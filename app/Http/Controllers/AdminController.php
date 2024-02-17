@@ -7,7 +7,9 @@ use App\Models\Blogs;
 use App\Models\Contact;
 use App\Models\subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class AdminController extends Controller
 {
@@ -167,5 +169,20 @@ class AdminController extends Controller
         else{
             return redirect('dashboard/manage-messages');
         }
+    }
+    public function store_admin(Request $request)
+    {
+
+            $formFields = $request->validate([
+                'username'=> ['required', 'min:3', Rule::unique('users', 'username')],
+                'email'=>['required', 'email', Rule::unique('users', 'email')],
+                'password'=>['required', 'confirmed']
+            ]);
+    
+            $formFields['password'] = bcrypt($formFields['password']);
+            $formFields['role_as']=1;
+            $user=User::create($formFields);
+            event(new Registered($user));
+            return back();
     }
 }

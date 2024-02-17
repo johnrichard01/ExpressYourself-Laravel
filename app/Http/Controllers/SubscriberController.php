@@ -16,6 +16,6 @@ class SubscriberController extends Controller
         ]);
         subscriber::create($sub);
         Mail::to($sub['email'])->send(new MailSubscriber());
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successfully subscribe to newsletter');
     }
 }

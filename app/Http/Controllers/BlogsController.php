@@ -212,7 +212,7 @@ class BlogsController extends Controller
         $description = $dom->saveHTML();
         $post['description'] = $description;
         Blogs::create($post);
-        return redirect()->back();
+        return redirect('/')->with('success', 'Successfully created a blog');
     }
 
 
@@ -289,7 +289,7 @@ class BlogsController extends Controller
         $description = $dom->saveHTML();
         $post['description'] = $description;
         $blogs->update($post);
-        return redirect()->back();
+        return back()->with('success', 'Changes saved');
     }
 
 
@@ -300,7 +300,7 @@ class BlogsController extends Controller
             abort(403, 'Unauthorized action');
         }
         $blogs->delete();
-        return redirect('/');
+        return back()->with('success', 'Blog has been deleted');
     }
 
 

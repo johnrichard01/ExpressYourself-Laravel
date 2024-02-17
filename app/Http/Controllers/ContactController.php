@@ -48,7 +48,7 @@ class ContactController extends Controller
         Contact::create($data);
         Mail::to('contact.expressyourself01@gmail.com')->send(new ContactUs($data));
         Mail::to($data['email'])->send(new ContactThanks());
-        return redirect('/contact');
+        return redirect('/contact')->with('success', 'Successfully sent a message');
     }
 }
 

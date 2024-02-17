@@ -6,7 +6,11 @@
 @endsection
 @section('content')
 @include('inc.navbar')
-
+@if (session('success'))
+    <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
+        {{ session('success') }}
+    </div>
+    @endif
 <div class="container-fluid title-container py-5">
     <h1 class="fw-bold text-center create-title">My Blogs</h1>
 </div>

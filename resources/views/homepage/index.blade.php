@@ -6,6 +6,11 @@
 @endsection
 @section('content')
 @include('inc.navbar')
+    @if (session('success'))
+    <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
+        {{ session('success') }}
+    </div>
+    @endif
 <div class="container-fluid">
     <div class="title-container">
         <div class="container mt-5">

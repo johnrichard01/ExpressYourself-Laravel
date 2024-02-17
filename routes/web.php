@@ -127,3 +127,5 @@ Route::post('/dashboard/delete-blog/{blog}', [AdminController::class, 'destroy_b
 Route::post('/dashboard/delete-subscriber/{blog}', [AdminController::class, 'destroy_subscriber'])->middleware(['auth', 'isAdmin', 'verified']);
 // delete contact
 Route::post('/dashboard/delete-contact/{blog}', [AdminController::class, 'destroy_contact'])->middleware(['auth', 'isAdmin', 'verified']);
+//store admin
+Route::post('/dashboard/manage-admin/admins', [AdminController::class, 'store_admin'])->middleware(['auth', 'isAdmin', 'verified']);

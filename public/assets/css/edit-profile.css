@@ -45,3 +45,9 @@
     border: none;
     border-radius: 10px;
 }
+.flash-messages{
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+}
