@@ -11,6 +11,7 @@ use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportBlogsController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VerifyController;
 
@@ -128,3 +129,5 @@ Route::post('/dashboard/delete-subscriber/{blog}', [AdminController::class, 'des
 Route::post('/dashboard/delete-contact/{blog}', [AdminController::class, 'destroy_contact'])->middleware(['auth', 'isAdmin', 'verified']);
 //store admin
 Route::post('/dashboard/manage-admin/admins', [AdminController::class, 'store_admin'])->middleware(['auth', 'isAdmin', 'verified']);
+//store report
+Route::post('/blogs/{blog}/report', [ReportBlogsController::class, 'store'])->middleware('auth');
