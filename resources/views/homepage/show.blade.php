@@ -9,17 +9,123 @@
 @endsection
 @section('content')
 @include('inc.navbar')
+@if (session('success'))
+    <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
+        {{ session('success') }}
+    </div>
+@endif
+{{-- modal for reporting blogs --}}
+<div class="modal fade modal-report-content" id="modalReport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/blogs/{blog}/report" method="POST">
+            @csrf
+            <div class="modal-header">
+                <h1 class="modal-title fs-4 w-100 fw-bold text-center report-text" id="exampleModalLabel">Report Blog</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body modal-scrollable">
+                    <div class="mx-5">
+                        <input type="hidden" name="blog_id" id="blog_id">
+                    <h2 class="fw-bold report-text">What type of issue are you reporting ?</h2>
+                    <div class="error-print" id="reportError">
+
+                    </div>
+                    <div class="report-group">
+                        <label for="hate">
+                            <p class="h5 report-text">Hate Speech</p>
+                            <p class="lead fs-6 pe-5 report-text">Slurs, Racist or sexist stereotypes, Dehumanization, Incitement of fear or discrimination, Hateful references, Hateful symbols & logos</p>
+                        </label>
+                        <input type="radio" id="hate" name="report_reason" value="Hate Speech"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="abuse_harassment">
+                            <p class="h5 report-text">Abuse & Harassment</p>
+                            <p class="lead fs-6 pe-5 report-text">Insults, Unwanted Sexual Content & Graphic Objectification, Unwanted NSFW & Graphic Content, Violent Event Denial, Targeted Harassment and Inciting Harassment</p>
+                        </label>
+                        <input type="radio" id="abuse_harassment" name="report_reason" value="Abuse & Harassment"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="privacy">
+                            <p class="h6 report-text">Privacy</p>
+                            <p class="lead fs-6 pe-5 report-text">Sharing private information, threatening to share/expose private information, sharing non-consensual intimate images, sharing images of me that I don’t want on the platform</p>
+                        </label>
+                        <input type="radio" id="privacy" name="report_reason" value="Privacy"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="violent_speech">
+                            <p class="h5 report-text">Violent Speech</p>
+                            <p class="lead fs-6 pe-5 report-text">Violent Threats, Wish of Harm, Glorification of Violence, Incitement of Violence, Coded Incitement of Violence</p>
+                        </label>
+                        <input type="radio" id="violent_speech" name="report_reason" value="Violent Speech"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="spam">
+                            <p class="h5 report-text">Spam</p>
+                            <p class="lead fs-6 pe-5 report-text">Fake accounts, financial scams, posting malicious links, misusing hashtags, fake engagement, repetitive replies, Reposts, or Direct Messages</p>
+                        </label>
+                        <input type="radio" id="spam" name="report_reason" value="Spam"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="suicide_self_harm">
+                            <p class="h5">Suicide or Self-Harm</p>
+                            <p class="fs-6 pe-5 lead">Encouraging, promoting, providing instructions or sharing strategies for self-harm.</p>
+                        </label>
+                        <input type="radio" id="suicide_self_harm" name="report_reason" value="Suicide or Self-Harm"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="sensitive_media">
+                            <p class="h5 report-text">Sensitive or Disturbing Media</p>
+                            <p class="fs-6 pe-5 lead report-text">Graphic Content, Gratutitous Gore, Adult Nudity & Sexual Behavior, Violent Sexual Conduct, Bestiality & Necrophilia, Media depicting a deceased individual</p>
+                        </label>
+                        <input type="radio" id="sensitive_media" name="report_reason" value="Sensitive or Disturbing Media"><br>
+                    </div>
+                    <div class="report-group">
+                        <label for="violent_hateful_entities">
+                            <p class="h5 report-text">Violent and Hateful Entities</p>
+                            <p class="pe-5 fs-6 lead report-text">Violent extremism and terrorism, hate groups & networks</p>
+                        </label>
+                        <input type="radio" id="violent_hateful_entities" name="report_reason" value="Violent and Hateful Entities"><br>
+                    </div>                 
+                    </div>   
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-lg btn-danger w-50" id="reportSubmit">Submit</button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{-- end modal --}}
 <div class="container-fluid p-0">
     <div class="container-fluid categ-container px-0 py-5">
-        <!-- <a href="#" class="text-decoration-none back-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-            </svg>
-            back
-        </a> -->
-        <div class="container">
+        
+        <div class="container categ-title-container">
             <h1 class="categ-title fw-bold text-start">{{$blog->title}}</h1>
             <p class="author-view">by: {{$author->username}}</p>
+            <div class="dropdown option-btn">
+                <a type="button" class="btn option-btn" data-bs-toggle="dropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                      </svg>
+                </a>
+                <ul class="dropdown-menu"> 
+                    <li>
+                        <a href="#" class="dropdown-item">Edit</a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-item">Edit</a>
+                    </li>
+                    <li>
+                        <button class="btn dropdown-item report-btn text-center" id="ReportBTN" value="{{$blog->id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
+                                <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12 12 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A20 20 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a20 20 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21 21 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21 21 0 0 0 14 7.655V1.222z"/>
+                            </svg>
+                            Report
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="third-section mt-3 pb-5">
@@ -344,6 +450,8 @@
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{asset('assets/js/universal.js')}}"></script>
+    <script src="{{asset('assets/js/comments.js')}}"></script>
+    <script src="{{asset('assets/js/show.js')}}"></script>
     <script src="{{asset('assets/js/replies.js')}}"></script>
     <script src="{{asset('assets/js/like.js')}}"></script>
 @endsection

@@ -5,7 +5,6 @@
 }
 .categ-container{
     background-color: #112d4e;
-
 }
 .author-view{
     color: white;
@@ -261,3 +260,46 @@
       display: block;
 }
 
+/* button for modal */
+.categ-title-container{
+    position: relative;
+}
+.option-btn{
+    color: white;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.report-btn{
+    color: red;
+}
+.report-btn:hover{
+    color: red;
+    background-color: #eaeaea;
+}
+.report-group{
+    display: flex;
+    flex: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+input[type="radio"] {
+    transform: scale(2);
+}
+.modal-scrollable{
+    max-height: 500px;
+    overflow: auto;
+}
+.report-text{
+    color: #112d4e;
+}
+.error-print{
+    color: red;
+}
+.flash-messages{
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+}
