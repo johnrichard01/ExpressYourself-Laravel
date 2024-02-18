@@ -14,6 +14,7 @@ class Reply extends Model
         'user_id',
         'comment_id',
         'reply_text',
+        'likes',
     ];
 
     public function user()
@@ -46,6 +47,16 @@ class Reply extends Model
 
         // Pass the comment and replies to the view
         return view('comments.show', compact('comment', 'replies'));
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
     }
 }
 

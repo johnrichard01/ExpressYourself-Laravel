@@ -184,6 +184,10 @@
 }
 
 /*COMMENTS*/
+
+.comment---lists, .reply {
+    list-style-type: none;
+}
 .submit--comment {
     background-color: #112d4e;
     color: white;
@@ -204,13 +208,37 @@
 }
 
 .reply-form, .nested-reply-form {
-    display: none;  /* Set the initial display to none */
+    display: none;
 }
 
 .reply-form.show, .nested-reply-form.show {
-    display: block !important;  /* Use !important to ensure higher specificity */
+    display: block !important;
 }
 
+.replies.active-link {
+    color: rgb(194, 8, 8);
+}
+
+
+.like-button, .reply-link, .replies {
+    color: #112d4e;
+    border: none;
+    background-color: white;
+    margin: 10px 0 10px 10px;
+}
+.like---like {
+    margin-left: 80px;
+}
+
+.profile--avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.profile__myAvatar {
+    width: 45px;
+    height: 45px;
+}
 
 
 /*blogs*/

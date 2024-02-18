@@ -39,5 +39,10 @@ class Blogs extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'blog_id');
+    }
+
     
 }
