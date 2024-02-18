@@ -63,51 +63,84 @@
                             @endif
                     </div>
 
-                    <div class="comments-container">
+                    <div class="comments--container">
 
                         <!-- COMMENTS -->
                         <div class="comments">
                             <ul id="comments-container">
                                 @foreach ($comments as $comment)
-                                    <li>
-                                        <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
-                                            class="profile-icon img-fluid rounded-circle">
-                                        <span class="username"><b>{{ $comment->user->username }}</b></span>
+                                    <li class="comment---lists">
 
-                                        <!-- Display the comment text -->
+                                        <!-- Display the comment text, AVATAR, USERNAME -->
+
                                         <div class="comment-body">
+                                            <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
+                                                class="profile__myAvatar img-fluid rounded-circle">
+                                            <span class="username"><b>{{ $comment->user->username }}</b></span>
                                             {{ $comment->comment_text }}
                                         </div>
 
-                                        <!-- Like Button for each comment -->
-                                        <button class="like-button" data-comment-id="{{ $comment->id }}">Like</button>
+                                        <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="">
+                                            <span class="material-symbols-outlined">
+                                                thumb_up
+                                            </span>
+                                        </button>
+                                        
+                                        <span class="like-count" id="like-count-{{ $comment->id }}-"> {{ $comment->likes_count }} </span>
+                                        
 
-                                        <!-- Reply Link for each comment -->
-                                        <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="0">Reply</a>
 
-                                        <!-- Display replies for this comment -->
-                                        @if ($comment->replies->count() > 0)
-                                            <ul class="replies-list">
-                                                @foreach ($comment->replies as $reply)
-                                                    <li class="reply">
-                                                        <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
-                                                            alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
-                                                        <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
 
-                                                        <!-- Display the reply text -->
-                                                        <div class="comment-body">
-                                                            {{ $reply->reply_text }}
-                                                        </div>
+                                        
 
-                                                        <!-- Like Button for each reply -->
-                                                        <button class="like-button" data-reply-id="{{ $reply->id }}">Like</button>
+                                            <!-- Reply Link for each comment -->
+                                            <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="0">
+                                                <span class="material-symbols-outlined">
+                                                    add_comment
+                                                </span>
+                                            </a>
 
-                                                        <!-- Reply Link for each reply -->
-                                                        <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">Reply</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
+                                            <!-- Replies link for each comment -->
+                                            @if ($comment->replies->count() > 0)
+                                                <a href="#" class="replies" data-comment-id="{{ $comment->id }}">
+                                                    <span class="material-symbols-outlined">
+                                                        forum
+                                                    </span>
+                                                </a>
+                                                <!-- Display replies for this comment -->
+                                                <ul class="replies-list" id="replies-list-{{ $comment->id }}" style="display: none;">
+                                                    @foreach ($comment->replies as $reply)
+                                                        <li class="reply">
+                                                            <!-- Display the reply text -->
+                                                            <div class="comment-body">
+                                                                <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
+                                                                    alt="Profile Picture" class="profile--avatar img-fluid rounded-circle">
+                                                                <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
+                                                                {{ $reply->reply_text }}
+                                                            </div>
+
+                                                            <!-- Like Button for each reply -->
+                                                            <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="{{ $reply->id }}">
+                                                                <span class="material-symbols-outlined">
+                                                                    thumb_up
+                                                                </span>
+                                                            </button>
+
+                                                            <!-- Display the like count for each reply -->
+                                                            <span class="like-count" id="like-count-{{ $reply->id }}">{{ $reply->likes_count }}</span>
+
+                                                            <!-- Reply Link for each reply -->
+                                                            <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">
+                                                                <span class="material-symbols-outlined">
+                                                                    add_comment
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+
+                                            @endif
+                                        </div>
 
                                         <!-- Reply Form for all comments -->
                                         <form class="reply-form" data-comment-id="{{ $comment->id }}" style="display:none;">
@@ -311,5 +344,6 @@
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/comments.js')}}"></script>
+    <script src="{{asset('assets/js/replies.js')}}"></script>
+    <script src="{{asset('assets/js/like.js')}}"></script>
 @endsection

@@ -3,120 +3,55 @@ document.addEventListener('DOMContentLoaded', function () {
     const replyLinks = document.querySelectorAll('.reply-link');
     const replyForms = document.querySelectorAll('.reply-form');
 
+    function toggleReplyForms(commentId) {
+        replyForms.forEach(form => {
+            form.style.display = form.getAttribute('data-comment-id') === commentId ? 'block' : 'none';
+        });
+    }
+
+    
     replyLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-
             const commentId = this.getAttribute('data-comment-id');
-            document.querySelectorAll('.reply-form').forEach(form => {
-                form.style.display = 'none';
-            });
-
-            const replyForm = document.querySelector(`.reply-form[data-comment-id="${commentId}"]`);
-
-            if (replyForm) {
-                replyForm.style.display = 'block';
-            }
+            toggleReplyForms(commentId);
         });
     });
 
-    document.querySelectorAll(".like-button").forEach(button => {
-        button.addEventListener('click', function () {
-            console.log('Like button clicked!');
+    replyForms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
             const commentId = this.getAttribute('data-comment-id');
-            const replyId = this.getAttribute('data-reply-id');
+            const replyText = this.querySelector('textarea[name="reply_text"]').value;
 
-            const apiUrl = replyId ? `/api/like/reply/${replyId}` : `/api/like/comment/${commentId}`;
-
-            fetch(apiUrl, {
+            fetch(`/comments/${commentId}/replies`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': csrfToken,
                 },
                 body: JSON.stringify({
+                    reply_text: replyText,
                     _token: csrfToken,
                 }),
             })
-            .then(response => {
-                // Check if the response status is OK (status code 2xx)
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-            
-                // Parse the JSON data from the response
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                // Handle the parsed JSON data
-                console.log(data);
-            
-                // Update the like count in the UI
-                const likeCountSpan = this.nextElementSibling;
-                const currentLikeCount = parseInt(likeCountSpan.innerText) || 0;
-            
-                this.classList.toggle('liked');
-                likeCountSpan.innerText = this.classList.contains('liked') ? currentLikeCount + 1 : currentLikeCount - 1;
+                console.log('JSON Response:', data);
+                // Handle JSON response here
+
+                // Reload the page after the reply submission is completed
+                window.location.reload();
             })
             .catch(error => {
-                // Handle any errors that occurred during the fetch
-                console.error('Fetch error:', error);
-            
-                // Log the response text if available
-                if (error instanceof SyntaxError && error.message.includes('JSON')) {
-                    console.error('Response is not a valid JSON');
-                } else {
-                    console.error('Response Text:', error.message);
-                }
+                console.error('Error handling reply submission:', error);
             });
-            
-            
+
+            // Reset the form
+            this.querySelector('textarea[name="reply_text"]').value = '';
+            this.style.display = 'none';
         });
     });
-
-        // New code for submitting reply form
-replyForms.forEach(form => {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const commentId = this.getAttribute('data-comment-id');
-        const replyText = this.querySelector('textarea[name="reply_text"]').value;
-
-        // Add logic to submit the reply to the server and store it in the database
-        fetch(`/comments/${commentId}/replies`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken,
-            },
-            body: JSON.stringify({
-                reply_text: replyText,
-                _token: csrfToken,
-            }),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Handle the server response if needed
-            console.log(data);
-
-            // Reload the page after successfully submitting a reply
-            window.location.reload();
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
-        });
-
-        // Reset the form
-        this.querySelector('textarea[name="reply_text"]').value = '';
-        this.style.display = 'none';
-    });
-});
-
 });
 

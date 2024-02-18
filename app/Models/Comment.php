@@ -15,6 +15,7 @@ class Comment extends Model
         'user_id',
         'comment_text',
         'blog_id',
+        'likes',
     ];
 
     public function user()
@@ -42,5 +43,17 @@ class Comment extends Model
         // Pass the comments to the view
         return view('homepage.show', compact('comments'));
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
+    
 }
 

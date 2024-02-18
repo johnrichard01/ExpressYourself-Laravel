@@ -88,9 +88,10 @@ Route::post('/comments/store', [CommentController::class, 'store'])->name('comme
 // Route for storing replies
 Route::post('/comments/{comment}/replies', [CommentController::class, 'storeReply'])->name('comments.storeReply');
 Route::post('/comments/storeNestedReply/{parentReply}', [CommentController::class, 'storeNestedReply'])->name('comments.storeNestedReply');
-//likes
-Route::post('/api/like/comment/{commentId}', [LikeController::class, 'likeComment']);
-Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply']);
+Route::post('/comments/{commentId}/replies', 'ReplyController@create');
+Route::put('/replies/{replyId}', 'ReplyController@update');
+Route::delete('/replies/{replyId}', 'ReplyController@destroy');
+
 
 //BOOKMARKS
 Route::middleware(['auth'])->group(function () {
@@ -101,6 +102,7 @@ Route::middleware(['auth'])->group(function () {
     //show bookmarked items
     Route::get('/bookmarks', [BookmarkController::class, 'showBookmarks'])->name('user.bookmark');
 });
+
 //show single blog from bookmarked items
 Route::get('/blogs/{blog}', [BlogsController::class, 'show'])->name('blogs.show');
 
@@ -126,5 +128,26 @@ Route::post('/dashboard/delete-blog/{blog}', [AdminController::class, 'destroy_b
 Route::post('/dashboard/delete-subscriber/{blog}', [AdminController::class, 'destroy_subscriber'])->middleware(['auth', 'isAdmin', 'verified']);
 // delete contact
 Route::post('/dashboard/delete-contact/{blog}', [AdminController::class, 'destroy_contact'])->middleware(['auth', 'isAdmin', 'verified']);
+<<<<<<< HEAD
 //store admin
 Route::post('/dashboard/manage-admin/admins', [AdminController::class, 'store_admin'])->middleware(['auth', 'isAdmin', 'verified']);
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+//likes
+Route::middleware(['auth'])->group(function () {
+    Route::post('/api/like/comment/{comment}', [LikeController::class, 'likeComment'])->name('api.like.comment');
+    Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply'])->name('api.like.reply');
+
+});
+>>>>>>> BANDILLA
