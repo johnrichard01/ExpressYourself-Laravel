@@ -128,21 +128,8 @@ Route::post('/dashboard/delete-blog/{blog}', [AdminController::class, 'destroy_b
 Route::post('/dashboard/delete-subscriber/{blog}', [AdminController::class, 'destroy_subscriber'])->middleware(['auth', 'isAdmin', 'verified']);
 // delete contact
 Route::post('/dashboard/delete-contact/{blog}', [AdminController::class, 'destroy_contact'])->middleware(['auth', 'isAdmin', 'verified']);
-<<<<<<< HEAD
 //store admin
 Route::post('/dashboard/manage-admin/admins', [AdminController::class, 'store_admin'])->middleware(['auth', 'isAdmin', 'verified']);
-=======
-
-
-
-
-
-
-
-
-
-
-
 
 //likes
 Route::middleware(['auth'])->group(function () {
@@ -150,4 +137,3 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply'])->name('api.like.reply');
 
 });
->>>>>>> BANDILLA
