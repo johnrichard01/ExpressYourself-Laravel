@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Blogs;
 use App\Models\Contact;
+use App\Models\ReportBlogs;
 use App\Models\subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -184,5 +185,16 @@ class AdminController extends Controller
             $user=User::create($formFields);
             event(new Registered($user));
             return back();
+    }
+    public function show_reportblog()
+    {
+        $currentUser=Auth::user();
+        $reports=ReportBlogs::all();
+        $unreadCount = Contact::where('status', 'unread')->count();
+        return view('admin.manage-reportblog', [
+            'reports'=>$reports,
+            'currentUser'=>$currentUser,
+            'unreadCount'=>$unreadCount
+        ]);
     }
 }

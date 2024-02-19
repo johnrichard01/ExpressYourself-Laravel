@@ -19,7 +19,7 @@
                     <a href="/dashboard/manage-blogs" class="text-decoration-none admin-nav btn btn-lg" id="booksButton">Blogs</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="#" class="text-decoration-none admin-nav btn btn-lg" id="orderButton">Reports</a>
+                    <a href="/dashboard/manage-reports" class="text-decoration-none admin-nav btn btn-lg" id="orderButton">Reports</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
                     <a href="/dashboard/manage-subscriber" class="text-decoration-none admin-nav btn btn-lg" id="newsButton">Newsletter</a>

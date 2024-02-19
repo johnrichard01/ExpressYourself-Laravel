@@ -134,10 +134,11 @@ Route::post('/dashboard/delete-contact/{blog}', [AdminController::class, 'destro
 Route::post('/dashboard/manage-admin/admins', [AdminController::class, 'store_admin'])->middleware(['auth', 'isAdmin', 'verified']);
 //store report
 Route::post('/blogs/{blog}/report', [ReportBlogsController::class, 'store'])->middleware('auth');
-
 //likes
 Route::middleware(['auth'])->group(function () {
     Route::post('/api/like/comment/{comment}', [LikeController::class, 'likeComment'])->name('api.like.comment');
     Route::post('/api/like/reply/{replyId}', [LikeController::class, 'likeReply'])->name('api.like.reply');
 
 });
+//show report in admin
+Route::get('/dashboard/manage-reports', [AdminController::class, 'show_reportblog'])->middleware(['auth', 'isAdmin', 'verified']);

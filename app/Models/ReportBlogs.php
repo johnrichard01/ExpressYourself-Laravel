@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Blogs;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class ReportBlogs extends Model
 {
@@ -16,10 +19,10 @@ class ReportBlogs extends Model
     ];
     public function user()
     {
-        $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function blogs()
     {
-        $this->belongsTo(Blogs::class, 'blog_id');
+       return $this->belongsTo(Blogs::class, 'blog_id');
     }
 }
