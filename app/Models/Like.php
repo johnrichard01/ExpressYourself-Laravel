@@ -9,14 +9,13 @@ class Like extends Model
 {
     use HasFactory;
 
-    // Define the table associated with the model
+    //table associated with the model
     protected $table = 'likes';
 
-    // Define mass-assignable attributes
+    //mass-assignable attributes
     protected $fillable = [
         'user_id',
         'comment_id',
-        // Add any other fields you may have in your 'likes' table
     ];
 
     // Relationships

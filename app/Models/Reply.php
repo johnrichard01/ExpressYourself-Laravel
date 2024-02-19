@@ -5,6 +5,8 @@ namespace App\Models;
 use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\like;
+use App\Notifications\ReplyNotification;
 
 class Reply extends Model
 {
@@ -39,7 +41,7 @@ class Reply extends Model
         
         // Check if the comment exists
         if (!$comment) {
-            return abort(404); // Or handle the case differently
+            return abort(404);
         }
         
         // Get the replies associated with the comment
@@ -54,9 +56,9 @@ class Reply extends Model
         return $this->hasMany(Like::class);
     }
 
-    public function notifications()
+    public function notifyUser()
     {
-        return $this->morphMany(Notification::class, 'notifiable');
+        $this->comment->user->notify(new ReplyNotification($this));
     }
 }
 
