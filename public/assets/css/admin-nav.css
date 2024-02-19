@@ -9,6 +9,10 @@
     background-color: #f5f7fa;
     color: #112d4e;
 }
+.home-active{
+    background-color: #f5f7fa;
+    color: #112d4e;
+}
 .div-divider{
     position: absolute;
     width: 1px;

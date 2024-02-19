@@ -7,25 +7,25 @@
         <div class="button-container d-flex flex-wrap justify-content-center align-items-start align-content-start">
             <div class="row col-12 mt-5">
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="/dashboard" class="text-decoration-none admin-nav btn btn-lg btn-section-active" id="homeButton">Dashboard</a>
+                    <a href="/dashboard" class="text-decoration-none admin-nav btn btn-lg {{ request()->is('dashboard') ? 'home-active' : '' }}" id="homeButton">Dashboard</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="/dashboard/manage-user" class="text-decoration-none admin-nav btn btn-lg" id="usersButton">Users</a>
+                    <a href="/dashboard/manage-user" class="text-decoration-none admin-nav btn btn-lg {{ request()->is('dashboard/manage-user') ? 'home-active' : '' }}" id="usersButton">Users</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="/dashboard/manage-admin" class="text-decoration-none admin-nav btn btn-lg" id="adminButton">Admins</a>
+                    <a href="/dashboard/manage-admin" class="text-decoration-none admin-nav btn btn-lg {{ request()->is('dashboard/manage-admin') ? 'home-active' : '' }}" id="adminButton">Admins</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="/dashboard/manage-blogs" class="text-decoration-none admin-nav btn btn-lg" id="booksButton">Blogs</a>
+                    <a href="/dashboard/manage-blogs" class="text-decoration-none admin-nav btn btn-lg {{ request()->is('dashboard/manage-blogs') ? 'home-active' : '' }}" id="booksButton">Blogs</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="/dashboard/manage-reports" class="text-decoration-none admin-nav btn btn-lg" id="orderButton">Reports</a>
+                    <a href="/dashboard/manage-reports" class="text-decoration-none admin-nav btn btn-lg  {{ request()->is('dashboard/manage-reports') ? 'home-active' : '' }}" id="orderButton">Reports</a>
                 </div>
                 <div class="nav-div d-flex justify-content-center mb-4">
-                    <a href="/dashboard/manage-subscriber" class="text-decoration-none admin-nav btn btn-lg" id="newsButton">Newsletter</a>
+                    <a href="/dashboard/manage-subscriber" class="text-decoration-none admin-nav btn btn-lg  {{ request()->is('dashboard/manage-subscriber') ? 'home-active' : '' }}" id="newsButton">Newsletter</a>
                 </div>
                 <div class="nav-div mess-main d-flex justify-content-center">
-                    <a href="/dashboard/manage-messages" class="text-decoration-none admin-nav btn btn-lg" id="messagesButton">Messages</a>
+                    <a href="/dashboard/manage-messages" class="text-decoration-none admin-nav btn btn-lg {{ request()->is('dashboard/manage-messages') ? 'home-active' : '' }}" id="messagesButton">Messages</a>
                     @if ($unreadCount == 0)
                     @else
                         <div class="mess-counter" id="messCounter">{{$unreadCount}}</div>
