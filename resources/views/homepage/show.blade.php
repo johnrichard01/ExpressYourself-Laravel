@@ -81,13 +81,20 @@
                                                         {{ $comment->comment_text }}
                                                     </div>
 
-                                                    <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="">
-                                                        <span class="material-symbols-outlined">
-                                                            thumb_up
-                                                        </span>
-                                                    </button>
+                                                    @auth
+                                                        <!-- Like Button for each comment -->
+                                                        <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="">
+                                                            <span class="material-symbols-outlined">
+                                                                thumb_up
+                                                            </span>
+                                                        </button>
+
+                                                        <span class="like-count" id="like-count-{{ $comment->id }}-"> {{ $comment->likes_count }} </span>
+
+                                                    @endauth
+
                                                     
-                                                    <span class="like-count" id="like-count-{{ $comment->id }}-"> {{ $comment->likes_count }} </span>
+                                                    
                                                     
                                                         <!-- Reply Link for each comment -->
                                                         <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="0">
@@ -115,6 +122,7 @@
                                                                             {{ $reply->reply_text }}
                                                                         </div>
 
+                                                                        @auth
                                                                         <!-- Like Button for each reply -->
                                                                         <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="{{ $reply->id }}">
                                                                             <span class="material-symbols-outlined">
@@ -125,6 +133,8 @@
                                                                         <!-- Display the like count for each reply -->
                                                                         <span class="like-count" id="like-count-{{ $reply->id }}">{{ $reply->likes_count }}</span>
 
+                                                                        @endauth
+                                                                        
                                                                         <!-- Reply Link for each reply -->
                                                                         <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">
                                                                             <span class="material-symbols-outlined">
@@ -338,6 +348,7 @@
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{asset('assets/js/universal.js')}}"></script>
+    <script src="{{asset('assets/js/comments.js')}}"></script>
     <script src="{{asset('assets/js/replies.js')}}"></script>
     <script src="{{asset('assets/js/like.js')}}"></script>
 @endsection

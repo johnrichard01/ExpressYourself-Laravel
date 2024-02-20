@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 console.log('JSON Response:', data);
-                // Handle JSON response here
 
                 // Reload the page after the reply submission is completed
                 window.location.reload();
