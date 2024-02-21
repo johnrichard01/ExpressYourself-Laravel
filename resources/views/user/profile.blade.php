@@ -1,9 +1,7 @@
-<!-- resources/views/profile.blade.php -->
-
 @extends('master')
 @section('title', $user->username . "'s Profile")
 @section('css')
-    <!-- Add any additional CSS files if needed -->
+
 @endsection
 
 @section('content')
@@ -21,7 +19,6 @@
                 @foreach($user->posts as $post)
                     <div class="post">
                         <p>{{ $post->content }}</p>
-                        <!-- Add any other post details you want to display -->
                     </div>
                 @endforeach
             </div>

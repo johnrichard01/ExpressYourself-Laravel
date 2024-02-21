@@ -18,14 +18,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return response.json();
             })
-            .catch(error => {
-                console.error('Fetch error:', error);
-                if (error.response) {
-                    console.error('Response body:', error.response);
+
+    }
+
+    function handleLikeAction(apiUrl, commentId, replyId, likeCountSpan) {
+        handleFetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+            },
+            body: JSON.stringify({
+                _token: csrfToken,
+            }),
+        })
+        .then(data => {
+            console.log(data);
+
+            // Check if the server response indicates success
+            if (data.success) {
+
+                if (likeCountSpan) {
+                    likeCountSpan.innerText = data.likesCount;
                 }
-                alert('An error occurred while processing your request. Please try again.');
-                throw error; // Rethrow the error for further handling if needed
-            });
+
+                // ...
+                // Reload after a successful action
+                    window.location.reload();
+     
+
+            } else {
+                // Handle cases where the server response indicates an error
+                console.error('Server error:', data.error);
+                alert(`Error: ${data.error}`);
+            }
+        })
+        .catch(error => {
+            console.error('Error handling like/unlike:', error);
+
+            // Display a generic error message to the user
+            alert('An error occurred. Please try again.');
+        });
     }
 
     replyLinks.forEach(link => {
@@ -44,49 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const apiUrl = replyId ? `/api/like/reply/${replyId}` : `/api/like/comment/${commentId}`;
 
-            handleFetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': csrfToken,
-                },
-                body: JSON.stringify({
-                    _token: csrfToken,
-                }),
-            })
-            .then(data => {
-                console.log(data);
-
-                // Check if the server response indicates success
-                if (data.success) {
-                    // Update UI or perform additional actions
-
-                    // Example: Display a success message
-                    alert('Action successful!');
-
-                    // Example: Update other elements in the UI
-                    if (likeCountSpan) {
-                        likeCountSpan.innerText = data.likesCount;
-                    }
-
-                    // ...
-                    // Reload the page after a successful action with a slight delay
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 500); // You can adjust the delay as needed
-
-                } else {
-                    // Handle cases where the server response indicates an error
-                    console.error('Server error:', data.error);
-                    alert(`Error: ${data.error}`);
-                }
-            })
-            .catch(error => {
-                console.error('Error handling like/unlike:', error);
-
-                // Display a generic error message to the user
-                alert('An error occurred. Please try again.');
-            });
+            handleLikeAction(apiUrl, commentId, replyId, likeCountSpan);
+            
         });
     });
 
@@ -113,12 +105,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Check if the server response indicates success
                 if (data.success) {
-                    // Handle JSON response here
 
                     // Reload the page after the reply submission is completed with a slight delay
                     setTimeout(() => {
                         window.location.reload();
-                    }, 500); // You can adjust the delay as needed
+                    }, 500);
 
                 } else {
                     // Handle cases where the server response indicates an error
@@ -126,12 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert(`Error: ${data.error}`);
                 }
             })
-            .catch(error => {
-                console.error('Error handling reply submission:', error);
-
-                // Display a generic error message to the user
-                alert('An error occurred. Please try again.');
-            });
 
             // Reset the form
             this.querySelector('textarea[name="reply_text"]').value = '';

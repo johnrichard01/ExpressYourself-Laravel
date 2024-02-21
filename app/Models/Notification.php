@@ -1,18 +1,30 @@
 <?php
 
-// app/Models/Notification.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Notification extends Model
 {
+
     use HasFactory;
 
-    protected $fillable = ['user_id', 'notifiable_id', 'notifiable_type', 'type', 'message', 'read'];
+    protected $fillable = [
+        'user_id',
+        'type',
+        'notifiable_id',
+        'notifiable_type',
+        'data',
+        'read_at',
+    ];
 
+    protected $casts = [
+        'read_at' => 'datetime',
+    ];
+
+    //relationships
     public function notifiable()
     {
         return $this->morphTo();
@@ -22,4 +34,6 @@ class Notification extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
 }

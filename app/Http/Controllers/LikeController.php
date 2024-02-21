@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\Reply; // Add the Reply model
+use App\Models\Reply;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -47,7 +47,7 @@ class LikeController extends Controller
         }
     }
 
-    // Common method for toggling like
+    //method for toggling like
     private function toggleLike($entity)
     {
         $user = auth()->user();

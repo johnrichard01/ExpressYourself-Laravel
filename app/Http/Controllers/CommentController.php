@@ -11,12 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    protected $notificationService;
-
-    public function __construct(NotificationService $notificationService)
-    {
-        $this->notificationService = $notificationService;
-    }
+   
 
     public function store(Request $request)
     {
@@ -119,4 +114,3 @@ class CommentController extends Controller
         return redirect()->back();
     }
 }
-

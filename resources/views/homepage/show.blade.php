@@ -148,6 +148,7 @@
             @endauth
         </div>
     </div>
+    
     <div class="third-section mt-3 pb-5">
         <div class="container d-flex flex-lg-row flex-column">
             <div class="col-12 col-lg-9 px-5">
@@ -159,145 +160,148 @@
 
                 <div class="desc-container mt-5">
                     <div class="description">
-                            {!!$blog->description!!}
+                        {!!$blog->description!!}
 
-                            @if(auth()->check() && auth()->user()->bookmarks)
-                                @if(auth()->user()->bookmarks->contains('blog_id', $blog->id))
-                                    <form action="{{ route('bookmarks.unbookmark', $blog) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="book--remove btn" type="submit">
-                                            <span class="material-symbols-outlined remove--bm">
-                                                bookmark                                               
-                                            </span>
-
-                                            <p class="mt-3">Remove</p>
-                                            
-                                        </button>
-                                    </form>
-                                @else
-                                <form action="{{ route('bookmarks.bookmark', $blog) }}" method="POST">
-                                        @csrf
-                                        <button class="book--add btn py-0 px-3" type="submit">
-                                            <span class="material-symbols-outlined add--bm">
-                                                bookmark
-                                            </span>
-                                            <p class="mt-3">Bookmark</p>
-                                        </button>
-                                    </form>
-                                @endif
-                            @endif
-                    </div>
-
-                    <div class="comments--container">
-
-                        <!-- COMMENTS -->
-                        <div class="comments">
-                            <ul id="comments-container">
-                                @foreach ($comments as $comment)
-                                    <li class="comment---lists">
-
-                                        <!-- Display the comment text, AVATAR, USERNAME -->
-
-                                        <div class="comment-body">
-                                            <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
-                                                class="profile__myAvatar img-fluid rounded-circle">
-                                            <span class="username"><b>{{ $comment->user->username }}</b></span>
-                                            {{ $comment->comment_text }}
-                                        </div>
-
-                                        <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="">
-                                            <span class="material-symbols-outlined">
-                                                thumb_up
-                                            </span>
-                                        </button>
-                                        
-                                        <span class="like-count" id="like-count-{{ $comment->id }}-"> {{ $comment->likes_count }} </span>
-                                        
-
-
-
-                                        
-
-                                            <!-- Reply Link for each comment -->
-                                            <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="0">
-                                                <span class="material-symbols-outlined">
-                                                    add_comment
+                            <div>
+                                @if(auth()->check() && auth()->user()->bookmarks)
+                                    @if(auth()->user()->bookmarks->contains('blog_id', $blog->id))
+                                        <form action="{{ route('bookmarks.unbookmark', $blog) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="book--remove btn" type="submit">
+                                                <span class="material-symbols-outlined remove--bm">
+                                                    bookmark                                               
                                                 </span>
-                                            </a>
 
-                                            <!-- Replies link for each comment -->
-                                            @if ($comment->replies->count() > 0)
-                                                <a href="#" class="replies" data-comment-id="{{ $comment->id }}">
-                                                    <span class="material-symbols-outlined">
-                                                        forum
-                                                    </span>
-                                                </a>
-                                                <!-- Display replies for this comment -->
-                                                <ul class="replies-list" id="replies-list-{{ $comment->id }}" style="display: none;">
-                                                    @foreach ($comment->replies as $reply)
-                                                        <li class="reply">
-                                                            <!-- Display the reply text -->
-                                                            <div class="comment-body">
-                                                                <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
-                                                                    alt="Profile Picture" class="profile--avatar img-fluid rounded-circle">
-                                                                <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
-                                                                {{ $reply->reply_text }}
-                                                            </div>
+                                                <p class="mt-3">Remove</p>
+                                                
+                                            </button>
+                                        </form>
+                                    @else
+                                    <form action="{{ route('bookmarks.bookmark', $blog) }}" method="POST">
+                                            @csrf
+                                            <button class="book--add btn py-0 px-3" type="submit">
+                                                <span class="material-symbols-outlined add--bm">
+                                                    bookmark
+                                                </span>
+                                                <p class="mt-3">Bookmark</p>
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endif
 
-                                                            <!-- Like Button for each reply -->
-                                                            <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="{{ $reply->id }}">
+                            </div>
+
+                                    <!-- COMMENTS -->
+                                    <div class="comments">
+                                        <ul id="comments-container">
+                                            @foreach ($comments as $comment)
+                                                <li class="comment---lists">
+
+                                                    <!-- Display the comment text, AVATAR, USERNAME -->
+
+                                                    <div class="comment-body">
+                                                        <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
+                                                            class="profile__myAvatar img-fluid rounded-circle">
+                                                        <span class="username"><b>{{ $comment->user->username }}</b></span>
+                                                        {{ $comment->comment_text }}
+                                                    </div>
+
+                                                    @auth
+                                                        <!-- Like Button for each comment -->
+                                                        <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="">
+                                                            <span class="material-symbols-outlined">
+                                                                thumb_up
+                                                            </span>
+                                                        </button>
+
+                                                        <span class="like-count" id="like-count-{{ $comment->id }}-"> {{ $comment->likes_count }} </span>
+
+                                                    @endauth
+
+                                                    
+                                                    
+                                                    
+                                                        <!-- Reply Link for each comment -->
+                                                        <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="0">
+                                                            <span class="material-symbols-outlined">
+                                                                add_comment
+                                                            </span>
+                                                        </a>
+
+                                                        <!-- Replies link for each comment -->
+                                                        @if ($comment->replies->count() > 0)
+                                                            <a href="#" class="replies" data-comment-id="{{ $comment->id }}">
                                                                 <span class="material-symbols-outlined">
-                                                                    thumb_up
-                                                                </span>
-                                                            </button>
-
-                                                            <!-- Display the like count for each reply -->
-                                                            <span class="like-count" id="like-count-{{ $reply->id }}">{{ $reply->likes_count }}</span>
-
-                                                            <!-- Reply Link for each reply -->
-                                                            <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">
-                                                                <span class="material-symbols-outlined">
-                                                                    add_comment
+                                                                    forum
                                                                 </span>
                                                             </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
+                                                            <!-- Display replies for this comment -->
+                                                            <ul class="replies-list" id="replies-list-{{ $comment->id }}" style="display: none;">
+                                                                @foreach ($comment->replies as $reply)
+                                                                    <li class="reply">
+                                                                        <!-- Display the reply text -->
+                                                                        <div class="comment-body">
+                                                                            <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
+                                                                                alt="Profile Picture" class="profile--avatar img-fluid rounded-circle">
+                                                                            <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
+                                                                            {{ $reply->reply_text }}
+                                                                        </div>
 
-                                            @endif
-                                        </div>
+                                                                        @auth
+                                                                        <!-- Like Button for each reply -->
+                                                                        <button class="like-button" data-comment-id="{{ $comment->id }}" data-reply-id="{{ $reply->id }}">
+                                                                            <span class="material-symbols-outlined">
+                                                                                thumb_up
+                                                                            </span>
+                                                                        </button>
 
-                                        <!-- Reply Form for all comments -->
-                                        <form class="reply-form" data-comment-id="{{ $comment->id }}" style="display:none;">
-                                            <h4>Reply to {{ $comment->user->username }}'s comment</h4>
-                                            @auth
-                                                <div class="form-group">
-                                                    <textarea name="reply_text" class="form-control" rows="4" placeholder="Type your reply" required></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit Reply</button>
-                                            @else
-                                                <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
-                                            @endauth
+                                                                        <!-- Display the like count for each reply -->
+                                                                        <span class="like-count" id="like-count-{{ $reply->id }}">{{ $reply->likes_count }}</span>
+
+                                                                        @endauth
+                                                                        
+                                                                        <!-- Reply Link for each reply -->
+                                                                        <a href="#" class="reply-link" data-comment-id="{{ $comment->id }}" data-parent-reply-id="{{ $reply->id }}">
+                                                                            <span class="material-symbols-outlined">
+                                                                                add_comment
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+
+                                                        @endif
+
+                                                    <!-- Reply Form for all comments -->
+                                                    <form class="reply-form" data-comment-id="{{ $comment->id }}" style="display:none;">
+                                                        <h4>Reply to {{ $comment->user->username }}'s comment</h4>
+                                                        @auth
+                                                            <div class="form-group">
+                                                                <textarea name="reply_text" class="form-control" rows="4" placeholder="Type your reply" required></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Submit Reply</button>
+                                                        @else
+                                                            <p>Please <a href="{{ route('login') }}"><b><i>log in</i></b></a> to leave a reply.</p>
+                                                        @endauth
+                                                    </form>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                    </div>
+                                    <!-- New Comment Form -->
+                                    <div class="comment-form">
+                                        <h4>Add a Comment</h4>
+                                        <form id="new-comment-form" action="{{ route('comments.store') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                                            <div class="form-group">
+                                                <textarea name="comment_text" class="form-control" rows="4" placeholder="Type your comment" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn submit--comment">Submit</button>
                                         </form>
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                        </div>
-                        <!-- New Comment Form -->
-                        <div class="comment-form">
-                            <h4>Add a Comment</h4>
-                            <form id="new-comment-form" action="{{ route('comments.store') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                <div class="form-group">
-                                    <textarea name="comment_text" class="form-control" rows="4" placeholder="Type your comment" required></textarea>
-                                </div>
-                                <button type="submit" class="btn submit--comment">Submit</button>
-                            </form>
-                        </div>
-
+                                    </div>
                     </div>
                 </div>
             </div>
@@ -470,6 +474,7 @@
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{asset('assets/js/universal.js')}}"></script>
+    <script src="{{asset('assets/js/comments.js')}}"></script>
     <script src="{{asset('assets/js/comments.js')}}"></script>
     <script src="{{asset('assets/js/show.js')}}"></script>
     <script src="{{asset('assets/js/replies.js')}}"></script>
