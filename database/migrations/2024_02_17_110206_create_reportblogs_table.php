@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('report_blogs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('blog_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('blog_id')->constrained()->onDelete('cascade');
             $table->string('reason');
             $table->string('status')->default('New');
             $table->timestamps();
