@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -63,5 +65,59 @@ class ProfileController extends Controller
         $currentUser = auth()->user();
         $unreadCount = Contact::where('status', 'unread')->count();
         return view('admin.admin-profile', compact('currentUser', 'unreadCount'));
+    }
+    public function show_changepassword()
+    {
+        $user = Auth::user();
+        if(Auth::check())
+        {
+            if(Auth::user()->role_as == '1')
+            {
+                return redirect('/dashboard');
+            }
+            else if(Auth::user()->role_as == '0')
+            {
+                return view('user.changepassword',[
+                    'user'=>$user
+                ]);
+            }
+        }
+        else
+        {
+            return view('user.changepassword',[
+                'user'=>$user
+            ]);
+        }
+    }
+    public function change_password(Request $request)
+    {
+        $request->validate([
+            'old_password'=>'required|min:8|max:100',
+            'new_password'=>'required|min:8|max:100',
+            'confirm_password'=>'required|same:new_password'
+            ]);
+    
+            $current_user=auth()->user();
+    
+            if(Hash::check($request->old_password,$current_user->password)){
+    
+                $current_user->update([
+                    'password'=>bcrypt($request->new_password)
+                ]);
+    
+                return redirect()->back()->with('success','Password successfully updated.');
+    
+            }else{
+                return redirect()->back()->with('error','Old password does not matched.');
+            }
+    }
+    public function show_changepasswordadmin()
+    {
+        $currentUser = Auth::user();
+        $unreadCount = Contact::where('status', 'unread')->count();
+        return view('admin.changepassword-admin',[
+            'currentUser'=>$currentUser,
+            'unreadCount'=>$unreadCount
+        ]);
     }
 }

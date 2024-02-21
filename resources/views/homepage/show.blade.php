@@ -97,6 +97,29 @@
     </div>
   </div>
   {{-- end modal --}}
+  {{-- modal for delete --}}
+  <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/blogs/{blog}" method="POST">
+            @csrf
+            @method('DELETE')
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Blog</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <input type="hidden" name="user_delete_id" id="user_id">
+                Are you sure you want to delete this blog ?
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{-- end modal --}}
 <div class="container-fluid p-0">
     <div class="container-fluid categ-container px-0 py-5">
         
@@ -122,14 +145,14 @@
                             </li>
                             <li>
                                 <div class="w-100 d-flex flex-wrap justify-content-center">
-                                    <form method="POST" action="/blogs/{{$blog->id}}" class="form-delete m-0">
+                                    {{-- <form method="POST" action="/blogs/{{$blog->id}}" class="form-delete m-0">
                                         @csrf
-                                        @method('DELETE')
-                                        <button class="btn delete-showbtn"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        @method('DELETE') --}}
+                                        <button class="btn delete-showbtn" value="{{$blog->id}}"><svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                           </svg>Delete</button>
-                                    </form>
+                                    {{-- </form> --}}
                                 </div>
                             </li>
                         @else

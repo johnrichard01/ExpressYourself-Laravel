@@ -35,7 +35,7 @@ class CommentController extends Controller
         $comment->save();
 
         // Notify the user about the new comment
-        $this->notificationService->createNotification(Auth::user(), $comment, 'comment', 'New comment on your post.');
+        // $this->notificationService()->createNotification(Auth::user(), $comment, 'comment', 'New comment on your post.');
 
         // Redirect back or to the blog post page
         return redirect()->back()->with('success', 'Comment added successfully!');

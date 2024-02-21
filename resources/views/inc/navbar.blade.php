@@ -35,6 +35,11 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a class="nav-link" href="/change-password">
+                                                Change Password
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="nav-link" href="/myblogs" class="dropdown-item">
                                                 My Blogs
                                             </a>
@@ -78,10 +83,10 @@
                         </div>
 
                     @else
-                        <div class="col-12 col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1">
+                        <div class="col-12 col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1 order-xl-1">
                             <a href="/signup"  class="btn btn-signup fw-bold w-100 rounded-5">Sign up</a>
                         </div>
-                        <div class="col-12 col-lg-2 mb-5 mb-xl-0">
+                        <div class="col-12 col-lg-2 mb-5 mb-xl-0 order-xl-1">
                             <a href="/login" class="btn btn-login fw-bold rounded-5 w-100">Login</a>
                         </div>
                     @endauth

@@ -6,7 +6,14 @@ $(document).ready(function(){
         $('#modalReport').modal('show');
     })
 })
-
+$(document).ready(function(){
+    $('.delete-showbtn').click(function (event){
+        event.preventDefault();
+        let user_id=$(this).val();
+        $('#user_id').val(user_id);
+        $('#modalDelete').modal('show');
+    })
+})
 function validateReport(event){
     let reason =document.querySelector('input[name="report_reason"]:checked');
     isvalid=true;

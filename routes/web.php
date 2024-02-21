@@ -47,7 +47,7 @@ Route::get('/blogs/{blogs}/edit', [BlogsController::class, 'show_update'])->midd
 //update blogs
 Route::post('/blogs/{blogs}', [BlogsController::class, 'update'])->middleware(['auth', 'verified']);
 //delete blogs
-Route::delete('/blogs/{blogs}', [BlogsController::class, 'destroy'])->middleware(['auth', 'verified']);
+Route::delete('/blogs/{blog}', [BlogsController::class, 'destroy'])->middleware(['auth', 'verified']);
 // show single blogs
 Route::get('/blogs/{blog}', [BlogsController::class, 'show']);
 //show my blogs
@@ -148,3 +148,9 @@ Route::post('/dashboard/delete-report/{blog}', [AdminController::class, 'destroy
 Route::post('/dashboard/manage-reports/update-status/{report}', [AdminController::class, 'update_report'])->middleware(['auth', 'isAdmin', 'verified']);
 //show admin profile edit
 Route::get('/dashboard/profile', [ProfileController::class, 'profile_admin'])->middleware(['auth', 'isAdmin', 'verified']);
+//show change password
+Route::get('/change-password', [ProfileController::class, 'show_changepassword'])->middleware(['auth', 'verified']);
+//changing password
+Route::post('/change-password/update', [ProfileController::class, 'change_password'])->middleware(['auth', 'verified']);
+//show change password admin
+Route::get('/dashboard/change-password', [ProfileController::class, 'show_changepasswordadmin'])->middleware(['auth','isAdmin', 'verified']);

@@ -27,6 +27,11 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a class="nav-link" href="/dashboard/change-password">
+                                        Change passowrd
+                                    </a>
+                                </li>
+                                <li>
                                     <form action="/logout" method="POST">
                                         @csrf
                                             <button type="submit" class="dropdown-item" id="logout">

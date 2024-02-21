@@ -294,8 +294,9 @@ class BlogsController extends Controller
 
 
 
-    public function destroy(Blogs $blogs)
+    public function destroy( Request $request)
     {
+        $blogs= Blogs::find($request->user_delete_id);
         if($blogs->user_id != auth()->id()){
             abort(403, 'Unauthorized action');
         }
