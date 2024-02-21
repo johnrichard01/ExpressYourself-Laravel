@@ -6,3 +6,9 @@ $(document).ready(function(){
         $('#modalDelete').modal('show');
     })
 })
+
+$('.statusSelect').change(function() {
+    let report_id=$(this).data('report-id');
+    $('#report_id').val(report_id);
+    $('#statusForm'+report_id).submit();
+});

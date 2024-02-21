@@ -142,3 +142,9 @@ Route::middleware(['auth'])->group(function () {
 });
 //show report in admin
 Route::get('/dashboard/manage-reports', [AdminController::class, 'show_reportblog'])->middleware(['auth', 'isAdmin', 'verified']);
+//delete reports
+Route::post('/dashboard/delete-report/{blog}', [AdminController::class, 'destroy_reports'])->middleware(['auth', 'isAdmin', 'verified']);
+//change status of report
+Route::post('/dashboard/manage-reports/update-status/{report}', [AdminController::class, 'update_report'])->middleware(['auth', 'isAdmin', 'verified']);
+//show admin profile edit
+Route::get('/dashboard/profile', [ProfileController::class, 'profile_admin'])->middleware(['auth', 'isAdmin', 'verified']);

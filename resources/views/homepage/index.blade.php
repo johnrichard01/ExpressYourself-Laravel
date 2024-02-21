@@ -107,7 +107,7 @@
         </div>
     </div>
     <div class="third-section mt-5 pb-5">
-        <div class="container d-flex flex-lg-row flex-column">
+        <div class="container d-flex flex-lg-row flex-column-reverse">
             <div class="col-12 col-lg-9">
                 <div class="mb-5">
                     <h2 class="section-title fw-bold text-lg-start text-center">Recent Posts</h2>
@@ -132,18 +132,18 @@
                         <h2 class="section-title fw-bold  text-lg-start text-center">Most Popular</h2>
                     </div>
                 <div class="d-flex flex-wrap justify-content-center gap-lg-2 gap-4">
-                    <div class="popular-conten mb-4">
-                        <div class="popular-categ mb-2">
+                    <div class="popular-content mb-4">
+                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
                             <div class="popular-box col-3 d-flex align-items-center justify-content-center">
                                 Artwork
                             </div>
                         </div>
-                        <div class="popular-title">
+                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
                             <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
+                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
                             </a>
                         </div>
-                        <div class="author-container d-flex">
+                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
                             <div class="name-container lead fw-bold">
                                 John Doe
                             </div>
@@ -153,17 +153,17 @@
                         </div>
                     </div>
                     <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
+                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
                             <div class="popular-box col-3 d-flex align-items-center justify-content-center">
                                 Artwork
                             </div>
                         </div>
-                        <div class="popular-title">
+                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
                             <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
+                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
                             </a>
                         </div>
-                        <div class="author-container d-flex">
+                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
                             <div class="name-container lead fw-bold">
                                 John Doe
                             </div>
@@ -173,17 +173,17 @@
                         </div>
                     </div>
                     <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
+                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
                             <div class="popular-box col-3 d-flex align-items-center justify-content-center">
                                 Artwork
                             </div>
                         </div>
-                        <div class="popular-title">
+                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
                             <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
+                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
                             </a>
                         </div>
-                        <div class="author-container d-flex">
+                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
                             <div class="name-container lead fw-bold">
                                 John Doe
                             </div>
@@ -193,17 +193,17 @@
                         </div>
                     </div>
                     <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
+                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
                             <div class="popular-box col-3 d-flex align-items-center justify-content-center">
                                 Artwork
                             </div>
                         </div>
-                        <div class="popular-title">
+                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
                             <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
+                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
                             </a>
                         </div>
-                        <div class="author-container d-flex">
+                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
                             <div class="name-container lead fw-bold">
                                 John Doe
                             </div>
@@ -213,37 +213,17 @@
                         </div>
                     </div>
                     <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
+                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
                             <div class="popular-box col-3 d-flex align-items-center justify-content-center">
                                 Artwork
                             </div>
                         </div>
-                        <div class="popular-title">
+                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
                             <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
+                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
                             </a>
                         </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
+                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
                             <div class="name-container lead fw-bold">
                                 John Doe
                             </div>

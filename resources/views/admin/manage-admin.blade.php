@@ -8,6 +8,11 @@
 @section('content')
 @include('inc.admin-sidebar')
 @include('inc.admin-navbar')
+@if (session('error'))
+<div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-danger flash-messages">
+    {{ session('error') }}
+</div>
+@endif
 {{-- modal for deleting user --}}
     <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

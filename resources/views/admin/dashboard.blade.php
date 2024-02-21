@@ -14,7 +14,7 @@
                         <h1 class="fw-bold text-center section-header">Analytics</h1>
                     </div>
                     <div class="container d-flex flex-wrap">
-                        <div class="col-6 d-flex justify-content-center mt-5">
+                        <div class="col-12 col-lg-6 d-flex justify-content-center mt-5">
                             <div class="dash-box d-flex flex-wrap align-items-center justify-content-center">
                                 <div class="users-count text-center col-12" id="usersCount">
                                     {{$userCount}}
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 d-flex justify-content-center mt-5">
+                        <div class="col-12 col-lg-6 d-flex justify-content-center mt-5">
                             <div class="dash-box d-flex flex-wrap align-items-center justify-content-center">
                                 <div class="users-count text-center col-12" id="postCount">
                                     {{$blogCount}}
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 d-flex justify-content-center mt-5    ">
+                        <div class="col-12 col-lg-6 d-flex justify-content-center mt-5    ">
                             <div class="dash-box d-flex flex-wrap align-items-center justify-content-center">
                                 <div class="users-count text-center col-12" id="messageCount">
                                     {{$contactCount}}
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 d-flex justify-content-center mt-5">
+                        <div class="col-12 col-lg-6 d-flex justify-content-center mt-5">
                             <div class="dash-box d-flex flex-wrap align-items-center justify-content-center">
                                 <div class="users-count text-center col-12" id="subCount">
                                     {{$subscriberCount}}

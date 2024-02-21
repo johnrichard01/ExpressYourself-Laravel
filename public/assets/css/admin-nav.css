@@ -118,9 +118,49 @@
 }
 .dash-container{
     background-color: #eaeaea;
-    min-height: 750px;
+    min-width: 320px;
+    min-height: 760px;
     max-width: 85%;
 }
 .dash-expand{
     max-width: 100%;
+}
+.deleteBTN{
+    color: red;
+}
+.deleteBTN:hover{
+    color: rgb(154, 2, 2);
+}
+.flash-messages{
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.sidebar-text{
+    display: block;
+}
+.sidebar-logo{
+    display: none;
+}
+.profile-container-side{
+    display: none;
+}
+@media only screen and (max-width: 768px) {
+    .profile-admin-container{
+        display: none;
+    }
+    .custom-offcanvas{
+        max-width: 150px;
+        background-color: #112d4e;
+    }
+    .sidebar-text{
+        display: none;
+    }
+    .sidebar-logo{
+        display: block;
+    }
+    .profile-container-side{
+        display: block;
+    }
 }

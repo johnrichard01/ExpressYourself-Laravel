@@ -14,7 +14,7 @@
                     ExpressYourself
                 </a>
             </div>
-            <div class="col-7 col-lg-7 order-1">
+            <div class="profile-admin-container col-7 col-lg-7 order-1">
                 <div class="d-flex justify-content-lg-end justify-content-end align-items-center pe-0 pe-lg-1">
                     <div class="dropdown-center d-flex flex-wrap justify-content-center justify-content-lg-end              align-items-center">
                         <a href="#" type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,7 +22,7 @@
                         </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="/dashboard/profile">
                                         Edit Profile
                                     </a>
                                 </li>

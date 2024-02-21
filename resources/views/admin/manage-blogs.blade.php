@@ -49,7 +49,7 @@
                                     <tbody class="">
                                         <tr class="table-header">
                                             <th>
-                                                No.
+                                                Blog ID
                                             </th>
                                             <th>
                                                 Username
@@ -70,10 +70,10 @@
                                                 Actions
                                             </th>
                                         </tr>
-                                        @foreach ($blogs as $count=>$blog)
+                                        @foreach ($blogs as $blog)
                                         <tr class="table-content">
                                             <td>
-                                                {{$count + 1}}
+                                                {{$blog->id}}
                                             </td>
                                             <td>
                                                 {{$blog->user->username}}

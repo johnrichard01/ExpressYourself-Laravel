@@ -180,7 +180,7 @@ class BlogsController extends Controller
         $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
         $dom = new \DomDocument();
         
-        $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
  
         $imageFile = $dom->getElementsByTagName('imageFile');
   
@@ -289,7 +289,7 @@ class BlogsController extends Controller
         $description = $dom->saveHTML();
         $post['description'] = $description;
         $blogs->update($post);
-        return back()->with('success', 'Changes saved');
+        return redirect('/myblogs')->with('success', 'Changes saved');
     }
 
 
@@ -300,7 +300,7 @@ class BlogsController extends Controller
             abort(403, 'Unauthorized action');
         }
         $blogs->delete();
-        return back()->with('success', 'Blog has been deleted');
+        return redirect('/myblogs')->with('success', 'Blog has been deleted');
     }
 
 

@@ -119,7 +119,7 @@ class AdminController extends Controller
         $user= User::find($request->user_delete_id);
         if(Auth::user()->id != $user->id)
         {
-                if($user)
+            if($user)
             {
                 $user->delete();
 
@@ -129,7 +129,7 @@ class AdminController extends Controller
                 return redirect('dashboard/manage-admin');
             }
         }else{
-            return redirect('dashboard/manage-admin');
+            return redirect('dashboard/manage-admin')->with('error', 'You currently using this account!');
         }
     }
     public function destroy_blog(Request $request)
@@ -189,12 +189,33 @@ class AdminController extends Controller
     public function show_reportblog()
     {
         $currentUser=Auth::user();
-        $reports=ReportBlogs::all();
+        $reports = ReportBlogs::orderByRaw("status = 'New' DESC")->get();
         $unreadCount = Contact::where('status', 'unread')->count();
         return view('admin.manage-reportblog', [
             'reports'=>$reports,
             'currentUser'=>$currentUser,
             'unreadCount'=>$unreadCount
         ]);
+    }
+    public function destroy_reports(Request $request)
+    {
+        $sub= ReportBlogs::find($request->user_delete_id);
+        if($sub)
+        {
+            $sub->delete();
+
+            return redirect('dashboard/manage-reports');
+        }
+        else{
+            return redirect('dashboard/manage-reports');
+        }
+    }
+    public function update_report(Request $request, $reportID)
+    {
+        $report= ReportBlogs::findOrFail($reportID);
+        $report->status = $request->status;
+        $report->save();
+
+        return redirect()->back();
     }
 }

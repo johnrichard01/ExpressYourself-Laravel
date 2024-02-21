@@ -18,58 +18,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <form action="/search" class="col-12 col-lg-4 mb-5 mb-lg-0  d-flex align-items-center" role="search">
+                    <form action="/search" class="col-12 col-xl-4 mb-5 mb-lg-0  d-flex align-items-center order-xl-0" role="search">
                         <input class="form-control search-bar" name="search" type="search" placeholder="Search" aria-label="Search">
                       </form>
-                    <div class="col-4 d-flex align-items-center">
-                        <ul class="navbar-nav justify-content-center flex-grow-1 gap-4"> 
-                                <li class="nav-item nav-hover {{ request()->is('/') ? 'home-active' : '' }}">
-                                    <a href="/" class="nav-link fw-bold " aria-current="page">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-hover {{ request()->is('aboutus') ? 'home-active' : '' }}">
-                                    <a href="/aboutus" class="nav-link fw-bold"> 
-                                        About
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-hover {{ request()->is('contact') ? 'home-active' : '' }}">
-                                    <a href="/contact" class="nav-link  fw-bold">
-                                        Contact   
-                                    </a>
-                                </li>
-
-                        </ul>
-                    </div>
                     @auth
-                        <div class="col col-lg-4">
-                            <div class="d-flex justify-content-center align-items-center pe-0 pe-lg-1">
-                                <div class="col-9 d-flex justify-content-end align-items-center">
-                                    <div class="col-3 d-flex justify-content-center">
-                                        <a href="/blogs/create" class="bookmark-btn" id="createBTN">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                              </svg>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 d-flex justify-content-center ">
-                                        <a href="{{ route('user.bookmark') }}" class="bookmark-btn" id="bookmarkBTN">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
-                                                <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
-                                                <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <div class="col-3 d-flex justify-content-center ">
-                                        <a href="#" type="button" class="notif-btn" id="notifBTN">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-3 dropdown-center d-flex flex-wrap justify-content-end align-items-center">
+                        <div class="col-12 col-xl-4 order-xl-1">
+                            <div class="d-flex flex-wrap justify-content-center align-items-center pe-0 pe-lg-1">
+                                <div class="col-12 col-xl-3 dropdown-center d-flex flex-wrap justify-content-center  justify-content-xl-end align-items-center order-xl-1">
                                     <a type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
                                     </a>
@@ -94,17 +49,63 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <div class="col-12 col-xl-9 d-flex justify-content-center justify-content-xl-end align-items-center order-xl-0 py-5 py-xl-0">
+                                    <div class="col col-xl-3 d-flex justify-content-center">
+                                        <a href="/blogs/create" class="bookmark-btn" id="createBTN">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                              </svg>
+                                        </a>
+                                    </div>
+                                    <div class="col col-xl-3 d-flex justify-content-center ">
+                                        <a href="{{ route('user.bookmark') }}" class="bookmark-btn" id="bookmarkBTN">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
+                                                <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
+                                                <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="col col-xl-3 d-flex justify-content-center ">
+                                        <a href="#" type="button" class="notif-btn" id="notifBTN">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                     @else
-                        <div class="col col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1">
+                        <div class="col-12 col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1">
                             <a href="/signup"  class="btn btn-signup fw-bold w-100 rounded-5">Sign up</a>
                         </div>
-                        <div class="col col-lg-2">
+                        <div class="col-12 col-lg-2 mb-5 mb-xl-0">
                             <a href="/login" class="btn btn-login fw-bold rounded-5 w-100">Login</a>
                         </div>
                     @endauth
+                    <div class="col-12 col-xl-4 d-flex align-items-center order-xl-0">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 gap-4"> 
+                                <li class="nav-item nav-hover {{ request()->is('/') ? 'home-active' : '' }}">
+                                    <a href="/" class="nav-link fw-bold  text-center" aria-current="page">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-hover {{ request()->is('aboutus') ? 'home-active' : '' }}">
+                                    <a href="/aboutus" class="nav-link fw-bold text-center"> 
+                                        About
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-hover {{ request()->is('contact') ? 'home-active' : '' }}">
+                                    <a href="/contact" class="nav-link  fw-bold text-center">
+                                        Contact   
+                                    </a>
+                                </li>
+
+                        </ul>
+                    </div>
+
                 </div>   
             </div>
         </div>

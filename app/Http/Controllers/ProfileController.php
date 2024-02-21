@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -49,12 +50,18 @@ class ProfileController extends Controller
 
         $user->update();
 
-        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     public function show($username)
     {
         $user = User::where('username', $username)->with('posts')->firstOrFail();
         return view('profile', ['user' => $user]);
+    }
+    public function profile_admin()
+    {
+        $currentUser = auth()->user();
+        $unreadCount = Contact::where('status', 'unread')->count();
+        return view('admin.admin-profile', compact('currentUser', 'unreadCount'));
     }
 }

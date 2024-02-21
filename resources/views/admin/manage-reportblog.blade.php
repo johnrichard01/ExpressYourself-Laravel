@@ -7,6 +7,11 @@
 @section('content')
 @include('inc.admin-sidebar')
 @include('inc.admin-navbar')
+@if (session('error'))
+<div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-danger flash-messages">
+    {{ session('error') }}
+</div>
+@endif
     {{-- modal for deleting user --}}
     <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -80,7 +85,14 @@
                                                 {{$report->reason}}
                                             </td>
                                             <td>
-                                                {{$report->status}}
+                                                <form id="statusForm{{$report->id}}" action="/dashboard/manage-reports/update-status/{{$report->id}}" method="POST">
+                                                    @csrf
+                                                    <select name="status" class="statusSelect" data-report-id="{{$report->id}}">
+                                                        <option value="New" {{ $report->status === 'New' ? 'selected' : '' }}>New</option>
+                                                        <option value="Reviewing" {{ $report->status === 'Reviewing' ? 'selected' : '' }}>Reviewing</option>
+                                                        <option value="Done" {{ $report->status === 'Done' ? 'selected' : '' }}>Done</option>
+                                                    </select>
+                                                </form>
                                             </td>
                                             <td>
                                                 <div class="dropdown-center">

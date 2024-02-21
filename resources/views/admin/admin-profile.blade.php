@@ -1,11 +1,12 @@
 @extends('master')
 @section('title', 'Profile Settings')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/admin-nav.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/edit-profile.css')}}">
 @endsection
 @section('content')
-@include('inc.navbar')
+@include('inc.admin-navbar')
+@include('inc.admin-sidebar')
 @if (session('success'))
     <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
         {{ session('success') }}
@@ -35,8 +36,8 @@
                             <!-- Update Avatar -->
                             <div class="form-group">
                                 <div class="current-avatar">
-                                    @if($user->avatar)
-                                        <img id="cropperImage" src="{{ asset('storage/' . $user->avatar) }}" alt="Current Avatar" class="avatar-img img-thumbnail">
+                                    @if($currentUser->avatar)
+                                        <img id="cropperImage" src="{{ asset('storage/' . $currentUser->avatar) }}" alt="Current Avatar" class="avatar-img img-thumbnail">
                                     @else
                                         <img id="cropperImage" src="{{ asset('assets/images/noprofile.png') }}" alt="No Avatar" class="avatar-img img-thumbnail">
                                     @endif
@@ -51,7 +52,7 @@
 
                                         <div class="form-group">
                                             <label for="bio" class="bio-label">Bio:</label>
-                                            <textarea name="bio" id="bio" class="bio-textarea form-control mt-2">{{ old('bio', $user->bio) }}</textarea>
+                                            <textarea name="bio" id="bio" class="bio-textarea form-control mt-2">{{ old('bio', $currentUser->bio) }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +62,7 @@
                                         <!-- Username -->
                                         <div class="form-group">
                                             <label for="username" class="username-label">Username:</label>
-                                            <input type="text" name="username" id="username" class="username-input form-control mt-2" value="{{ old('username', $user->username) }}">
+                                            <input type="text" name="username" id="username" class="username-input form-control mt-2" value="{{ old('username', $currentUser->username) }}">
                                         </div>
                                     </div>
 
@@ -70,9 +71,9 @@
                                         <div class="form-group">
                                             <label for="gender" class="gender-label">Gender:</label>
                                             <select name="gender" id="gender" class="gender-select form-control mt-2">
-                                                <option value="male" {{ old('gender', $user->gender) === 'male' ? 'selected' : '' }}>Male</option>
-                                                <option value="female" {{ old('gender', $user->gender) === 'female' ? 'selected' : '' }}>Female</option>
-                                                <option value="other" {{ old('gender', $user->gender) === 'other' ? 'selected' : '' }}>Other</option>
+                                                <option value="male" {{ old('gender', $currentUser->gender) === 'male' ? 'selected' : '' }}>Male</option>
+                                                <option value="female" {{ old('gender', $currentUser->gender) === 'female' ? 'selected' : '' }}>Female</option>
+                                                <option value="other" {{ old('gender', $currentUser->gender) === 'other' ? 'selected' : '' }}>Other</option>
                                             </select>
                                         </div>
                                     </div>
@@ -82,7 +83,7 @@
                                     <!-- City -->
                                         <div class="form-group">
                                             <label for="city" class="city-label">Location:</label>
-                                            <input type="text" name="city" id="city" class="city-input form-control mt-2" value="{{ old('city', $user->city) }}">
+                                            <input type="text" name="city" id="city" class="city-input form-control mt-2" value="{{ old('city', $currentUser->city) }}">
                                         </div>
                                     </div>
 
@@ -95,7 +96,7 @@
                                         <!-- First Name -->
                                         <div class="form-group">
                                             <label for="first_name" class="first-name-label">First Name:</label>
-                                            <input type="text" name="first_name" id="first_name" class="first-name-input form-control mt-2" value="{{ old('first_name', $user->first_name) }}">
+                                            <input type="text" name="first_name" id="first_name" class="first-name-input form-control mt-2" value="{{ old('first_name', $currentUser->first_name) }}">
                                         </div>
 
                                     </div>
@@ -105,7 +106,7 @@
                                         <!-- Last Name -->
                                         <div class="form-group">
                                             <label for="last_name" class="last-name-label">Last Name:</label>
-                                            <input type="text" name="last_name" id="last_name" class="last-name-input form-control mt-2" value="{{ old('last_name', $user->last_name) }}">
+                                            <input type="text" name="last_name" id="last_name" class="last-name-input form-control mt-2" value="{{ old('last_name', $currentUser->last_name) }}">
                                         </div>
 
                                     </div>
@@ -124,8 +125,6 @@
 
         </main>
 
-@include('inc.footer')
-
 @endsection
 
 @section('javascript')
@@ -134,6 +133,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    
 
 @endsection

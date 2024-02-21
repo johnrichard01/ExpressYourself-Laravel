@@ -297,6 +297,20 @@ input[type="radio"] {
 .error-print{
     color: red;
 }
+.edit-showbtn{
+    color: blue;
+}
+.edit-showbtn:hover{
+    color: blue;
+    background-color: #eaeaea;
+}
+.delete-showbtn{
+    color: red;
+}
+.delete-showbtn:hover{
+    color: red;
+    background-color: #eaeaea;
+}
 .flash-messages{
     position: absolute;
     top: 110px;
