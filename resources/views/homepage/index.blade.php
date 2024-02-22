@@ -84,22 +84,22 @@
             </div>
             <div class="d-flex flex-wrap">
                 <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="/category/?category=artwork" class="w-50 categ-btn btn btn-lg btn-artwork fw-bold">
+                    <a href="/category/artwork" class="w-50 categ-btn btn btn-lg btn-artwork fw-bold">
                         Artwork
                     </a>
                 </div>
                 <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="/category/?category=craft" class="w-50 categ-btn btn btn-lg btn-craft fw-bold">
+                    <a href="/category/craft" class="w-50 categ-btn btn btn-lg btn-craft fw-bold">
                         Craft
                     </a>
                 </div>
                 <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="/category/?category=literature" class="w-50 categ-btn btn btn-lg btn-literature fw-bold">
+                    <a href="/category/literature" class="w-50 categ-btn btn btn-lg btn-literature fw-bold">
                         literature
                     </a>
                 </div>
                 <div class="d-flex justify-content-center col-12 col-md-6 col-lg mb-3 mb-md-4 mb-lg-0">
-                    <a href="/category/?category=photography" class="w-50 categ-btn btn btn-lg btn-photography fw-bold">
+                    <a href="/category/photography" class="w-50 categ-btn btn btn-lg btn-photography fw-bold">
                         Photography
                     </a>
                 </div>

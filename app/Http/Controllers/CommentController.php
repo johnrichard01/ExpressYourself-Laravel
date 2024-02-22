@@ -55,7 +55,7 @@ class CommentController extends Controller
 
             $comment->replies()->save($reply);
 
-            $this->notificationService->createNotification(Auth::user(), $reply, 'reply', 'New reply on your comment.');
+            // $this->notificationService->createNotification(Auth::user(), $reply, 'reply', 'New reply on your comment.');
 
             return response()->json(['message' => 'Reply added successfully']);
         } catch (\Exception $e) {
@@ -77,7 +77,7 @@ class CommentController extends Controller
             $reply->parent_id = $parentReply->id;
             $reply->save();
 
-            $this->notificationService->createNotification($user, $reply, 'nested_reply', 'New nested reply on your comment.');
+            // $this->notificationService->createNotification($user, $reply, 'nested_reply', 'New nested reply on your comment.');
 
             return redirect()->back()->with('success', 'Nested Reply added successfully');
         } catch (\Exception $e) {

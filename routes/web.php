@@ -33,7 +33,13 @@ Route::post('/logout', [UsersController::class, 'logout'])->middleware('auth');
 // show dashboard
 Route::get('/dashboard', [AdminController::class, 'show_analytics'])->middleware(['auth', 'isAdmin']);
 // show categories
-Route::get('/category', [BlogsController::class, 'category']);
+Route::get('/category/artwork', [BlogsController::class, 'show_artwork']);
+// show categories
+Route::get('/category/craft', [BlogsController::class, 'show_craft']);
+// show categories
+Route::get('/category/literature', [BlogsController::class, 'show_literature']);
+// show categories
+Route::get('/category/photography', [BlogsController::class, 'show_photography']);
 // search function
 Route::get('/search', [BlogsController::class, 'search']);
 //show create blogs form

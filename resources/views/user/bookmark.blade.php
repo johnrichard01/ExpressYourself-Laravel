@@ -1,5 +1,5 @@
 @extends('master')
-
+@section('title', 'Bookmark');
 @section('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/universal.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/bookmark.css') }}">
@@ -45,7 +45,7 @@
                                                 </a>
                                             </td>
                                             <td class="description-cell">
-                                                {!! $bookmark->blog->description !!}
+                                                {{$bookmark->blog->about}}
                                             </td>
                                             <td>
                                                 @if(auth()->user()->bookmarks->contains('blog_id', $bookmark->blog->id))
@@ -90,5 +90,8 @@
     
 @include('inc.footer')
 @endsection
-
+@section('javascript')
+    <script src="{{asset('assets/js/universal.js')}}"></script>
+    <script src="{{asset('assets/js/bookmark.js')}}"></script>
+@endsection
 

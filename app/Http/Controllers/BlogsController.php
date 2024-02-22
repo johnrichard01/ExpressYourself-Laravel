@@ -45,8 +45,7 @@ class BlogsController extends Controller
         }
     }
     //showing category
-    public function category(){
-        $category = request('category');
+    public function show_artwork(){
         $user = Auth::user();
         if(Auth::check())
         {
@@ -62,9 +61,9 @@ class BlogsController extends Controller
                 }
                 else if(Auth::user()->role_as == '0')
                 {
-                    return view('categories.category',[
-                        'category'=>ucfirst($category),
-                        'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
+                    return view('categories.artwork',[
+
+                        'blogs'=>Blogs::where('category', 'artwork')->latest()->simplePaginate(6),
                         'user'=>$user
                     ]);
                 }
@@ -72,9 +71,111 @@ class BlogsController extends Controller
         }
         else
         {
-            return view('categories.category',[
-                'category'=>ucfirst($category),
-                'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
+            return view('categories.artwork',[
+                
+                'blogs'=>Blogs::where('category', 'artwork')->latest()->simplePaginate(6),
+                'user'=>$user
+            ]);
+        }
+    }
+    //showing category
+    public function show_craft(){
+        $user = Auth::user();
+        if(Auth::check())
+        {
+            if($user->email_verified_at == null)
+            {
+                return redirect('/email/verify');
+            }
+            else if($user->email_verified_at != null)
+            {
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('categories.craft',[
+
+                        'blogs'=>Blogs::where('category', 'craft')->latest()->simplePaginate(6),
+                        'user'=>$user
+                    ]);
+                }
+            } 
+        }
+        else
+        {
+            return view('categories.craft',[
+                
+                'blogs'=>Blogs::where('category', 'craft')->latest()->simplePaginate(6),
+                'user'=>$user
+            ]);
+        }
+    }
+    //showing category
+    public function show_literature(){
+        $user = Auth::user();
+        if(Auth::check())
+        {
+            if($user->email_verified_at == null)
+            {
+                return redirect('/email/verify');
+            }
+            else if($user->email_verified_at != null)
+            {
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('categories.literature',[
+
+                        'blogs'=>Blogs::where('category', 'literature')->latest()->simplePaginate(6),
+                        'user'=>$user
+                    ]);
+                }
+            } 
+        }
+        else
+        {
+            return view('categories.literature',[
+                
+                'blogs'=>Blogs::where('category', 'literature')->latest()->simplePaginate(6),
+                'user'=>$user
+            ]);
+        }
+    }
+    //showing category
+    public function show_photography(){
+        $user = Auth::user();
+        if(Auth::check())
+        {
+            if($user->email_verified_at == null)
+            {
+                return redirect('/email/verify');
+            }
+            else if($user->email_verified_at != null)
+            {
+                if(Auth::user()->role_as == '1')
+                {
+                    return redirect('/dashboard');
+                }
+                else if(Auth::user()->role_as == '0')
+                {
+                    return view('categories.photography',[
+
+                        'blogs'=>Blogs::where('category', 'photography')->latest()->simplePaginate(6),
+                        'user'=>$user
+                    ]);
+                }
+            } 
+        }
+        else
+        {
+            return view('categories.photography',[
+                
+                'blogs'=>Blogs::where('category', 'photography')->latest()->simplePaginate(6),
                 'user'=>$user
             ]);
         }
@@ -173,10 +274,10 @@ class BlogsController extends Controller
         $post=$request->validate([
             'title'=> 'required',
             'category'=> ['required', 'not_in:0'],
-            'description'=>'required',
+            'content'=>'required',
             'about'=>'required'
         ]);
-        $description= $request->description;
+        $description= $request->content;
         $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
         $dom = new \DomDocument();
         

@@ -61,6 +61,5 @@
 @endsection
 
 @section('javascript')
-    
-
+    <script src="{{asset('assets/js/universal.js')}}"></script>
 @endsection

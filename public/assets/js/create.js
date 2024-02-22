@@ -2,7 +2,7 @@ function countCharacters(){
     let title= document.getElementById('title');
     let counter = document.getElementById('charCount');
     counter.classList.add('counter-show');
-    counter.innerHTML= 50-title.value.length;
+    counter.innerHTML= 80-title.value.length;
 }
 document.getElementById('title').addEventListener('input', countCharacters);
 

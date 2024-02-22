@@ -20,7 +20,7 @@
                 @csrf
     
                     <div class="form-group col-12">
-                        <input type="text" name="title" id="title" placeholder="Title" maxlength="50" class="form-control in-box text-center" required>
+                        <input type="text" name="title" id="title" placeholder="Title" maxlength="80" class="form-control in-box text-center" required>
                         <div class="char-counter counter-hide" id="charCount"></div>
                     </div>
                     <div class="form__error--message text-center col-12 mt-3" id="titleError"></div>
@@ -63,7 +63,7 @@
                     @enderror
                     
                 <div class="col-12 mt-5">
-                    <textarea name="description" id="your_summernote" rows="5" required></textarea>
+                    <textarea name="content" id="your_summernote" rows="5" required></textarea>
                 </div>
                 <div class="form__error--message text-center col-12 mt-3" id="descError"></div>
                 @error('category')
