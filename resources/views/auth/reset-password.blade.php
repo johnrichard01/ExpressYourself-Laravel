@@ -1,7 +1,7 @@
 @extends('master')
 @section('title', 'Reset Password')
 @section('css')
-    
+<link rel="stylesheet" href="{{asset('/assets/css/change-password.css')}}">
 @endsection
 @section('content')
 <div class="container">
@@ -11,7 +11,7 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ route('password.update') }}" novalidate>
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
@@ -27,6 +27,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <div class="form__error--message text-center mt-3" id="emailerror"></div>
                             </div>
                         </div>
 
@@ -41,6 +42,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <div class="form__error--message text-center mt-3" id="newpasserror"></div>
                             </div>
                         </div>
 
@@ -49,12 +51,13 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="form__error--message text-center mt-3" id="cpasserror"></div>
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="forgotpassword">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
@@ -65,4 +68,8 @@
         </div>
     </div>
 </div>
+@endsection
+@section('javascript')
+
+    <script src="{{asset('assets/js/reset-password.js')}}"></script>
 @endsection

@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Create Blog')
+@section('title', 'My blogs')
 @section('css')
     <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/myblogs.css')}}">

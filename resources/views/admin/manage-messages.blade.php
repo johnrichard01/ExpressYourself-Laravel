@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Manage-Blogs')
+@section('title', 'Manage-Messages')
 @section('css')
     <link rel="stylesheet" href="{{asset('/assets/css/admin-nav.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/manage-user.css')}}">
