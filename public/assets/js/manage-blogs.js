@@ -9,9 +9,9 @@ $(document).ready(function(){
             },
             success:function(data){
                 $('#modalTitle').html(data.title);
-                $('#modalDesc').html(data.description);
+                $('#modalDesc').html(data.content);
                 let baseUrl= $('#modalUrl').data('base-url');
-                let thumbnailSrc = data.thumbnail ? baseUrl + 'storage/' + data.thumbnail : baseUrl + 'assets/images/nothumbnail.png';
+                let thumbnailSrc = data.thumbnail ? baseUrl + 'storage/app/public/' + data.thumbnail : baseUrl + 'assets/images/nothumbnail.png';
                 $('#modalThumb').attr('src', thumbnailSrc);
                 $.ajax({
                     url: '/dashboard/user/' + data.user_id,

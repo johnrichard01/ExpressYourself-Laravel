@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogsController extends Controller
 {
-    //showing homepage
+        //showing homepage
     public function index(){
         $latestBlog = Blogs::latest()->first();
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         if ($latestBlog) {
             $blogs = Blogs::where('id', '!=', $latestBlog->id)->latest()->simplePaginate(4);
         } else if (!$latestBlog) {
@@ -35,18 +36,19 @@ class BlogsController extends Controller
                 }
                 else if(Auth::user()->role_as == '0')
                 {
-                    return view('homepage.index', compact('blogs','latestBlog', 'user',));
+                    return view('user.home', compact('blogs','latestBlog', 'user','populars'));
                 }
             } 
         }
         else
         {
-            return view('homepage.index', compact('blogs','latestBlog', 'user',));
+            return view('homepage.index', compact('blogs','latestBlog', 'user','populars'));
         }
     }
     //showing category
     public function show_artwork(){
         $user = Auth::user();
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         if(Auth::check())
         {
             if($user->email_verified_at == null)
@@ -64,7 +66,8 @@ class BlogsController extends Controller
                     return view('categories.artwork',[
 
                         'blogs'=>Blogs::where('category', 'artwork')->latest()->simplePaginate(6),
-                        'user'=>$user
+                        'user'=>$user,
+                        'populars'=>$populars
                     ]);
                 }
             } 
@@ -74,13 +77,15 @@ class BlogsController extends Controller
             return view('categories.artwork',[
                 
                 'blogs'=>Blogs::where('category', 'artwork')->latest()->simplePaginate(6),
-                'user'=>$user
+                'user'=>$user,
+                'populars'=>$populars
             ]);
         }
     }
     //showing category
     public function show_craft(){
         $user = Auth::user();
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         if(Auth::check())
         {
             if($user->email_verified_at == null)
@@ -98,7 +103,8 @@ class BlogsController extends Controller
                     return view('categories.craft',[
 
                         'blogs'=>Blogs::where('category', 'craft')->latest()->simplePaginate(6),
-                        'user'=>$user
+                        'user'=>$user,
+                        'populars'=>$populars
                     ]);
                 }
             } 
@@ -108,13 +114,15 @@ class BlogsController extends Controller
             return view('categories.craft',[
                 
                 'blogs'=>Blogs::where('category', 'craft')->latest()->simplePaginate(6),
-                'user'=>$user
+                'user'=>$user,
+                'populars'=>$populars
             ]);
         }
     }
     //showing category
     public function show_literature(){
         $user = Auth::user();
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         if(Auth::check())
         {
             if($user->email_verified_at == null)
@@ -132,7 +140,8 @@ class BlogsController extends Controller
                     return view('categories.literature',[
 
                         'blogs'=>Blogs::where('category', 'literature')->latest()->simplePaginate(6),
-                        'user'=>$user
+                        'user'=>$user,
+                        'populars'=>$populars
                     ]);
                 }
             } 
@@ -142,13 +151,15 @@ class BlogsController extends Controller
             return view('categories.literature',[
                 
                 'blogs'=>Blogs::where('category', 'literature')->latest()->simplePaginate(6),
-                'user'=>$user
+                'user'=>$user,
+                'populars'=>$populars
             ]);
         }
     }
     //showing category
     public function show_photography(){
         $user = Auth::user();
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         if(Auth::check())
         {
             if($user->email_verified_at == null)
@@ -166,7 +177,8 @@ class BlogsController extends Controller
                     return view('categories.photography',[
 
                         'blogs'=>Blogs::where('category', 'photography')->latest()->simplePaginate(6),
-                        'user'=>$user
+                        'user'=>$user,
+                        'populars'=>$populars
                     ]);
                 }
             } 
@@ -176,7 +188,8 @@ class BlogsController extends Controller
             return view('categories.photography',[
                 
                 'blogs'=>Blogs::where('category', 'photography')->latest()->simplePaginate(6),
-                'user'=>$user
+                'user'=>$user,
+                'populars'=>$populars
             ]);
         }
     }
@@ -184,6 +197,7 @@ class BlogsController extends Controller
     public function search(){
         $search = request('search');
         $user = Auth::user();
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         if(Auth::check())
         {
             if($user->email_verified_at == null)
@@ -201,7 +215,8 @@ class BlogsController extends Controller
                     return view('categories.search',[
                         'search'=>ucfirst($search),
                         'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
-                        'user'=>$user
+                        'user'=>$user,
+                        'populars'=>$populars
                     ]);
                 }
             } 
@@ -211,7 +226,8 @@ class BlogsController extends Controller
             return view('categories.search',[
                 'search'=>ucfirst($search),
                 'blogs'=>Blogs::latest()->filter(request(['category','search']))->simplePaginate(6),
-                'user'=>$user
+                'user'=>$user,
+                'populars'=>$populars
             ]);
         }
     }
@@ -223,7 +239,7 @@ class BlogsController extends Controller
     {
         $author = $blog->user;
         $user = Auth::user();
-
+        $populars = Blogs::withCount('comments')->orderByDesc('comments_count')->limit(5)->get();
         // Load comments associated with the blog post, including the user relationship
         $comments = Comment::with('user')->where('blog_id', $blog->id)->latest()->get();
 
@@ -246,6 +262,7 @@ class BlogsController extends Controller
                         'user' => $user,
                         'author' => $author,
                         'comments' => $comments,
+                        'populars'=>$populars
                     ]);
                 }
             }
@@ -257,6 +274,7 @@ class BlogsController extends Controller
                 'user' => $user,
                 'author' => $author,
                 'comments' => $comments,
+                'populars'=>$populars
             ]);
         }
     }
@@ -352,10 +370,10 @@ class BlogsController extends Controller
         $post=$request->validate([
             'title'=> 'required',
             'category'=> ['required', 'not_in:0'],
-            'description'=>'required',
+            'content'=>'required',
             'about'=>'required'
         ]);
-        $description= $post['description'];
+        $description= $post['content'];
         $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
         $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
@@ -388,7 +406,7 @@ class BlogsController extends Controller
         }
         $post['user_id']= auth()->id();
         $description = $dom->saveHTML();
-        $post['description'] = $description;
+        $post['content'] = $description;
         $blogs->update($post);
         return redirect('/myblogs')->with('success', 'Changes saved');
     }

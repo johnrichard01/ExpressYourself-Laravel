@@ -8,7 +8,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 @endsection
 @section('content')
-@include('inc.navbar')
+@if (auth()->check())
+            @include('inc.userNav')
+        @else
+            @include('inc.navbar')
+    @endif
 @if (session('success'))
     <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
         {{ session('success') }}
@@ -47,7 +51,7 @@
                     </div>
                     <div class="report-group">
                         <label for="privacy">
-                            <p class="h6 report-text">Privacy</p>
+                            <p class="h5 report-text">Privacy</p>
                             <p class="lead fs-6 pe-5 report-text">Sharing private information, threatening to share/expose private information, sharing non-consensual intimate images, sharing images of me that I don’t want on the platform</p>
                         </label>
                         <input type="radio" id="privacy" name="report_reason" value="Privacy"><br>
@@ -177,7 +181,7 @@
             <div class="col-12 col-lg-9 px-5">
                 <div class="content">
                     <div class="show-image d-flex justify-content-center">
-                        <img src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
+                        <img src="{{$blog->thumbnail ? asset('storage/app/public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" class="show-image" alt="">
                     </div> 
                 </div>
 
@@ -224,7 +228,7 @@
                                                     <!-- Display the comment text, AVATAR, USERNAME -->
 
                                                     <div class="comment-body">
-                                                        <img src="{{$comment->user->avatar ? asset('storage/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
+                                                        <img src="{{$comment->user->avatar ? asset('storage/app/public/' . $comment->user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture"
                                                             class="profile__myAvatar img-fluid rounded-circle">
                                                         <span class="username"><b>{{ $comment->user->username }}</b></span>
                                                         {{ $comment->comment_text }}
@@ -265,7 +269,7 @@
                                                                     <li class="reply">
                                                                         <!-- Display the reply text -->
                                                                         <div class="comment-body">
-                                                                            <img src="{{ optional($reply->user)->avatar ? asset('storage/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
+                                                                            <img src="{{ optional($reply->user)->avatar ? asset('storage/app/public/' . $reply->user->avatar) : asset('assets/images/noprofile.png') }}"
                                                                                 alt="Profile Picture" class="profile--avatar img-fluid rounded-circle">
                                                                             <span class="username"><b>{{ optional($reply->user)->username }}</b></span>
                                                                             {{ $reply->reply_text }}
@@ -337,22 +341,22 @@
                         <div class="container">
                             <div class="d-flex flex-wrap">
                                 <div class="d-flex justify-content-center col-12 mb-3">
-                                    <a href="/category/?category=artwork" class="w-100 categ-btn btn btn-lg btn-artwork fw-bold">
+                                    <a href="/category/artwork" class="w-100 categ-btn btn btn-lg btn-artwork fw-bold">
                                         Artwork
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3">
-                                    <a href="/category/?category=craft" class="w-100 categ-btn btn btn-lg btn-craft fw-bold">
+                                    <a href="/category/craft" class="w-100 categ-btn btn btn-lg btn-craft fw-bold">
                                         Craft
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3">
-                                    <a href="/category/?category=literature" class="w-100 categ-btn btn btn-lg btn-literature fw-bold">
+                                    <a href="/category/literature" class="w-100 categ-btn btn btn-lg btn-literature fw-bold">
                                         literature
                                     </a>
                                 </div>
                                 <div class="d-flex justify-content-center col-12 mb-3 ">
-                                    <a href="/category/?category=photography" class="w-100 categ-btn btn btn-lg btn-photography fw-bold">
+                                    <a href="/category/photography" class="w-100 categ-btn btn btn-lg btn-photography fw-bold">
                                         Photography
                                     </a>
                                 </div>
@@ -365,126 +369,13 @@
                         <h2 class="section-title fw-bold  text-lg-start text-center">Most Popular</h2>
                     </div>
                 <div class="d-flex flex-wrap justify-content-center gap-lg-2 gap-4 px-3">
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container d-flex">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
+                    @if (count($populars)== 0)
+                        <p>No blogs found</p>
+                    @else
+                        @foreach ($populars as $popular)
+                            <x-popular :popular='$popular'/>
+                        @endforeach
+                    @endif
                 </div>
                 </div>
                 <!-- next topic -->

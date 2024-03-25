@@ -136,7 +136,7 @@
                 <div class="content">
                     <div class="show-image d-flex justify-content-center">
                         <div id="modalUrl" data-base-url="{{ asset('') }}"></div>
-                        <img id="modalThumb" class="blog-image-show" alt="">
+                        <img id="modalThumb" class="blog-image-show mt-4" alt="">
                     </div> 
                 </div>
                 <div class="desc-container mt-5">

@@ -9,7 +9,7 @@
     <!-- //Summernote CSS - CDN Link -->
 @endsection
 @section('content')
-@include('inc.navbar')
+@include('inc.userNav')
 @if (session('success'))
 <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
     {{ session('success') }}
@@ -66,7 +66,7 @@
                     @enderror
                     
                 <div class="col-12 mt-5">
-                    <textarea name="description" id="your_summernote" rows="5" required>{!!htmlspecialchars_decode($blogs->description)!!}</textarea>
+                    <textarea name="content" id="your_summernote" rows="5" required>{!!htmlspecialchars_decode($blogs->content)!!}</textarea>
                 </div>
                 <div class="form__error--message text-center col-12 mt-3" id="descError"></div>
                 @error('category')

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/edit-profile.css')}}">
 @endsection
 @section('content')
-@include('inc.navbar')
+@include('inc.userNav')
 @if (session('success'))
     <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
         {{ session('success') }}
@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <div class="current-avatar">
                                     @if($user->avatar)
-                                        <img id="cropperImage" src="{{ asset('storage/' . $user->avatar) }}" alt="Current Avatar" class="avatar-img img-thumbnail">
+                                        <img id="cropperImage" src="{{ asset('storage/app/public/' . $user->avatar) }}" alt="Current Avatar" class="avatar-img img-thumbnail">
                                     @else
                                         <img id="cropperImage" src="{{ asset('assets/images/noprofile.png') }}" alt="No Avatar" class="avatar-img img-thumbnail">
                                     @endif

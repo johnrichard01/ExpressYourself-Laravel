@@ -98,3 +98,20 @@ document.getElementById('message').addEventListener('input', function(){
     document.getElementById('message-error').innerHTML="";
 });
 document.getElementById('contactSubmit').addEventListener('click', validateContact)
+
+//for google maps
+function initialize() {
+    var mapOptions = {
+        center: {lat: 7.185812507109881, lng: 125.54736945684292}, // Coordinates for New York City
+        zoom: 10 // Zoom level
+    };
+    var map = new google.maps.Map(document.getElementById('address-map'), mapOptions);
+    const marker = new google.maps.Marker({
+        map: map,
+        position: {lat: 7.185812507109881, lng: 125.54736945684292},
+    });
+    marker.setVisible();
+}
+
+
+

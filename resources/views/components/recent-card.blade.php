@@ -1,7 +1,7 @@
 @props(['blog'])
 <div class="d-flex flex-wrap mb-4">
     <div class="recent-image-container col-6 col-lg-4">
-        <img class="img-fluid image-recent" src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
+        <img class="img-fluid image-recent" src="{{$blog->thumbnail ? asset('storage/app/public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
     </div>
     <div class="recent-container col-6 d-flex justify-content-center justify-content-lg-start">
         <div class="mx-0 mx-lg-3">

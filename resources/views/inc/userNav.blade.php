@@ -21,12 +21,13 @@
                     <form action="/search" class="col-12 col-xl-4 mb-5 mb-lg-0  d-flex align-items-center order-xl-0" role="search">
                         <input class="form-control search-bar" name="search" type="search" placeholder="Search" aria-label="Search">
                       </form>
-                    @auth
+
+
                         <div class="col-12 col-xl-4 order-xl-1">
                             <div class="d-flex flex-wrap justify-content-center align-items-center pe-0 pe-lg-1">
                                 <div class="col-12 col-xl-3 dropdown-center d-flex flex-wrap justify-content-center  justify-content-xl-end align-items-center order-xl-1">
                                     <a type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="{{$user->avatar ? asset('storage/app/public/' . $user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                                         <img src="{{$user->avatar ? asset('storage/app/public/' . $user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -38,7 +39,7 @@
                                             <a class="nav-link" href="/change-password">
                                                 Change Password
                                             </a>
-                                        </li>                
+                                        </li>
                                         <li>
                                             <form action="/logout" method="POST">
                                             @csrf
@@ -66,34 +67,46 @@
                                             </svg>
                                         </a>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
 
-                    @else
-                        <div class="col-12 col-lg-2 mb-3 mt-4 mt-lg-0 mb-lg-0 pe-0 pe-lg-1 order-xl-1">
-                            <a href="/signup"  class="btn btn-signup fw-bold w-100 rounded-5">Sign up</a>
-                        </div>
-                        <div class="col-12 col-lg-2 mb-5 mb-xl-0 order-xl-1">
-                            <a href="/login" class="btn btn-login fw-bold rounded-5 w-100">Login</a>
-                        </div>
-                    @endauth
                     <div class="col-12 col-xl-4 d-flex align-items-center order-xl-0">
                         <ul class="navbar-nav justify-content-center flex-grow-1 gap-4"> 
-                                <li class="nav-item nav-hover {{ request()->is('/') ? 'home-active' : '' }}">
-                                    <a href="/" class="nav-link fw-bold  text-center" aria-current="page">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-hover {{ request()->is('aboutus') ? 'home-active' : '' }}">
-                                    <a href="/aboutus" class="nav-link fw-bold text-center"> 
-                                        About
-                                    </a>
-                                </li>
-                                <li class="nav-item nav-hover {{ request()->is('contact') ? 'home-active' : '' }}">
-                                    <a href="/contact" class="nav-link  fw-bold text-center">
-                                        Contact   
+                            <div class="col-12 col-xl-3 dropdown-center d-flex flex-wrap justify-content-center  justify-content-xl-end align-items-center ">
+                                <a type="button" class="dropdown-toggle nav-link nav-hover fw-bolder" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categories
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/category/artwork" class="w-100 nav-link nav-hover fw-bold">
+                                            Artwork
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/category/craft" class="w-100 nav-link nav-hover fw-bold">
+                                            Craft
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/category/literature" class="w-100 nav-link nav-hover fw-bold">
+                                            literature
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/category/photography" class="w-100 nav-link nav-hover fw-bold">
+                                            Photography
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
+                                <li class="nav-item nav-hover">
+                                    <a type="button" class="nav-link fw-bolder nav-hover text-center" href="/myblogs" aria-expanded="false">
+                                                My Blogs
                                     </a>
                                 </li>
 
@@ -105,4 +118,3 @@
         </div>
     </div>
 </nav>
-

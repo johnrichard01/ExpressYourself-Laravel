@@ -67,7 +67,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 });
-
+//userdash
+Route::get('/user/home', [UserHomeController::class, 'index'])->name('user.home');
 //for email verification
 Route::get('/email/verify', [VerifyController::class, 'send'])->middleware('auth')->name('verification.notice');
 //for verifying the email

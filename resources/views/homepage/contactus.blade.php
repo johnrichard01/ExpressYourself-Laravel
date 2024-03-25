@@ -1,12 +1,16 @@
 @extends('master')
-@section('title', 'COntact us')
+@section('title', 'Contact us')
 @section('css')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/contact.css')}}">
 @endsection
 @section('content')
-@include('inc.navbar')
+@if (auth()->check())
+            @include('inc.userNav')
+        @else
+            @include('inc.navbar')
+    @endif
 @if (session('success'))
 <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
     {{ session('success') }}
@@ -64,6 +68,11 @@
             </div>
 
 
+        </div>
+    </div>
+    {{-- locaion --}}
+    <div id="address-map-container" style="width: 100%; height:400px; ">
+        <div style="width: 100%; height: 100%;" id="address-map">
         </div>
     </div>
 
@@ -142,6 +151,8 @@
 @include('inc.footer')
 @endsection
 @section('javascript')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMj48TNoV_Tgm7W-WCWemui197W5wtCyI&libraries=places&callback=initialize" async defer></script>
     <script src="{{asset('assets/js/universal.js')}}"></script>
     <script src="{{asset('assets/js/contact.js')}}"></script>
 @endsection

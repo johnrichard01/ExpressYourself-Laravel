@@ -47,16 +47,16 @@
                 <div class="container text-center text-lg-start d-flex flex-wrap justify-content-center">
                     <ul class="navbar-nav gap-3">
                         <li class="nav-item">
-                            <a href="/category/?category=artwork" class="nav-link footer-text fw-bold" >Artwork</a>
+                            <a href="/category/artwork" class="nav-link footer-text fw-bold" >Artwork</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/category/?category=literature" class="nav-link footer-text fw-bold" >Literature</a>
+                            <a href="/category/literature" class="nav-link footer-text fw-bold" >Literature</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/category/?category=craft" class="nav-link footer-text fw-bold" >Crafts</a>
+                            <a href="/category/craft" class="nav-link footer-text fw-bold" >Crafts</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/category/?category=photography" class="nav-link footer-text fw-bold" >Photography</a>
+                            <a href="/category/photography" class="nav-link footer-text fw-bold" >Photography</a>
                         </li> 
                     </ul>
                 </div>

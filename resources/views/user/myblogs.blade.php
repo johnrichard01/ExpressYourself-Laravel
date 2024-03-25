@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/myblogs.css')}}">
 @endsection
 @section('content')
-@include('inc.navbar')
+@include('inc.userNav')
 @if (session('success'))
     <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
         {{ session('success') }}
@@ -47,7 +47,7 @@
                         <tr class="table-row d-flex flex-wrap justify-content-between align-items-center py-3">
                             <td class="col-2">
                                 <div class="w-100 d-flex flex-wrap justify-content-center">
-                                    <img class="manage-thumbnail" src="{{$blog->thumbnail ? asset('storage/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
+                                    <img class="manage-thumbnail" src="{{$blog->thumbnail ? asset('storage/app/public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" alt="">
                                 </div>
                             </td>
                             <td class="col-6">

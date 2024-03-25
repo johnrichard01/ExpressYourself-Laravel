@@ -75,6 +75,16 @@
 .popular-title{
     color: #112d4e;
 }
+.popular-content{
+    background-color: #eaeaea;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+.popular-title:hover{
+    color: #0f2844;
+    scale: 1.01;
+}
 .recent-image-container{
     display: flex;
     flex-wrap: wrap;

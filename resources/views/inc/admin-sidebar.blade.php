@@ -9,12 +9,17 @@
                 <div class="mb-5 profile-container-side">
                     <div class="dropdown-side d-flex flex-wrap justify-content-center justify-content-lg-end              align-items-center">
                         <a href="#" type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{$currentUser->avatar ? asset('storage/' . $currentUser->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                            <img src="{{$currentUser->avatar ? asset('storage/app/public/' . $currentUser->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
                         </a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="nav-link text-center" href="/dashboard/profile">
                                         Edit Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/dashboard/change-password">
+                                        Change passowrd
                                     </a>
                                 </li>
                                 <li>

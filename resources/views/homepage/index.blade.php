@@ -24,7 +24,7 @@
                     <p>No blogs found</p>
                 @else
                     <div class="image-container col-12 col-lg d-flex justify-content-center">
-                        <img class="img-fluid hero-image" src="{{ $latestBlog->thumbnail ? asset('storage/' . $latestBlog->thumbnail) : asset('assets/images/nothumbnail.png') }}" alt="">
+                        <img class="img-fluid hero-image" src="{{ $latestBlog->thumbnail ? asset('storage/app/public/' . $latestBlog->thumbnail) : asset('assets/images/nothumbnail.png') }}" alt="">
                     </div>
                     <div class="container col-12 col-lg d-flex flex-wrap align-content-center justify-content-lg-start justify-content-center mx-0 mx-lg-5">
                         <div class="blog-title col-12">
@@ -132,106 +132,13 @@
                         <h2 class="section-title fw-bold  text-lg-start text-center">Most Popular</h2>
                     </div>
                 <div class="d-flex flex-wrap justify-content-center gap-lg-2 gap-4">
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
-                    <div class="popular-content mb-4">
-                        <div class="popular-categ mb-2 d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <div class="popular-box col-3 d-flex align-items-center justify-content-center">
-                                Artwork
-                            </div>
-                        </div>
-                        <div class="popular-title d-flex justify-content-center justify-content-lg-start">
-                            <a href="#" class="text-decoration-none">
-                                <h6 class="popular-title text-lg-start text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
-                            </a>
-                        </div>
-                        <div class="author-container  d-flex align-items-center justify-content-center justify-content-lg-start  ">
-                            <div class="name-container lead fw-bold">
-                                John Doe
-                            </div>
-                            <div class="author-time lead">
-                                -2024-01-13
-                            </div>
-                        </div>
-                    </div>
+                        @if (count($populars)== 0)
+                        <p>No blogs found</p>
+                        @else
+                            @foreach ($populars as $popular)
+                                <x-popular :popular='$popular'/>
+                            @endforeach
+                        @endif
                 </div>
                 </div>
                 <!-- next topic -->

@@ -22,7 +22,7 @@ class BookmarkController extends Controller
     {
         auth()->user()->bookmarks()->where('blog_id', $blog->id)->delete();
    
-        // Assuming you want to show bookmarks after unbookmarking
+        //show bookmarks after unbookmarking
         return $this->showBookmarks();
     }
     

@@ -1,12 +1,12 @@
 @extends('master')
-@section('title', 'Bookmark');
+@section('title', 'Bookmark')
 @section('css')
     <link rel="stylesheet" href="{{ asset('/assets/css/universal.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/bookmark.css') }}">
 @endsection
 
 @section('content')
-    @include('inc.navbar')
+    @include('inc.userNav')
     <main>
 
         <div class="container-fluid title-container py-5">
@@ -33,7 +33,7 @@
                                     @foreach ($blogs->take(5) as $bookmark) {{-- Display only 5 items --}}
                                         <tr class="blog-item">
                                             <td>
-                                                <img src="{{ $bookmark->blog->user->avatar ? asset('storage/' . $bookmark->blog->user->avatar) : asset('assets/images/noprofile.png') }}" alt="Author Avatar" class="user-avatar img-fluid">
+                                                <img src="{{ $bookmark->blog->user->avatar ? asset('storage/app/public/' . $bookmark->blog->user->avatar) : asset('assets/images/noprofile.png') }}" alt="Author Avatar" class="user-avatar img-fluid">
                                                 {{ $bookmark->blog->user->username }}
                                             </td>
                                             <td>
@@ -41,7 +41,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('blogs.show', $bookmark->blog->id) }}">
-                                                    <img src="{{ $bookmark->blog->thumbnail ? asset('storage/' . $bookmark->blog->thumbnail) : asset('assets/images/noprofile.png') }}" alt="Blog Thumbnail" class="blog-thumbnail img-fluid blog--image">
+                                                    <img src="{{ $bookmark->blog->thumbnail ? asset('storage/app/public/' . $bookmark->blog->thumbnail) : asset('assets/images/noprofile.png') }}" alt="Blog Thumbnail" class="blog-thumbnail img-fluid blog--image">
                                                 </a>
                                             </td>
                                             <td class="description-cell">
@@ -92,6 +92,6 @@
 @endsection
 @section('javascript')
     <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/bookmark.js')}}"></script>
+
 @endsection
 

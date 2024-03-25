@@ -9,8 +9,7 @@
     <!-- //Summernote CSS - CDN Link -->
 @endsection
 @section('content')
-@include('inc.navbar')
-
+@include('inc.userNav')
     <div class="container-fluid title-container py-5">
         <h1 class="fw-bold text-center create-title">Create New Blog</h1>
     </div>

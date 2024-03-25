@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/change-password.css')}}">
 @endsection
 @section('content')
-@include('inc.navbar')
+@include('inc.userNav')
 @if (session('success'))
     <div x-data="{show: true}" x-init="setTimeout(()=> show = false, 3000)" x-show="show" class="alert alert-success flash-messages">
         {{ session('success') }}

@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-    @include('inc.navbar')
+@include('inc.userNav')
 
     <main>
         <div class="container mt-5">
             <div class="profile-header">
-                <img src="{{ asset('storage/' . $user->avatar) }}" alt="User Avatar" class="avatar-img">
+                <img src="{{ asset('storage/app/public/' . $user->avatar) }}" alt="User Avatar" class="avatar-img">
                 <h1>{{ $user->username }}</h1>
             </div>
 

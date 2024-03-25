@@ -5,7 +5,11 @@
     <link rel="stylesheet" href="{{asset('/assets/css/aboutus.css')}}">
 @endsection
 @section('content')
-@include('inc.navbar')
+@if (auth()->check())
+            @include('inc.userNav')
+        @else
+            @include('inc.navbar')
+    @endif
 <main class="container">
 
 
