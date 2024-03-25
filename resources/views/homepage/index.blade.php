@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Home')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/assets/css/universal.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/assets/css/index.css')}}">
 @endsection
 @section('content')
 @include('inc.navbar')
