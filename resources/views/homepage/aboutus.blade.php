@@ -23,7 +23,7 @@
 
                 <div class="welcome--img px-4 my-md-5 xs-my-5 my-sm-5">
 
-                    <img src="{{asset('assets/images/AboutUs/wp7110622.jpg')}}" class="writer--img img-fluid" alt="welcomeimg">
+                    <img src="https://expressyourself-laravel-production.up.railway.app/assets/images/AboutUs/wp7110622.jpg" class="writer--img img-fluid" alt="welcomeimg">
 
                 </div>
 
@@ -55,7 +55,7 @@
             <div class="col col-lg-6 col-md-6 col-sm-12 col mb-4 xs-px-5">
                 <div class="card mx-lg-5 my-md-4 mx-sm-4 xs-mx-5 mt-5" style="height: 100%;">
                    
-                        <img src="{{asset('assets/images/AboutUs/abstract-7.jpg')}}" alt="abstract-7" class="img-fluid">
+                        <img src="https://expressyourself-laravel-production.up.railway.app/assets/images/AboutUs/abstract-7.jpg" alt="abstract-7" class="img-fluid">
 
                         <h4 class="card-title mt-3">Freedom of Expression</h4>
                         <p class="card-text">We value diversity and individuality. <b>InkTheUnsaid</b> is a space where you can be unapologetically yourself, sharing your thoughts, experiences, and creativity without constraints.</p>
@@ -67,7 +67,7 @@
             <div class="col col-lg-6 col-md-6 col-sm-12 col mb-4 xs-px-5">
                 <div class="card mx-lg-5 my-md-4 mx-sm-3 xs-mx-5 mt-5" style="height: 100%;">
 
-                        <img src="{{asset('assets/images/AboutUs/couple-browsing-digital-device-concept.jpg')}}" alt="app" class="img-fluid">
+                        <img src="https://expressyourself-laravel-production.up.railway.app/assets/images/AboutUs/couple-browsing-digital-device-concept.jpg" alt="app" class="img-fluid">
 
                         <h4 class="card-title mt-3">User-Centric Design</h4>
                         <p class="card-text">Our app is crafted with you in mind. An intuitive interface, personalized features, and a seamless user experience make expressing yourself a joy.</p>
@@ -100,7 +100,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column justify-content-center align-items-center my-4 text-center">
                 <div class="px-4 my-md-5">
                     
-                    <img src="{{asset('assets/images/AboutUs/The Team.jpg')}}" class="img-fluid" alt="welcomeimg">
+                    <img src="https://expressyourself-laravel-production.up.railway.app/assets/images/AboutUs/The Team.jpg" class="img-fluid" alt="welcomeimg">
                     
                 </div>
             </div>
@@ -120,7 +120,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column justify-content-center align-items-center my-4 text-center">
                 <div class="px-4 my-md-5 xs-my-5 my-sm-5">
 
-                    <img src="{{asset('assets/images/AboutUs/brian-chesky-1.png')}}" class="img-fluid" alt="welcomeimg">
+                    <img src="https://expressyourself-laravel-production.up.railway.app/assets/images/AboutUs/brian-chesky-1.png" class="img-fluid" alt="welcomeimg">
                     
                 </div>
             </div>
@@ -172,6 +172,6 @@
 @include('inc.footer')
 @endsection
 @section('javascript')
-    <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/aboutUsAnimate.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/aboutUsAnimate.js"></script>
 @endsection

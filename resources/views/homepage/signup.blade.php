@@ -80,6 +80,6 @@
     </div>
 </main>
 @section('javascript')
-    <script src="{{asset('assets/js/signup.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/signup.js"></script>
 @endsection
 @endsection

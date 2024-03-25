@@ -153,6 +153,6 @@
 @section('javascript')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMj48TNoV_Tgm7W-WCWemui197W5wtCyI&libraries=places&callback=initialize" async defer></script>
-    <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/contact.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/contact.js"></script>
 @endsection

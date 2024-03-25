@@ -9,7 +9,7 @@
                 <div class="mb-5 profile-container-side">
                     <div class="dropdown-side d-flex flex-wrap justify-content-center justify-content-lg-end              align-items-center">
                         <a href="#" type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{$currentUser->avatar ? asset('storage/app/public/' . $currentUser->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                            <img src="{{$currentUser->avatar ? ('https://expressyourself-laravel-production.up.railway.app/storage/app/public/' . $currentUser->avatar) : ('https://expressyourself-laravel-production.up.railway.app/assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
                         </a>
                             <ul class="dropdown-menu">
                                 <li>

@@ -64,6 +64,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/change-password.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/change-password.js"></script>
 @endsection

@@ -121,6 +121,6 @@
 @endsection
 @section('javascript')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="{{asset('assets/js/admin-nav.js')}}"></script>
-<script src="{{asset('assets/js/manage-reportblog.js')}}"></script>
+<script src="https://expressyourself-laravel-production.up.railway.app/assets/js/admin-nav.js"></script>
+<script src="https://expressyourself-laravel-production.up.railway.app/assets/js/manage-reportblog.js"></script>
 @endsection

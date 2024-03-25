@@ -94,6 +94,6 @@
 @endsection
 @section('javascript')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/myblogs.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/myblogs.js"></script>
 @endsection

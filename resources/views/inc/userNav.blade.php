@@ -27,7 +27,7 @@
                             <div class="d-flex flex-wrap justify-content-center align-items-center pe-0 pe-lg-1">
                                 <div class="col-12 col-xl-3 dropdown-center d-flex flex-wrap justify-content-center  justify-content-xl-end align-items-center order-xl-1">
                                     <a type="button" class="dropdown-toggle dropdown-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                                         <img src="{{$user->avatar ? asset('storage/app/public/' . $user->avatar) : asset('assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
+                                         <img src="{{$user->avatar ? ('https://expressyourself-laravel-production.up.railway.app/storage/app/public/' . $user->avatar) : ('https://expressyourself-laravel-production.up.railway.app/assets/images/noprofile.png')}}" alt="Profile Picture" class="profile-icon img-fluid rounded-circle">
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>

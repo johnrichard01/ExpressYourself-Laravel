@@ -135,6 +135,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-    <script src="{{asset('assets/js/universal.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
 
 @endsection

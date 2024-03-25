@@ -92,7 +92,7 @@
         });
     </script>
     <!-- //Summernote JS - CDN Link -->
-    <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/create.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/create.js"></script>
 
 @endsection

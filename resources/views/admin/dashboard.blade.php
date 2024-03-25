@@ -68,5 +68,5 @@
     </x-admin-container>
 @endsection
 @section('javascript')
-<script src="{{asset('assets/js/admin-nav.js')}}"></script>
+<script src="https://expressyourself-laravel-production.up.railway.app/assets/js/admin-nav.js"></script>
 @endsection

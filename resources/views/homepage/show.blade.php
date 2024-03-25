@@ -387,10 +387,10 @@
 @endsection
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="{{asset('assets/js/universal.js')}}"></script>
-    <script src="{{asset('assets/js/comments.js')}}"></script>
-    <script src="{{asset('assets/js/comments.js')}}"></script>
-    <script src="{{asset('assets/js/show.js')}}"></script>
-    <script src="{{asset('assets/js/replies.js')}}"></script>
-    <script src="{{asset('assets/js/like.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/universal.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/comments.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/comments.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/show.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/replies.js"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/like.js"></script>
 @endsection

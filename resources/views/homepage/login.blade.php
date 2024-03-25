@@ -65,6 +65,6 @@
 </main>
 
 @section('javascript')
-    <script src="{{asset('assets/js/login.js')}}"></script>
+    <script src="https://expressyourself-laravel-production.up.railway.app/assets/js/login.js"></script>
 @endsection
 @endsection
