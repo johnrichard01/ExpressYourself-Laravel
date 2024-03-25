@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Profile Settings')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/admin-nav.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/edit-profile.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/admin-nav.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/edit-profile.css">
 @endsection
 @section('content')
 @include('inc.admin-navbar')

@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
     <script src="//unpkg.com/alpinejs" defer></script>
-    <link rel="icon" type="image/x-icon" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="icon" type="image/x-icon" href="https://expressyourself-laravel-production.up.railway.app/assets/images/favicon.png">
     @yield('css')
 </head>
 <body>

@@ -1,7 +1,7 @@
 @extends('master')
 @section('title', 'Reset Password')
 @section('css')
-<link rel="stylesheet" href="{{asset('/assets/css/change-password.css')}}">
+<link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/change-password.css">
 @endsection
 @section('content')
 <div class="container">

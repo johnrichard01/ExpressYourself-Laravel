@@ -1,9 +1,9 @@
 @extends('master')
 @section('title', 'Change password')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/admin-nav.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/manage-user.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/Change password.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/admin-nav.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/manage-user.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/Change password.css">
 @endsection
 @section('content')
 @include('inc.admin-sidebar')

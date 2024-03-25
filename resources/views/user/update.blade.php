@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Edit blog')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/create.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/create.css">
      <!-- Summernote CSS - CDN Link -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">

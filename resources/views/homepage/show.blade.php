@@ -3,8 +3,8 @@
 
 @section('tite', $blog->title)
 @section('css')
-<link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-<link rel="stylesheet" href="{{asset('/assets/css/view.css')}}">
+<link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+<link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/view.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 @endsection
 @section('content')

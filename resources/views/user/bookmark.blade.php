@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Bookmark')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('/assets/css/universal.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/bookmark.css') }}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/bookmark.css">
 @endsection
 
 @section('content')

@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Craft')
 @section('css')
-<link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-<link rel="stylesheet" href="{{asset('/assets/css/category.css')}}">
+<link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+<link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/category.css">
 @endsection
 @section('content')
 @if (auth()->check())

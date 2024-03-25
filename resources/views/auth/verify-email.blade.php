@@ -1,7 +1,7 @@
 @extends('master')
 @section('title', 'Email Verification')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
 @endsection
 @section('content')
 {{-- navbar --}}

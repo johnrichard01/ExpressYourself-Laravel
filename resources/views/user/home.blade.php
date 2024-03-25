@@ -1,9 +1,9 @@
 @extends('master')
 @section('title', 'Home')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/index.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/userHome.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/index.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/userHome.css">
 @endsection
 
 @section('content')

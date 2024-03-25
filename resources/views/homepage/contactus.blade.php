@@ -2,8 +2,8 @@
 @section('title', 'Contact us')
 @section('css')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/contact.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/contact.css">
 @endsection
 @section('content')
 @if (auth()->check())

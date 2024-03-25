@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Dashboard')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/admin-nav.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/analytics.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/admin-nav.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/analytics.css">
 @endsection
 @section('content')
 @include('inc.admin-sidebar')

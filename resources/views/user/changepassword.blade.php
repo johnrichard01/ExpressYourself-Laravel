@@ -1,8 +1,8 @@
 @extends('master')
 @section('title', 'Change password')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/assets/css/universal.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/change-password.css')}}">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/universal.css">
+    <link rel="stylesheet" href="https://expressyourself-laravel-production.up.railway.app/assets/css/change-password.css">
 @endsection
 @section('content')
 @include('inc.userNav')
