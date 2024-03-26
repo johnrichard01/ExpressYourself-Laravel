@@ -292,10 +292,10 @@ class BlogsController extends Controller
         $post=$request->validate([
             'title'=> 'required',
             'category'=> ['required', 'not_in:0'],
-            'content'=>'required',
+            'description'=>'required',
             'about'=>'required'
         ]);
-        $description= $request->content;
+        $description= $request->description;
         $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
         $dom = new \DomDocument();
         
@@ -318,7 +318,7 @@ class BlogsController extends Controller
  
             $path = public_path() . $image_name;
  
-            file_put_contents($path, $imgeData);
+            file_put_descriptions($path, $imgeData);
             
             $image->removeAttribute('src');
  
@@ -370,10 +370,10 @@ class BlogsController extends Controller
         $post=$request->validate([
             'title'=> 'required',
             'category'=> ['required', 'not_in:0'],
-            'content'=>'required',
+            'description'=>'required',
             'about'=>'required'
         ]);
-        $description= $post['content'];
+        $description= $post['description'];
         $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
         $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
@@ -395,7 +395,7 @@ class BlogsController extends Controller
  
             $path = public_path() . $image_name;
  
-            file_put_contents($path, $imgeData);
+            file_put_descriptions($path, $imgeData);
             
             $image->removeAttribute('src');
  
@@ -406,7 +406,7 @@ class BlogsController extends Controller
         }
         $post['user_id']= auth()->id();
         $description = $dom->saveHTML();
-        $post['content'] = $description;
+        $post['description'] = $description;
         $blogs->update($post);
         return redirect('/myblogs')->with('success', 'Changes saved');
     }
