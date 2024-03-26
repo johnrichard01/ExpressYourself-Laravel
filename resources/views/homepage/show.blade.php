@@ -181,7 +181,7 @@
             <div class="col-12 col-lg-9 px-5">
                 <div class="content">
                     <div class="show-image d-flex justify-content-center">
-                        <img src="{{$blog->thumbnail ? ('https://expressyourself-laravel-production.up.railway.app/public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" class="show-image" alt="">
+                        <img src="{{$blog->thumbnail ? ('https://expressyourself-laravel-production.up.railway.app/storage/app/public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" class="show-image" alt="">
                     </div> 
                 </div>
 
