@@ -395,7 +395,7 @@ class BlogsController extends Controller
  
             $path = public_path() . $image_name;
  
-            file_put_descriptions($path, $imgeData);
+            file_put_contents($path, $imgeData);
             
             $image->removeAttribute('src');
  
