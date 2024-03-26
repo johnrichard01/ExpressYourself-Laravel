@@ -187,7 +187,7 @@
 
                 <div class="desc-container mt-5">
                     <div class="description">
-                        {!!$blog->content!!}
+                        {!!$blog->description!!}
 
                             <div>
                                 @if(auth()->check() && auth()->user()->bookmarks)
