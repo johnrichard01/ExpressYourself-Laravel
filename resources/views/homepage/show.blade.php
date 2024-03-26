@@ -181,13 +181,13 @@
             <div class="col-12 col-lg-9 px-5">
                 <div class="content">
                     <div class="show-image d-flex justify-content-center">
-                        <img src="{{$blog->thumbnail ? asset('storage/app/public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" class="show-image" alt="">
+                        <img src="{{$blog->thumbnail ? asset('public/' . $blog->thumbnail) : asset('assets/images/nothumbnail.png')}}" class="show-image" alt="">
                     </div> 
                 </div>
 
                 <div class="desc-container mt-5">
                     <div class="description">
-                        {!!$blog->description!!}
+                        {!!$blog->content!!}
 
                             <div>
                                 @if(auth()->check() && auth()->user()->bookmarks)
