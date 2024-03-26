@@ -13,7 +13,7 @@ class Blogs extends Model
     protected $fillable = [
         'title',
         'category',
-        'content',
+        'description',
         'thumbnail',
         'about',
         'user_id'
@@ -24,7 +24,7 @@ class Blogs extends Model
         }
         if ($filters['search'] ?? false) {
             $query->where('title', 'like', '%' . request('search') . '%')
-                ->orWhere('content', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%')
                 ->orWhere('category', 'like', '%' . request('search') . '%');
         }
     }
