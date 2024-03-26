@@ -292,14 +292,14 @@ class BlogsController extends Controller
         $post=$request->validate([
             'title'=> 'required',
             'category'=> ['required', 'not_in:0'],
-            'description'=>'required',
+            'content'=>'required',
             'about'=>'required'
         ]);
-        $description= $request->description;
-        $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
+        $content= $request->content;
+        $content = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
         $dom = new \DomDocument();
         
-        $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
  
         $imageFile = $dom->getElementsByTagName('imageFile');
   
@@ -328,8 +328,8 @@ class BlogsController extends Controller
             $post['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
         }
         $post['user_id']= auth()->id();
-        $description = $dom->saveHTML();
-        $post['description'] = $description;
+        $content = $dom->saveHTML();
+        $post['content'] = $content;
         Blogs::create($post);
         return redirect('/')->with('success', 'Successfully created a blog');
     }
@@ -370,13 +370,13 @@ class BlogsController extends Controller
         $post=$request->validate([
             'title'=> 'required',
             'category'=> ['required', 'not_in:0'],
-            'description'=>'required',
+            'content'=>'required',
             'about'=>'required'
         ]);
-        $description= $post['description'];
-        $description = mb_convert_encoding($description, 'HTML-ENTITIES', 'UTF-8');
+        $content= $post['content'];
+        $content = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
         $dom = new DOMDocument();
-        $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | libxml_use_internal_errors(true));
  
         $imageFile = $dom->getElementsByTagName('imageFile');
   
@@ -405,8 +405,8 @@ class BlogsController extends Controller
             $post['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
         }
         $post['user_id']= auth()->id();
-        $description = $dom->saveHTML();
-        $post['description'] = $description;
+        $content = $dom->saveHTML();
+        $post['content'] = $content;
         $blogs->update($post);
         return redirect('/myblogs')->with('success', 'Changes saved');
     }
